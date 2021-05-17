@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateTrabajadorasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,16 +17,19 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->integer('telefono',9);
+            $table->integer('telefono');
             $table->string('dni', 9);
-            $table->string('password',10);
+            $table->string('password');
             $table->string('email')->unique();
             $table->string('img')->nullable();
-            $table->integer('zona')->nullable();
-            $table->bigInteger('rol_id');
+            $table->unsignedBigInteger('zona')->nullable();
+            $table->unsignedBigInteger('rol_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->foreign('zona')->references('id')->on('zonas');
+
         });
     }
 
