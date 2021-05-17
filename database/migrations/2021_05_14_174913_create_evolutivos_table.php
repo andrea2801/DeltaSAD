@@ -15,10 +15,12 @@ class CreateEvolutivosTable extends Migration
     {
         Schema::create('evolutivos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_usuario');
-            $table->bigInteger('id_tf');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_tf');
             $table->string('descripcion');
             $table->date('fecha_creacion');
+            $table->foreign('id_tf')->references('id')->on('trabajadoras');
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
         });
     }
 

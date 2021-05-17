@@ -14,9 +14,11 @@ class CreateHorariosTable extends Migration
     public function up()
     {
         Schema::create('horarios', function (Blueprint $table) {
-            $table->bigInteger('id_usuario');
+            $table->unsignedBigInteger('id_usuario');
             $table->time('hora_inicio');
             $table->time('hora_final');
+            $table->timestamps();
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
         });
     }
 
