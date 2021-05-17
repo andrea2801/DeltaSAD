@@ -17,7 +17,7 @@ class CreateIncidenciasTable extends Migration
             $table->id();
             $table->timestamps('fecha');
             $table->string('descripcion');
-            $table->string('estado');
+            $table->boolean('estado')->default(false);
             $table->bigInteger('id_usuario');
             $table->bigInteger('id_tf');
         });

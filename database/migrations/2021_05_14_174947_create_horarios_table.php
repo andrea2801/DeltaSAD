@@ -17,7 +17,6 @@ class CreateHorariosTable extends Migration
             $table->bigInteger('id_usuario');
             $table->time('hora_inicio');
             $table->time('hora_final');
-
         });
     }
 

@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('dni', 9);
             $table->string('password',10);
             $table->string('email')->unique();
+            $table->string('img')->nullable();
             $table->integer('zona')->nullable();
             $table->bigInteger('rol_id');
             $table->timestamp('email_verified_at')->nullable();
-
             $table->rememberToken();
             $table->timestamps();
         });
