@@ -30,8 +30,8 @@ class CreateUsuariosTable extends Migration
             $table->unsignedBigInteger('zona');
             $table->timestamps();
             $table->foreign('zona')->references('id')->on('zonas');
-            $table->foreign('tf_asignada')->references('id')->on('trabajadoras');
-            $table->foreign('tf_asignada2')->references('id')->on('trabajadoras');
+            $table->foreign('tf_asignada')->references('id')->on('users');
+            $table->foreign('tf_asignada2')->references('id')->on('users');
 
         });
     }

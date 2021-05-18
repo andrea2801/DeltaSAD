@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Usuario;
 
 class Zona extends Model
 {
@@ -12,10 +14,10 @@ class Zona extends Model
         'zonas',
     ];
 
-    public function trabajadora(){
-        return $this->hasMany(Trabajadora::class);
+    public function user(){
+        return $this->hasMany(User::class);
     }
     public function usuario(){
-        return $this->hasMany(User::class);
+        return $this->hasMany(Usuario::class);
     }
 }

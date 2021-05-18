@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Trabajadora;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class TrabajadorasTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class TrabajadorasTableSeeder extends Seeder
     public function run()
     {
         //coordinadoras
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Desirée';
         $employee->apellidos= 'Barragán Urionabarranechea';
         $employee->telefono= 659632145;
@@ -28,7 +28,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->rol_id= 1;
         $employee->save();
 
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Raquel';
         $employee->apellidos= 'Gutierrez Antequera';
         $employee->telefono= 678987456;
@@ -40,7 +40,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->rol_id= 1;
         $employee->save();
 
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Sonia';
         $employee->apellidos= 'Perea Pelea';
         $employee->telefono= 666777888;
@@ -53,7 +53,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->save();
 
         //tf zona 1
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Nathalie';
         $employee->apellidos= 'Quiroz Neira';
         $employee->telefono= 654789123;
@@ -65,7 +65,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->rol_id= 2;
         $employee->save();
 
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Andrea';
         $employee->apellidos= 'Alonso Salguero';
         $employee->telefono= 666333999;
@@ -78,7 +78,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->save();
 
         //tf zona 2
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Sandra';
         $employee->apellidos= 'Gonzalez Marin';
         $employee->telefono= 607068413;
@@ -90,7 +90,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->rol_id= 2;
         $employee->save();
 
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Aitor';
         $employee->apellidos= 'Tilla Ruiz';
         $employee->telefono= 666111198;
@@ -103,7 +103,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->save();
 
         //tf zona 3
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Fran';
         $employee->apellidos= 'Chesko Virgolini';
         $employee->telefono= 612345987;
@@ -115,7 +115,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->rol_id= 2;
         $employee->save();
 
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Elena';
         $employee->apellidos= 'Nillo Del Bosque';
         $employee->telefono= 654123987;
@@ -128,7 +128,7 @@ class TrabajadorasTableSeeder extends Seeder
         $employee->save();
 
         //ts
-        $employee = new Trabajadora();
+        $employee = new User();
         $employee->nombre= 'Pepa';
         $employee->apellidos= 'Pig Cerdo';
         $employee->telefono= 661331999;

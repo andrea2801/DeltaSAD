@@ -22,7 +22,7 @@ class CreateIncidenciasTable extends Migration
             $table->unsignedBigInteger('id_tf');
             $table->timestamps();
             $table->foreign('id_usuario')->references('id')->on('usuarios');
-            $table->foreign('id_tf')->references('id')->on('trabajadoras');
+            $table->foreign('id_tf')->references('id')->on('users');
         });
     }
 

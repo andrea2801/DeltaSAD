@@ -25,8 +25,8 @@ class CreateNotificacionesTable extends Migration
             $table->string('archivo_adjunto')->nullable();
             $table->string('respuesta')->nullable();
             $table->timestamps();
-            $table->foreign('destinatario')->references('id')->on('trabajadoras');
-            $table->foreign('creador')->references('id')->on('trabajadoras');
+            $table->foreign('destinatario')->references('id')->on('users');
+            $table->foreign('creador')->references('id')->on('users');
         });
     }
 

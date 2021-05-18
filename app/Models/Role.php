@@ -12,7 +12,7 @@ class Role extends Model
         'rol',
     ];
 
-    public function trabajadora(){
-        return $this->hasMany(Trabajadora::class);
+    public function user(){
+        return $this->hasMany(User::class);
     }
 }

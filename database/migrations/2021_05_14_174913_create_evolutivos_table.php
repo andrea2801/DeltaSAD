@@ -19,7 +19,7 @@ class CreateEvolutivosTable extends Migration
             $table->unsignedBigInteger('id_tf');
             $table->string('descripcion');
             $table->date('fecha_creacion');
-            $table->foreign('id_tf')->references('id')->on('trabajadoras');
+            $table->foreign('id_tf')->references('id')->on('users');
             $table->foreign('id_usuario')->references('id')->on('usuarios');
         });
     }
