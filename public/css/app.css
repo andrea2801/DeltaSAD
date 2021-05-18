@@ -19998,3 +19998,63 @@ h3 {
 body {
   background-image: url("/public/img_login/fondo.jpg");
 }
+
+div#app {
+  position: relative;
+  /* align-items: center; */
+  /* line-height: 98px; */
+  top: 140px;
+}
+div#app .logo {
+  margin-left: 163px;
+}
+div#app .login_form {
+  height: 387px;
+  position: relative;
+  align-self: center;
+}
+div#app .login_form .card {
+  height: 100%;
+}
+div#app .login_form .card .remerberme {
+  justify-content: space-around;
+  margin-left: 77px;
+  color: #1F1F1F;
+}
+div#app .login_form .card .dni_login, div#app .login_form .card .password_login {
+  margin-top: 41px;
+  margin-left: 59px;
+}
+div#app .login_form .card .rect_mobil {
+  background-color: #2679B9;
+  border-radius: 5px;
+  -moz-text-align-last: start;
+  text-align-last: start;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: monospace;
+  position: absolute;
+  height: 37px;
+  left: 94px;
+  z-index: 9;
+}
+div#app .login_form .card .botton_login {
+  margin-left: 81px;
+}
+div#app .login_form .card .botton_general {
+  background-color: #2679B9;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: monospace;
+}
+div#app .login_form .card .forgot_password {
+  color: #1F1F1F;
+  margin-top: 48px;
+}
+
+html, body {
+  height: 100%;
+}

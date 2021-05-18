@@ -1,4 +1,67 @@
 body{
-    background-image: url('/public/img_login/fondo.jpg');
+    background-image: url("/public/img_login/fondo.jpg");
 
 }
+
+
+
+
+div#app {
+    position: relative;
+    /* align-items: center; */
+    /* line-height: 98px; */
+    top: 140px;
+    .logo{
+        margin-left: 163px;
+    }
+    .login_form{
+        height: 387px;
+        position: relative;
+        align-self: center;
+
+        .card{
+            height: 100%;
+            .remerberme{
+                justify-content: space-around;
+                margin-left: 77px;
+                color:#1F1F1F;
+            }
+            .dni_login, .password_login{
+                margin-top: 41px;
+                margin-left: 59px;
+            }
+            .rect_mobil {
+                background-color: #2679B9;
+                border-radius: 5px;
+                -moz-text-align-last: start;
+                text-align-last: start;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                font-family: monospace;
+                position: absolute;
+                height: 37px;
+                left: 94px;
+                z-index: 9;
+            }
+            .botton_login{
+                margin-left: 81px;
+            }
+            .botton_general{
+                background-color: #2679B9;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 18px;
+                font-family: monospace;
+            }
+            .forgot_password{
+                color:#1F1F1F;
+                margin-top: 48px;
+            }
+        }
+
+    }
+
+}
+
