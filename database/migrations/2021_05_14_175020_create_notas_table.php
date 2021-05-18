@@ -16,10 +16,12 @@ class CreateNotasTable extends Migration
         Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->string('nota');
-            $table->timestamps('fecha');
-            $table->bigInteger('id_usuario');
-            $table->bigInteger('id_tf');
-
+            $table->dateTime('fecha');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_tf');
+            $table->timestamps();
+            $table->foreign('id_tf')->references('id')->on('users');
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
         });
     }
 
