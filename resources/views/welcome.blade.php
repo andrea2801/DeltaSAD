@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-6">
-                <img src="{{asset('img/Logo2.png')}}">
+                <img class="logo col-auto" src="{{asset('img/Logo2.png')}}">
             </div>
             <div class="col-md-6">
                     <div class="card">

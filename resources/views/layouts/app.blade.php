@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'DeltaSAD') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+
 </head>
 <body>
     <div id="app">
-
-
-        <main class="py-4">
+        <main class="py-12">
             @yield('content')
         </main>
     </div>
