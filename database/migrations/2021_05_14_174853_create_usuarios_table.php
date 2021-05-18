@@ -17,7 +17,7 @@ class CreateUsuariosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->integer('telefono', 9);
+            $table->integer('telefono');
             $table->string('dni', 9);
             $table->string('persona_contacto');
             $table->string('detalle');
@@ -25,10 +25,14 @@ class CreateUsuariosTable extends Migration
             $table->decimal('horas_asignadas');
             $table->date('fecha_alta');
             $table->string('archivos_adjuntos')->nullable();
-            $table->bigInteger('tf_asignada')->nullable();
-            $table->bigInteger('tf_asignada2')->nullable();
-            $table->integer('zonas');
+            $table->unsignedBigInteger('tf_asignada')->nullable();
+            $table->unsignedBigInteger('tf_asignada2')->nullable();
+            $table->unsignedBigInteger('zona');
             $table->timestamps();
+            $table->foreign('zona')->references('id')->on('zonas');
+            $table->foreign('tf_asignada')->references('id')->on('users');
+            $table->foreign('tf_asignada2')->references('id')->on('users');
+
         });
     }
 
