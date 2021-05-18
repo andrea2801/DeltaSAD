@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
 
             <div class="col-12  col-md-6">
-                <img class="logo col-auto" src="{{asset('img_login/Logo2.png')}} " alt="DeltaSAd">
+                <img class="logo col-auto" src="{{asset('img/login/Logo2.png')}} " alt="DeltaSAd">
             </div>
             <div class="col-12 col-md-6 login_form">
                 <div class="card">
