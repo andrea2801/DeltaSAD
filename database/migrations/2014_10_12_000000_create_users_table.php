@@ -13,20 +13,23 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('trabajadoras', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->integer('telefono',9);
+            $table->integer('telefono');
             $table->string('dni', 9);
-            $table->string('password',10);
+            $table->string('password');
             $table->string('email')->unique();
-            $table->integer('zona')->nullable();
-            $table->bigInteger('rol_id');
+            $table->string('img')->nullable();
+            $table->unsignedBigInteger('zona')->nullable();
+            $table->unsignedBigInteger('rol_id');
             $table->timestamp('email_verified_at')->nullable();
-
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('rol_id')->references('id')->on('roles');
+            $table->foreign('zona')->references('id')->on('zonas');
+
         });
     }
 
