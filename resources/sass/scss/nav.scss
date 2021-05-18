@@ -1,0 +1,33 @@
+.navegador{
+    background-color: #1D4E8E;
+    max-height: 1000px;
+    width: 200px;
+    opacity: 78%;
+    .nav-link{
+        text-decoration: none;
+        .text-nav{
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        .nav-icon-img{
+            width: 90px;
+        }
+        .nav-icon-img:hover{
+            width: 95px;
+        }
+    }
+}
+@media (max-width: 767px){
+    .navegador{
+        max-height: 200px;
+        .nav-link{
+            .text-nav:hover{
+                color: #b8e5e5;
+                text-decoration: underline;
+            }
+            .nav-icon-img{
+                display: none;
+            }
+        }
+    }
+}
