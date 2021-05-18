@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
 
             <div class="col-md-6">
-                <img class="logo col-auto" src="{{asset('img/Logo2.png')}}">
+                <img class="logo col-auto" src="{{asset('img_login/Logo2.png')}}">
             </div>
             <div class="col-md-6">
                     <div class="card">
@@ -16,12 +16,12 @@
                                 @csrf
 
                                 <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    <label for="Dni" class="col-md-4 col-form-label text-md-right">{{ __('Dni') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="dni" type="email" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ old('dni') }}" required autocomplete="dni" autofocus>
 
-                                        @error('email')
+                                        @error('dni')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
