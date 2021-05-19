@@ -15,11 +15,11 @@ class UsuariosController extends Controller
         if($request->user()->hasRole('coordinadora') == true){
             $zone = DB::table('zona')->select('zona')->where('id',Auth::id())->orderBy('apellidos', 'desc')->get();
             $usuarios = $this->showByZone($zone);
-            return view('layouts/usuarios', compact('usuarios', $usuarios));
+            return view('front/usuarios', compact('usuarios', $usuarios));
         }
 
         $users= $this->showByTf();
-        return view('layouts/usuarios', compact('users', $users));
+        return view('front/usuarios', compact('users', $users));
     }
 
     protected function create(Request $request){
