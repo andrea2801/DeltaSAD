@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-
-<footer class="footer text-center text-white fixed-bottom">
-
-<div class="container p-4"></div>
-
-<!-- Copyright -->
-
-<div class="copy text-center p-3">
-© 2021 Copyright:
-<a class="text-white" href="">DeltaSAD</a>
+<div class="container-fluid footer">
+    <div class="row">
+        <div class="col-12 first-footer-line"></div>
+        <div class="col-12 second-footer-line d-flex justify-content-center align-items-center">
+                <p class="first-footer-txt footer-txt">© 2021 Copyright:
+                <a class="second-footer-txt footer-txt" href="">DeltaSAD</a></p>
+        </div>
+    </div>
 </div>
-<!-- Copyright -->
-</footer>
-
-
-
-
-
-
-    
-</body>
-</html>
