@@ -1,6 +1,31 @@
 body{
     background-image: url('/img/login/fondo.jpg');
+    background-size: cover;
 
+
+}
+.popup{
+    border: 1px solid #2679B9;
+    box-shadow: 0px 0px 3px 4px  rgba(29,78,142,.5);
+    display:none;
+    position: fixed;
+    top: 34px;
+    margin-left: 294px;
+    height: 46px;
+    text-align: start;
+    font-size: 18px;
+    background-color: rgba(255,255,255,.8);
+    .close_login {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+    }
+}
+.footer_login {
+    position: absolute;
+    bottom: 0;
+    color: #1F1F1F;
+    right: 0;
 }
 
 
@@ -11,6 +36,14 @@ div#app {
     /* align-items: center; */
     /* line-height: 98px; */
     top: 140px;
+    .login_body {
+    margin-left: 70px;
+    }
+    input[type=checkbox]:checked  {
+        content: 'x' !important;
+        font-size: 85px;
+        color:#1F1F1F;
+    }
     .logo{
         margin-left: 163px;
     }
@@ -19,20 +52,37 @@ div#app {
         position: relative;
         align-self: center;
 
+
         .card{
             height: 100%;
+            background-color: rgba(255,255,255,.8);
             .remerberme{
-                justify-content: space-around;
-                margin-left: 77px;
+                margin-left: 192px;
                 color:#1F1F1F;
+                margin-top: 26px;
+                font-weight: normal;
+                .form-check-input{
+                    position: relative;
+                }
+                .form-check-label{
+                    position: relative;
+                    bottom: 2px;
+                    font-size: 14px;
+                }
             }
             .dni_login, .password_login{
                 margin-top: 41px;
                 margin-left: 59px;
+                height: 38px;
             }
+            #dni_input_login,#password_input_login{
+                height: 38px;
+                font-size: 18px;
+            }
+
             .rect_mobil {
                 background-color: #2679B9;
-                border-radius: 5px;
+                border-radius: 2px;
                 -moz-text-align-last: start;
                 text-align-last: start;
                 color: white;
@@ -41,23 +91,26 @@ div#app {
                 font-family: monospace;
                 position: absolute;
                 height: 37px;
-                left: 94px;
+                left: 87px;
                 z-index: 9;
             }
             .botton_login{
                 margin-left: 81px;
+                margin-top: 19px;
+
             }
             .botton_general{
                 background-color: #2679B9;
-                border-radius: 5px;
+                border-radius: 2px;
                 color: white;
                 font-weight: bold;
                 font-size: 18px;
                 font-family: monospace;
             }
             .forgot_password{
-                color:#1F1F1F;
-                margin-top: 48px;
+                color: #1F1F1F;
+                margin-top: 37px;
+                font-size: 17px;
             }
         }
 

@@ -16,10 +16,10 @@
                             @csrf
 
                             <div class="form-group row dni_login">
-                                <label for="dni" class="col-4 col-md-3 col-form-label text-md-right rect_mobil">{{ __('Dni') }}</label>
+                                <label for="dni" class="col-4 col-md-3 col-form-label text-md-right rect_mobil dni_mov">{{ __('Dni') }}</label>
 
                                 <div class="col-md-10">
-                                    <input id="dni_input_login" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus>
+                                    <input id="dni_input_login" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus placeholder="523821F">
 
                                     @error('dni')
                                     <span class="invalid-feedback" role="alert">
@@ -30,10 +30,10 @@
                             </div>
 
                             <div class="form-group row password_login">
-                                <label for="password" class="col-4 col-md-3 col-form-label text-md-right rect_mobil">{{ __('Password') }}</label>
+                                <label for="password" class="col-4 col-md-3 col-form-label text-md-right rect_mobil pass_mov">{{ __('Password') }}</label>
 
                                 <div class="col-md-10">
-                                    <input id="password_input_login" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password_input_login" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="••••••••••">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                                         {{ __('Login') }}
                                     </button>
                                 </div>
-                                <a class="btn btn-link col-md-12 forgot_password" href="">
+                                <a class="btn btn-link col-md-12 forgot_password">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
 
@@ -73,13 +73,6 @@
 
         </div>
     </div>
-    <script>
-    $(document).ready(function (){
-        $("input").click(function (){
-            $(this).css("background-color","red");
-        });
-    });
 
-    </script>
 
 @endsection

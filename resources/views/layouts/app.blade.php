@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
+    <script src="{{asset('js/jquery.min.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,12 +27,44 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
+
 </head>
 <body>
+
+<div class="row popup col-md-7">
+    <div class="col-md-1 close_login"> <img class=" col-auto" src="{{asset('img/icons/X.png')}} " alt="Close"></div>
+
+    <div class="col-md-11 p-3"><p>Porfavor pongase en contacto con su cordinador/a para restaurar sus credenciales. Grácias.</p></div>
+</div>
     <div id="app">
         <main class="py-12">
+
             @yield('content')
         </main>
     </div>
+<div class="col-md-2 footer_login">
+    <p>© Copyright 2001 DeltaSAD</p>
+</div>
+    <script>
+        $(document).ready(function (){
+            //animacion block dni
+            $("input#dni_input_login").click(function (){
+                $(".dni_mov").animate({top: "16px"}, 500)
+            });
+            //animacion block password
+            $("input#password_input_login").click(function (){
+                $(".pass_mov").animate({top: "95px"}, 500)
+            });
+            //forgot password
+            $(".forgot_password").click(function (){
+                $(this).css("color","#50B2CE");
+                $(".popup").css("display","block");
+            });
+            $(".close_login").click(function (){
+                $(".popup").css("display","none");
+            })
+        });
+
+    </script>
 </body>
 </html>
