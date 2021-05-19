@@ -19995,66 +19995,50 @@ h3 {
     border-color: #dee2e6;
   }
 }
-body {
-  background-image: url("/storage/app/public/img/img_login/fondo.jpg");
+.navegador {
+  background-color: #1D4E8E;
+  max-height: 1000px;
+  width: 200px;
+  opacity: 78%;
+}
+.navegador .nav-link {
+  text-decoration: none;
+}
+.navegador .nav-link .text-nav {
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.navegador .nav-link .nav-icon-img {
+  width: 90px;
+}
+.navegador .nav-link .nav-icon-img:hover {
+  width: 95px;
 }
 
-div#app {
-  position: relative;
-  /* align-items: center; */
-  /* line-height: 98px; */
-  top: 140px;
+@media (max-width: 767px) {
+  .navegador {
+    max-height: 200px;
+  }
+  .navegador .nav-link .text-nav:hover {
+    color: #b8e5e5;
+    text-decoration: underline;
+  }
+  .navegador .nav-link .nav-icon-img {
+    display: none;
+  }
 }
-div#app .logo {
-  margin-left: 163px;
+.usuarios .title-user {
+  font-size: 32px;
+  color: #151F1E;
 }
-div#app .login_form {
-  height: 387px;
-  position: relative;
-  align-self: center;
+.usuarios .subtitle-user {
+  font-size: 36px;
+  color: #1D4E8E;
 }
-div#app .login_form .card {
-  height: 100%;
-}
-div#app .login_form .card .remerberme {
-  justify-content: space-around;
-  margin-left: 77px;
-  color: #1F1F1F;
-}
-div#app .login_form .card .dni_login, div#app .login_form .card .password_login {
-  margin-top: 41px;
-  margin-left: 59px;
-}
-div#app .login_form .card .rect_mobil {
+.usuarios .user-underline {
   background-color: #2679B9;
-  border-radius: 5px;
-  -moz-text-align-last: start;
-  text-align-last: start;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  font-family: monospace;
-  position: absolute;
-  height: 37px;
-  left: 94px;
-  z-index: 9;
+  height: 1px;
 }
-div#app .login_form .card .botton_login {
-  margin-left: 81px;
-}
-div#app .login_form .card .botton_general {
-  background-color: #2679B9;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  font-family: monospace;
-}
-div#app .login_form .card .forgot_password {
-  color: #1F1F1F;
-  margin-top: 48px;
-}
-
-html, body {
-  height: 100%;
+.usuarios .user-list {
+  list-style-image: url("/img/icons/usuario.png");
 }
