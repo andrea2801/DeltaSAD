@@ -15,8 +15,20 @@ class Usuario extends Model
      * @var array
      */
     protected $fillable = [
+        'nombre',
+        'apellidos',
+        'direccion',
+        'telefono',
         'dni',
-        'password',
+        'persona_contacto',
+        'detalle',
+        'tareas',
+        'horas_asignadas',
+        'archivos_adjuntos',
+        'tf_asignada',
+        'tf_asignada2',
+        'zona',
+
     ];
 
     public function zona(){
