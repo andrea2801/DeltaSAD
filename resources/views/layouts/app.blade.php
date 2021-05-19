@@ -29,10 +29,10 @@
 
 
 </head>
-<body>
+<body style="background-image: url('/img/login/fondo.jpg');background-size: cover;">
 
 <div class="row  col-md-12">
-    <div class="popup col-md-7">
+    <div class="popup col-md-7 mt-5">
     <div class="col-md-1 close_login"> <img class="  col-1" src="{{asset('img/icons/X.png')}} " alt="Close"></div>
     <div class="col-md-11 p-3"><p>Porfavor pongase en contacto con su cordinador/a para restaurar sus credenciales. Grácias.</p></div>
 </div>
