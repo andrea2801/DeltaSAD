@@ -12,14 +12,14 @@ class UsuariosController extends Controller
     //tf devuleve los usuarios que tengan esa tf asignada
     public function index(Request $request){
 
-        if($request->user()->hasRole() == 'coordinadora'){
+        if($request->user()->hasRole('coordinadora') == true){
             $zone = DB::table('zona')->select('zona')->where('id',Auth::id())->orderBy('apellidos', 'desc')->get();
             $usuarios = $this->showByZone($zone);
-            return view('usuarios', compact('usuarios', $usuarios));
+            return view('layouts/usuarios', compact('usuarios', $usuarios));
         }
 
         $users= $this->showByTf();
-        return view('usuarios', compact('usuarios', $users));
+        return view('layouts/usuarios', compact('users', $users));
     }
 
     protected function create(Request $request){
@@ -64,7 +64,7 @@ class UsuariosController extends Controller
 
     protected function showByTf(){
         //mostrar usuarios x zona en pantalla principal de usuarios
-        $users=DB::table('usuarios')->select('id, nombre, apellidos, direccion, telefono, detalle, tareas')->where('tf_asignada',Auth::id())->orWhere('tf_asignada2', Auth::id())->orderBy('apellidos', 'desc')->get();
+        $users=DB::table('usuarios')->select('id', 'nombre', 'apellidos', 'direccion', 'telefono', 'detalle', 'tareas')->where('tf_asignada',Auth::id())->orWhere('tf_asignada2', Auth::id())->orderBy('apellidos', 'desc')->get();
         return $users;
     }
 

@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['coordinadora', 'tf', 'ts']);
+       // $request->user()->authorizeRoles([1, 2, 3]);
         $notifications=DB::select('select * from notificaciones where destinatario = ?', [Auth::id()]);
-        return view('home', compact('notificaciones', $notifications));
+        return view('home', compact('notifications', $notifications));
     }
 }
