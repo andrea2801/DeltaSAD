@@ -18,8 +18,8 @@ class UsuariosController extends Controller
             return view('layouts/usuarios', compact('usuarios', $usuarios));
         }
 
-        $users= $this->showByTf();
-        return view('layouts/usuarios', compact('users', $users));
+        $usuarios= $this->showByTf();
+        return view('layouts/usuarios', compact('usuarios', $usuarios));
     }
 
     protected function create(Request $request){
