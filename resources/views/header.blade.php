@@ -6,30 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <style>
+        .border{
+                border:1px #000 solid;
+        }
+    </style>
+        
+        <script type="text/javascript">
+<script type="text/javascript">  </script>
+</script>   
+
+
 </head>
 <body>
-<div class="contendor">
-    <div class="row justify-content-center">
-            <div class="col-md-1">
-             <img class="col logo" src="{{asset('img/Logo2.png')}}">
+<div class="container p-3">
+
+        <div class="header row  justify-content-center">
+            <div class="logo col-2">
+                <a href=""> <img class="col-md" src="{{asset('img/Logo2.png')}}"></a>
             </div>
-            <div class="col">
-                    <h2>Bienvenido/a Usuario</h2>
+            <div class="usuario col-6 p-4 text-left">
+                 <h3>Bienvenido/a <span> "Usuario"</span></h3>
             </div>
-            <div class="col">
-                    <h2>15/02/2020</h2>
+            <div class="date col-2 p-4">
+            <h4><script type="text/JavaScript"> var f = new Date(); document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()); </script></h4>
             </div>
-            <div class="col">
-                    <h2>Salir</h2>
+            <div class="col-2 p-4 text-center">
+                    <span><h3>Salir<a href=""><img class="col-md" style="width:50px;" src="{{asset('img/logout.png')}}"></a></h3></span>
             </div>
-            <div class="col-md-1">
-            <img class="logo col-md-8" src="{{asset('img/logout.png')}}">
- 
-            </div>
-</div>
+            
+        </div>
 </div>
 
-
-
+@extends('layouts.footer')
 </body>
 </html>

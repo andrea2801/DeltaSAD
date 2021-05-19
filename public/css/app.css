@@ -19995,5 +19995,28 @@ h3 {
     border-color: #dee2e6;
   }
 }
+body {
+  background-color: F3F3F3;
+}
+
+.container .header {
+  font-size: 18px;
+}
+.container .header .logo {
+  width: 50%;
+}
+.container .header .usuario span {
+  color: #50B2CE;
+}
+.container .header .date {
+  color: #151F1E;
+}
+
+.footer {
+  background-color: #4c72a4;
+}
+.footer .copy {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
 
