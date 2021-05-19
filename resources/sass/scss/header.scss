@@ -1,24 +1,18 @@
-body{
-
-    background-color: F3F3F3;
-}
-
-.container{
 .header{
+    background-color: #f3f3f3;
     font-size: 18px;
     .logo{
-        width: 50%;
+        width: 70px;
     }
-
-    .usuario span{
+    .usuario{
         color: #50B2CE;
-
     }
     .date{
         color:#151F1E;
-
+    }
+    .logout{
+        width: 20px;
     }
 }
 
-}
 
