@@ -46,14 +46,23 @@ class UsuariosController extends Controller
 
     protected function show(Request $request, $user_id){
 
-        if($request->user()->hasRole() == 'coordinadora'){
-            $columns = '*';
+        if($request->user()->hasRole('coordinadora') == true){
+
+            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
+            $incidencias = DB::table('incidencias')
+                            ->join('trabajadoras', 'trabajadoras.id', '=', 'incidencias.id_tf')
+                            ->join('usuarios', 'usuarios.id', '=', 'incidencias.id_usuario')
+                            ->select('incidencias.id',(DB::raw("CONCAT('trabajadoras.nombre', 'trabajadoras.apellidos') AS trabajadora")) , (DB::raw("CONCAT ('usuarios.nombre', 'usuarios.apellidos') AS usuario)")), 'descripcion', 'estado', 'fecha')
+                            ->get();
+                    var_dump($incidencias); die;
+            return view('front/usuario', compact('usuario', $usuario), compact('incidencias', $incidencias));
         }else{
-            $columns = 'id, nombre, apellidos, direccion, telefono, detalle, tareas';
+            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
+
+            return view('front/usuario', compact('usuario', $usuario));
         }
 
-        $usuario = DB::table('usuarios')->select($columns)->where('id', $user_id)->get();
-        return view('usuario', compact('usuario', $usuario));
+
     }
 
     protected function showByZone($zone){
