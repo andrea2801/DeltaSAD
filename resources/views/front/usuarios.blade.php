@@ -8,14 +8,17 @@
             <h1 class="title-user">Usuarios</h1>
         </div>
         <div class="col-12 ml-5">
-            <h2 class="subtitle-user">Usuarios zona $x</h2>
+            <h2 class="subtitle-user">Tus usuarios:</h2>
             <hr class="user-underline">
         </div>
 
         <div class="col-12 mt-3 ml-5">
-            <ul>
-                <li class="user-list">$nombreabuelete</li>
+            @foreach ($usuarios as $usuario )
+              <ul>
+              <li class="user-list">{{$usuario->apellidos}},{{$usuario->nombre}}</li>
             </ul>
+            @endforeach
+
         </div>
     </div>
     <div class="row">
