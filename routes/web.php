@@ -21,10 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
 
 Route::get('/usuario', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
+
+Route::get('/home', function (){
+    return view('home');
+})->name('home');

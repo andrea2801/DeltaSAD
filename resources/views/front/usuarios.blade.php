@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid p-0 m-0 d-flex usuarios">
+<div class="usuarios p-0 m-0 d-flex">
     @include('front.nav')
-    <div class="row">
-        <div class="col-12 mt-5 ml-5">
+    <div class="row container-fluid">
+        <div class="col-12 ml-5">
             <h1 class="title-user">Usuarios</h1>
         </div>
         <div class="col-12 ml-5">
@@ -20,9 +20,7 @@
             @endforeach
 
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6 ml-5">
+        <div class="col-12 ml-5">
             <p>Esto será la paginacion</p>
         </div>
     </div>

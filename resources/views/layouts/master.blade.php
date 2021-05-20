@@ -5,7 +5,8 @@
     @yield('title')
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
-
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
     <link media="all" href="{{ asset('css/app.css') }}" rel="stylesheet">
 
