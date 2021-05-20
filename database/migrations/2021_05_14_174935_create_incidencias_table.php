@@ -15,7 +15,6 @@ class CreateIncidenciasTable extends Migration
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('fecha');
             $table->string('descripcion');
             $table->boolean('estado')->default(0);
             $table->unsignedBigInteger('id_usuario');

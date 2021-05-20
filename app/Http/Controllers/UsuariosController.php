@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\IncidenciasController;
 
 class UsuariosController extends Controller
 {
@@ -47,16 +48,30 @@ class UsuariosController extends Controller
 
     protected function show(Request $request, $user_id){
         if( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 ){
-            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
+            $usuario = DB::table('usuarios')
+                        ->join('users', 'users.id', '=','usuarios.tf_asignada')
+                        ->select('usuarios.*', DB::raw('users.nombre AS tfn, users.apellidos AS tfa'))
+                        ->where('usuarios.id', $user_id)
+                        ->get();
             $incidencias = DB::table('incidencias')
                             ->join('users', 'users.id', '=', 'incidencias.id_tf')
                             ->join('usuarios', 'usuarios.id', '=', 'incidencias.id_usuario')
                             ->select()
                             ->where('usuarios.id', $user_id)
                             ->get();
-            return view('front/usuario', compact('usuario', $usuario), compact('incidencias', $incidencias));
+            $evolutivos = DB::table('evolutivos')
+                            ->join('usuarios', 'id_usuario', '=', 'usuarios.id')
+                            ->join('users', 'id_tf', '=', 'users.id')
+                            ->select('evolutivos.id', 'evolutivos.fecha_creacion', 'evolutivos.descripcion', 'users.nombre')
+                            ->where('id_usuario', $user_id)
+                            ->limit(4)
+                            ->get();
+
+            return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos);
         }else{
-            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
+            $usuario = DB::table('usuarios')
+                        ->select('nombre', 'apellidos', 'direccion', 'detalle', 'tareas' )
+                        ->where('id', $user_id)->get();
 
             return view('front/usuario', compact('usuario', $usuario));
         }
