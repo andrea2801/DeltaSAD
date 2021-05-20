@@ -6,7 +6,17 @@ html,body{
 //$letras_negras: #1F1F1F,
 //$links_click:#50B2CE,
 
-
+.botton_general{
+    background-color: #2679b9e8;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: monospace;
+}
+.botton_general:hover{
+    background-color: #2679B9;
+}
 
 
 

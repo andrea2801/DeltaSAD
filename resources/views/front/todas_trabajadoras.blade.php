@@ -11,9 +11,9 @@
                 <h2 class="subtitle-user">Todas las trabajadoras</h2>
                 <hr class="user-underline">
             </div>
-            <div class="col-12 mt-3 ml-5">
+            <div class="col-12 mt-3 ml-5 " id="filtrar_block">
                 <p class="col-12">Buscar por:</p>
-                <div class="row">
+                <div class="row ml-5">
                    <div class="col-12">
                        <div class="col-md-9">
                            <div class="col-md-6">
@@ -21,7 +21,7 @@
                                    <div class="col-12">
                                        <div class="col-md-12">
 
-                                           <label for="dni" class="col-4 col-md-4 col-form-label text-md-right dni_view">Dni</label>
+                                           <label for="dni" class="col-4 col-md-4 col-form-label text-md-right dni_view">{{ __('Dni:') }}</label>
 
                                            <div class="col-md-6">
                                                <input id="dni_search" type="text" class="form-control col-md-12" name="dni" required="" autocomplete="dni">
@@ -34,10 +34,10 @@
                                <div class="form-group  row dni_trabajadoras">
                                    <div class="col-12">
                                        <div class="col-md-12">
-                                           <label for="dni" class="col-12 col-md-4 col-form-label text-md-right select_view">Selecciona:</label>
+                                           <label for="dni" class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
 
                                            <select class=" col-md-6 form-select" aria-label="Default select example">
-                                               <option selected="">Zonas</option>
+                                               <option selected="">Selecciona</option>
                                                <!--solo es prueba, raquel no te enfades-->
                                                @php
                                                    use Illuminate\Support\Facades\DB;
@@ -61,9 +61,9 @@
 
 
             </div>
-            <div class="col-md-8 ml-5 pl-5">
+            <div class="col-md-8 ml-5 pl-5" id="tabla_filtrar">
                 <table class="table col-md-3">
-                    <thead class="thead-dark">
+                    <thead>
                     <tr>
                         <th>Nombre y apellido</th>
                         <th>Teléfono</th>
@@ -73,6 +73,14 @@
                         <th>Usuarios</th>
                     </tr>
                     </thead>
+                    <tr>
+                        <td>Andrea Alonso</td>
+                        <td>6529089</td>
+                        <td>andrea@gmail.com</td>
+                        <td>clot</td>
+                        <td><a href="">ver</a></td>
+                        <td><a href="">ver</a></td>
+                    </tr>
                    <!--trabajadoras-->
                 </table>
 

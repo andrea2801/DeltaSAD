@@ -7,10 +7,9 @@
             <p>Bienvenido/a <span class="usuario"> {{Auth::user()->nombre}}</span></p>
         </div>
         <div class="col-2 d-none d-md-flex align-items-center justify-content-center offset-3">
+
             <p class="date">
-                <script type="text/JavaScript">
-                    var f = new Date(); document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear() + " - " + f.getHours() + ":" + f.getMinutes() + "H");
-                </script>
+
             </p>
         </div>
         <div class="col-6 col-md-1 text-center d-flex align-items-center justify-content-center justify-content-md-end offset-0 offset-md-1">

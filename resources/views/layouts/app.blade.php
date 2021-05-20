@@ -28,7 +28,7 @@
 
 
 </head>
-<body style="background-image: url('img/fondo.jpg');background-size: cover;">
+<body class="body_login">
     <div class="row">
         <div class="col-12">
             <div class="row mt-5">
@@ -48,26 +48,6 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function (){
-            //animacion block dni
-            $("input#dni_input_login").click(function (){
-                $(".dni_mov").animate({top: "16px"}, 500)
-            });
-            //animacion block password
-            $("input#password_input_login").click(function (){
-                $(".pass_mov").animate({top: "95px"}, 500)
-            });
-            //forgot password
-            $(".forgot_password").click(function (){
-                $(this).css("color","#50B2CE");
-                $(".popup").css("display","block");
-            });
-            $(".close_login").click(function (){
-                $(".popup").css("display","none");
-            })
-        });
 
-    </script>
 </body>
 </html>
