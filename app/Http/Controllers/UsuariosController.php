@@ -12,9 +12,10 @@ class UsuariosController extends Controller
     //tf devuleve los usuarios que tengan esa tf asignada
     public function index(Request $request){
 
-        if($request->user()->hasRole('coordinadora') == true){
-            $zone = DB::table('zona')->select('zona')->where('id',Auth::id())->orderBy('apellidos', 'desc')->get();
-            $usuarios = $this->showByZone($zone);
+        if(Auth::user()->rol_id == 1){
+
+            $usuarios = $this->showByZone(Auth::user()->zona);
+
             return view('front/usuarios', compact('usuarios', $usuarios));
         }
 
@@ -45,15 +46,20 @@ class UsuariosController extends Controller
     }
 
     protected function show(Request $request, $user_id){
-
-        if($request->user()->hasRole() == 'coordinadora'){
-            $columns = '*';
+        if( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 ){
+            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
+            $incidencias = DB::table('incidencias')
+                            ->join('users', 'users.id', '=', 'incidencias.id_tf')
+                            ->join('usuarios', 'usuarios.id', '=', 'incidencias.id_usuario')
+                            ->select()
+                            ->where('usuarios.id', $user_id)
+                            ->get();
+            return view('front/usuario', compact('usuario', $usuario), compact('incidencias', $incidencias));
         }else{
-            $columns = 'id, nombre, apellidos, direccion, telefono, detalle, tareas';
-        }
+            $usuario = DB::table('usuarios')->where('id', $user_id)->get();
 
-        $usuario = DB::table('usuarios')->select($columns)->where('id', $user_id)->get();
-        return view('usuario', compact('usuario', $usuario));
+            return view('front/usuario', compact('usuario', $usuario));
+        }
     }
 
     protected function showByZone($zone){

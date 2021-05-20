@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
+        @include('front.nav')
         <div class="col-5">
             <p>NOTIFICACIONES RECIBIDAS</p>
         </div>
@@ -14,5 +15,4 @@
         </div>
     </div>
 </div>
-
 @endsection

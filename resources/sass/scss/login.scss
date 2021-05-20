@@ -16,6 +16,9 @@
         position: absolute;
         right: 0;
         cursor: pointer;
+        .close-icon{
+            width: 15px;
+        }
     }
 }
 .footer_login {
@@ -24,9 +27,6 @@
     color: #1F1F1F;
     right: 0;
 }
-
-
-
 
 div#app {
     position: relative;

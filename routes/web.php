@@ -27,6 +27,12 @@ Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'
 
 Route::get('/usuario', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
 
+Route::get('/usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
+
+Route::get('/trabajadoras', [App\Http\Controllers\UsersController::class, 'index'])->name('trabajadoras');
+
+Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
+
 Route::get('/home', function (){
     return view('home');
 })->name('home');

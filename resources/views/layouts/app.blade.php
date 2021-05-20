@@ -27,25 +27,27 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
-
 </head>
-<body style="background-image: url('/img/login/fondo.jpg');background-size: cover;">
-
-<div class="row  col-md-12">
-    <div class="popup col-md-7 mt-5">
-    <div class="col-md-1 close_login"> <img class="  col-1" src="{{asset('img/icons/X.png')}} " alt="Close"></div>
-    <div class="col-md-11 p-3"><p>Porfavor pongase en contacto con su cordinador/a para restaurar sus credenciales. Grácias.</p></div>
-</div>
-</div>
-    <div id="app">
-        <main class="py-12">
-
-            @yield('content')
-        </main>
+<body style="background-image: url('img/fondo.jpg');background-size: cover;">
+    <div class="row">
+        <div class="col-12">
+            <div class="row mt-5">
+                <div class="col-7 popup p-3 ">
+                    <div class="row">
+                        <div class="col-11">
+                            <p>Porfavor pongase en contacto con su cordinador/a para restaurar sus credenciales. Grácias.</p>
+                        </div>
+                        <div class="col-1 close_login d-flex justify-content-end">
+                            <img class="close-icon" src="{{asset('img/icons/X.png')}}" alt="Close">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="app">
+                @yield('content')
+            </div>
+        </div>
     </div>
-<div class="col-md-2 footer_login">
-    <p>© Copyright 2001 DeltaSAD</p>
-</div>
     <script>
         $(document).ready(function (){
             //animacion block dni
