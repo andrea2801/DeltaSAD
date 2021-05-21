@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<!--<style>.container{ width:70%;}-->
+<style>.container{ width:80%;}
 
 </style>
 <div class="container-fluid p-0 m-0 d-flex usuarios">
@@ -16,14 +16,15 @@
           <div class="col ml-5">  
                    
             <h2 class="subtitle-user">Tu equipo</h2> 
-     </div>
-          <div class="col">
+            </div>
+            <div class="col">
             <ul class="nav justify-content-end">
                   <li class="nav-items">
-                    <a class="nav-link active" href="#"><h2>Crear</h2></a>
+
+                    <a href="#" class="nav-link active" data-toggle="modal" data-target="#nueva" ><h2>Añadir nueva</h2></a>
                   </li>
                   <li class="nav-items border-left">
-                    <a class="nav-link active" href="#"><h2>Mostrar</h2></a>
+                    <a class="nav-link active" href="#"><h2>Mostrar todas</h2></a>
                   </li>
                   
              </ul>             
@@ -48,8 +49,8 @@
                   <li class="list-group-item">Zona I</li>
                 </ul>
                 <div>
-                  <a href="#" class="card-link">Horarios</a>
-                  <a href="#" class="card-link">Usuarios</a>
+                <a href="#" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                <a href="#" class="card-link" data-toggle="modal" data-target="#usuario">Usuarios</a>
                 </div>
         </div>
         
@@ -66,8 +67,8 @@
                   <li class="list-group-item">Zona I</li>
                 </ul>
                 <div>
-                  <a href="#" class="card-link">Horarios</a>
-                  <a href="#" class="card-link">Usuarios</a>
+                <a href="#" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                <a href="#" class="card-link" data-toggle="modal" data-target="#usuario">Usuarios</a>
                 </div>
         </div>
 
@@ -82,8 +83,8 @@
                     <li class="list-group-item">Zona I</li>
                   </ul>
                   <div>
-                    <a href="#" class="card-link">Horarios</a>
-                    <a href="#" class="card-link">Usuarios</a>
+                  <a href="#" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                  <a href="#" class="card-link" data-toggle="modal" data-target="#usuario">Usuarios</a>
                   </div>
         </div>
 
@@ -98,19 +99,69 @@
                     <li class="list-group-item">Zona I</li>
                   </ul>
                   <div>
-                    <a href="#" class="card-link">Horarios</a>
-                    <a href="#" class="card-link">Usuarios</a>
+                   
+                    <a href="#" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                    <a href="#" class="card-link" data-toggle="modal" data-target="#usuario">Usuarios</a>
                   </div>
         </div>
       </div> 
 <!--grupo2-->
 
 
+  
 
-    </div>
+<div class="modal fade" id="horarios">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4>Horarios</h4>
+                
+            </div>
+            <div class="modal-body">
+                <p>Lu - Ma 08:00-14:00 </p>
+                <p>Lu - Ma 08:00-14:00 </p>
+                <p>Lu - Ma 08:00-14:00 </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                </button>
+
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+<div class="modal fade" id="usuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 >Usuarios Asignados</h4>
+            </div>
+            <div class="modal-body">
+              <h2>Usuarios</h2>
+               <p> lista </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="close" data-dismiss="modal">
+                    <span class="span">×</span>
+                </button>
+
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+
 
 
 </div>
-</div>    
+
+</div>
+</div>  
 </div>
 @endsection
