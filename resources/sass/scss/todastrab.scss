@@ -1,4 +1,12 @@
 #filtrar_block{
+    a{
+        .limpiar_filtro{
+            color:#1d4e8eba;
+
+        }
+
+    }
+
     p{
         font-size: 24px;
         color: #1D4E8E;
@@ -29,6 +37,7 @@
 
 }
 #tabla_filtrar{
+    display: none;
     table{
         thead{
             background-color: #486C9C;

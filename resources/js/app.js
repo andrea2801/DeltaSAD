@@ -18,6 +18,29 @@ $(document).ready( function (){
         $(".popup").css("display","none");
     });
 
+    //FILTRAR TRABAJADORAS
+    $("#dni_search").blur(function (){
+        //ajax
+        $("#tabla_filtrar").css("display","block");
+    });
+    $("#select_zonas").on("change",function(){
+        var valor=$('select[name=select_zonas]').val();
+       /* $.ajax({
+            url:"",
+            data:{'valor':valor},
+            success:function(data){
+                $("#tabla_filtrar").css("display","block");
+            }*/
+        $(".zona_tabla_camp").html(valor);
+        $("#tabla_filtrar").css("display","block");
+        });
+
+    $(".limpiar_filtro").click(function (){
+        $("#tabla_filtrar").css("display","none");
+    });
+
+
+
 
 
 });
