@@ -21,10 +21,10 @@
             <ul class="nav justify-content-end">
                   <li class="nav-items">
 
-                    <a href="#" class="nav-link active" data-toggle="modal" data-target="#nueva" ><h2>Añadir nueva</h2></a>
+                    <a href="#" class="nav-link active" data-toggle="modal" data-target="#nueva" ><h2>Añadir</h2></a>
                   </li>
                   <li class="nav-items border-left">
-                    <a class="nav-link active" href="#"><h2>Mostrar todas</h2></a>
+                    <a class="nav-link active" href="#"><h2>Mostrar</h2></a>
                   </li>
                   
              </ul>             
@@ -155,7 +155,146 @@
     </div>   
 </div>
 
+<div class="modal fade" id="usuario">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">             
+                <h4 >Usuarios Asignados</h4>
+            </div>
+            <div class="modal-body">
+              <h2>Usuarios</h2>
+               <p> lista </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="close" data-dismiss="modal">
+                    <span class="span">×</span>
+                </button>
 
+            </div>
+        </div>
+    </div>   
+</div>
+
+<div class="modal fade" id="nueva">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 >Nueva Alta</h4>
+            </div>
+            <div class="modal-body">
+
+  <form action="" method="" class=" form needs-validation" novalidate>
+     
+        <div class="form-group row">
+         <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
+        <div class="col-sm-4">
+         <input name="nombre" type="text" class="form-control" id="inputNombre" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese Nombre.
+            </div>                 
+        </div>
+        <label for="inputApellido" class="col-sm-2 col-form-label">Apellido:</label>
+        <div class="col-sm-4">
+         <input name="apellido" type="text" class="form-control" id="inputApellido" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese Apellido.
+            </div>       
+        </div>
+
+      </div>
+      <div class="form-group row">
+         <label for="inputDni" class="col-sm-2 col-form-label">Dni:</label>
+        <div class="col-sm-4">
+         <input name="dni" type="text" class="form-control" id="inputDni" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese DNI.
+            </div>
+       
+        </div>
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+        <div class="col-sm-4">
+         <input name="pass" type="password" class="form-control" id="inputPassword" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese Password.
+            </div>
+        
+        </div>
+
+      </div>
+      <div class="form-group row">
+         <label for="inputTelf" class="col-sm-2 col-form-label">Teléfono:</label>
+        <div class="col-sm-4">
+         <input name="phone" type="text" class="form-control" id="inputDni" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese Teléfono.
+            </div>
+        </div>   
+
+     
+         <label for="inputEmail4" class="col-sm-2 col-form-label">Correo:</label>
+        <div class="col-sm-4">
+         <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="" required>
+            <div class="invalid-feedback">
+            Ingrese Email.
+            </div>
+        </div>   
+
+     </div>
+
+
+
+     <div class="form-group row">
+     <label class="col-sm-2 col-form-label">Zona:</label>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
+        <label class="form-check-label" for="inlineRadio1">Zona I</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
+        <label class="form-check-label" for="inlineRadio2">Zona II</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" required>
+        <label class="form-check-label" for="inlineRadio3">Zona III</label>       
+        </div>
+      </div>
+      
+      <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Rol:</label>
+         
+              <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="rol" id="inlineCheckbox1" value="familiar" required>
+              <label class="form-check-label" for="inlineCheckbox1">T. Familiar</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" name="rol" id="inlineCheckbox2" value="social" required>
+              <label class="form-check-label" for="inlineCheckbox2">T. Social</label>
+            </div>
+            
+        </div>
+
+       
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+        </div>
+              
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Añadir</button>   
+               
+
+            </div>
+</form>
+
+        </div>
+    </div>   
+</div>
 
 
 
@@ -164,4 +303,33 @@
 </div>
 </div>  
 </div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+
+
+
+
 @endsection
+
+
