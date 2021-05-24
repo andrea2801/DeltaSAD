@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="usuarios p-0 m-0 d-flex">
-    @include('front.nav')
     <div class="row container-fluid">
         <div class="col-12 ml-5">
             <h1 class="title-user">Usuarios</h1>
