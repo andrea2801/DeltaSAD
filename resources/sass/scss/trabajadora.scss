@@ -1,0 +1,48 @@
+
+.container-fluid{
+
+        .container{
+        
+
+            width:80%; 
+            
+            
+
+
+            .modal{
+                .modal-dialog{
+
+                    .modal-content{
+                
+                        .modal-header{
+                            color:#fff;
+                             background-color:#4c72a4;
+                            }
+                        .modal-footer{
+
+                            .span{
+
+                            
+                            color:#4c72a4;
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+
+
+
+
+}
+@media (max-width: 767px){
+    .container{
+       width:40%;
+
+     
+        
+    }
+}
