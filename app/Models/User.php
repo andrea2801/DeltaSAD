@@ -34,11 +34,21 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsTo(Role::class);
     }
+
     public function zona(){
         return $this->belongsTo(Zona::class);
     }
+
     public function usuario(){
         return $this->hasMany(Usuario::class);
+    }
+
+    public function evolutivos(){
+        return $this->hasMany(Evolutivo::class);
+    }
+
+    public function incidencias(){
+        return $this->hasMany(Incidencia::class);
     }
 
     public function authorizeRoles($roles){

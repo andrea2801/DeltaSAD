@@ -39,4 +39,12 @@ class Usuario extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function evolutivos(){
+        return $this->hasMany(Evolutivo::class);
+    }
+
+    public function incidencias(){
+        return $this->hasMany(Incidencia::class);
+    }
+
 }
