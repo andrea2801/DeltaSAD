@@ -17,6 +17,7 @@
    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
 </head>
 <body>
 
@@ -29,8 +30,10 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <script type="text/javascript" src="{{ asset('front/js/main.js') }}"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 <script type="text/javascript" src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 
 @yield('scripts')
+
 </body>
 </html>

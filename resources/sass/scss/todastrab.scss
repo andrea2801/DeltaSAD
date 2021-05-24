@@ -1,0 +1,46 @@
+#filtrar_block{
+    a{
+        .limpiar_filtro{
+            color:#1d4e8eba;
+
+        }
+
+    }
+
+    p{
+        font-size: 24px;
+        color: #1D4E8E;
+    }
+    .row{
+        font-size: 18px;
+    }
+    input{
+        box-shadow: inset 0 0 5px #00000061;
+        color: #ADADAD !important;
+        border-radius: 5px;
+    }
+    select{
+        height: 35px;
+        background-color: #486C9C;
+        border: 1px solid #ADADAD;
+        border-radius: 5px;
+        option {
+            background-color: #6499e0;
+            border: 1px solid #ADADAD;
+            border-radius: 5px;
+            height: 35px;
+        }
+        option:hover{
+            background-color: red !important;
+        }
+    }
+
+}
+#tabla_filtrar{
+    display: none;
+    table{
+        thead{
+            background-color: #486C9C;
+        }
+    }
+}
