@@ -106,7 +106,7 @@
                                                         $zones = DB::table('zonas')->select('zonas')->get();
                                                         for($i=0;$i<count($zones);$i++){
                                                            echo "<div class='form-check col-md-2'>
-                                                                    <input class='form-check-input col-md-1 ' type='radio' name='".$zones[$i]->zonas."'>
+                                                                    <input class='form-check-input col-md-1 zonas_input' type='radio' name='zonas' value='".$zones[$i]->zonas."'>
                                                                     <label for='zonas' class='col-md-11 col-form-label text-md-left'>".$zones[$i]->zonas."</label>
                                                                     </div>";
                                                         }
