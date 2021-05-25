@@ -18,5 +18,38 @@ html,body{
     background-color: #2679B9;
 }
 
+section{
+    .container-principal{
+        width: 95% !important;
+        max-width: 1440px !important;
+        margin: 0 auto;
+        margin: 119px auto 120px;
+    }
+    hr{
+        background-color: #2679B9;
+        height: 1px;
+        margin-top: 0 !important;
+    }
+    .btn-general{
+        background-color: #2679B9;
+        color: #ffffff;
+        font-size: 18px;
+        width: 198px;
+    }
+    .btn-general:hover{
+        opacity: 80%;
+        color: #ffffff;
+    }
+    thead{
+        background-color: #486C9C;
+        color: #ffffff;
+    }
+    tbody{
+        color: #151F1E;
+    }
+    thead, tbody{
+        font-size: 12px;
+    }
+}
 
 

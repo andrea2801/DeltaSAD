@@ -9,7 +9,7 @@
         @foreach ($usuario as $u )
         <div class="col-12 ml-5">
             <h2 class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</h2>
-            <hr class="user-underline">
+            <hr>
         </div>
         <div class="d-flex col-md-12">
             <div class="col-6 mt-3 ml-5 border">

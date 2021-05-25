@@ -36,3 +36,7 @@ Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'
 Route::get('/home', function (){
     return view('home');
 })->name('home');
+
+Route::get('/sended', function (){
+    return view('front/enviadas');
+})->name('enviadas');
