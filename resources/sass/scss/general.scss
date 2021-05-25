@@ -7,16 +7,23 @@ html,body{
 //$links_click:#50B2CE,
 
 .botton_general{
-    background-color: #2679b9e8;
-    border-radius: 2px;
-    color: white;
-    font-weight: bold;
+    background-color: #2679b9e8 !important;
+    border-radius: 2px !important;
+    color: white !important;
+    font-weight: bold !important;
     font-size: 18px;
     font-family: monospace;
 }
 .botton_general:hover{
-    background-color: #2679B9;
+    background-color: #2679B9 !important;
 }
+.input_general{
 
+        height: 38px;
+        font-size: 18px !important;
+        box-shadow: inset 0 0 5px #00000061 !important;
+        color: #ADADAD !important;
+
+}
 
 
