@@ -39,9 +39,13 @@ $(document).ready( function (){
         $("#tabla_filtrar").css("display","none");
     });
 
+    //USUARIOS
+    //Modificar usuario
 
-
-
+    $("#update").on("click", function(){
+        $("input").css("display", "flex")
+        $("label").css("display", "flex")
+    })
 
 });
 //HEADER

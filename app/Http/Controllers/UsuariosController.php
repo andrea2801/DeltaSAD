@@ -66,6 +66,7 @@ class UsuariosController extends Controller
                             ->where('id_usuario', $user_id)
                             ->limit(4)
                             ->get();
+            $tf=DB::table('users')->select('id', 'nombre', 'apellidos')->where('zona', Auth::user()->zona);
 
             return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos);
         }else{
@@ -90,7 +91,15 @@ class UsuariosController extends Controller
     }
 
     protected function update(Request $request){
-
+        $update=DB::table('usuarios')->where('id', $request->id)->update([
+            'direccion', $request->direccion,
+            'telefono', $request->telf,
+            'persona_contacto', $request->contacto,
+            'detalle', $request->detalle,
+            'tareas', $request->tareas,
+            'tf_asignada', $request->tf,
+            'horas_asignadas', $request->horas
+        ]);
     }
 
     protected function delete(Request $request){

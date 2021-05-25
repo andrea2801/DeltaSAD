@@ -12,3 +12,12 @@
         list-style-image: url('/img/icons/usuario.png');
     }
 }
+
+.userForm input{
+    display: none;
+}
+.userForm label{
+    display: none;
+    font-size: smaller;
+    color: crimson;
+}
