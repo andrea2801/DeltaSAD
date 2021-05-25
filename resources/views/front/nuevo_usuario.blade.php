@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="container-fluid p-0 m-0 d-flex usuarios">
-        @include('front.nav')
         <div class="row">
             <div class="col-12 mt-5 ml-5">
                 <h1 class="title-user">USUARIOS</h1>
@@ -51,8 +50,78 @@
 
                                         </div>
                                     </div>
+                                    <div class="form-group row " id="telf_usuario_crear">
+                                        <label for="Telf" class="col-4 col-md-1 col-form-label text-md-right">Telèfono</label>
+
+                                        <div class="col-md-12">
+                                            <input type="tel" class="form-control telf_usuario_crear" name="Telf" required="" autofocus="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row " id="percont_usuario_crear">
+                                        <label for="persona_contacto" class="col-4 col-md-5 col-form-label text-md-right">Persona de contacto</label>
+
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control percont_usuario_crear" name="persona_contacto" required="" autofocus="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row " id="hasignadas_usuario_crear">
+                                        <label for="zonas" class="col-4 col-md-5 col-form-label text-md-right">Zonas</label>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="col-md-4">
+                                                    @php
+                                                        use Illuminate\Support\Facades\DB;
+                                                        $zones = DB::table('zonas')->select('zonas')->get();
+                                                        for($i=0;$i<count($zones);$i++){
+                                                           echo "<div class='form-check'>
+                                                                    <input class='form-check-input' type='radio' name='".$zones[$i]->zonas."'>".$zones[$i]->zonas."</div>";
+                                                        }
+                                                        //dd($zones[$i]->zonas) ;
+                                                    @endphp
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group row " id="zona_usuario_crear">
+                                        <label for="horas_asignadas" class="col-4 col-md-5 col-form-label text-md-right">Horas Asignadas</label>
+
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control hasignadas_usuario_crear" name="horas_asignadas" required="" autofocus="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row " id="detalle_usuario_crear">
+                                        <label for="horas_asignadas" class="col-4 col-md-5 col-form-label text-md-right">Horas Asignadas</label>
+
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control hasignadas_usuario_crear" name="horas_asignadas" required="" autofocus="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row " id="tareas_usuario_crear">
+                                        <label for="horas_asignadas" class="col-4 col-md-5 col-form-label text-md-right">Horas Asignadas</label>
+
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control hasignadas_usuario_crear" name="horas_asignadas" required="" autofocus="">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row " id="tfasig_usuario_crear">
+                                        <label for="horas_asignadas" class="col-4 col-md-5 col-form-label text-md-right">Horas Asignadas</label>
+
+                                        <div class="col-md-12">
+                                            <input type="text" class="form-control hasignadas_usuario_crear" name="horas_asignadas" required="" autofocus="">
+
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-5">
+                                            <div class="col-md-5">
                                     <div class="form-group row " id="adjuntar_archivo">
                                         <label for="Archivo" class="col-4 col-md-3 col-form-label text-md-right">Foto</label>
 
