@@ -1,11 +1,52 @@
 html,body{
     height: 100%;
 }
-// Paleta de colores DeltaSAD
-//$rect_mobil: #2679B9,
-//$letras_negras: #1F1F1F,
-//$links_click:#50B2CE,
+Paleta de colores DeltaSAD
+$rect_mobil: #2679B9;
+$letras_negras: #1F1F1F;
+$links_click:#50B2CE;
+//FUENTES
 
+@font-face{
+    font-family:"Montserrat";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@mixin MontserratNormal(){
+    font-family:"Montserrat";
+}
+
+@font-face{
+    font-family:"Nobile";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@mixin NobileNormal(){
+    font-family:"Nobile";
+}
+
+@font-face{
+    font-family:"Hind Guntur";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@mixin Hind_GunturNormal(){
+    font-family:"Hind Guntur";
+}
+
+//css
 .botton_general{
     background-color: #2679b9e8 !important;
     border-radius: 2px !important;
