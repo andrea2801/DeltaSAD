@@ -3,10 +3,24 @@
 @section('content')
 <div class="container-fluid p-0 m-0 d-flex usuarios">
     <div class="row">
-        <div class="col-12 mt-5 ml-5">
+        <div class="col-12 mt-5 ml-5 justify-content-between">
             <h1 class="title-user">Usuarios</h1>
+            <a href="" id="baja" data-toggle="modal" data-target="#confirmacion">Dar de baja</a>
         </div>
         @foreach ($usuario as $u )
+        <div class="modal fade" id="confirmacion">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4>¿Confirmas que quieres eliminar este usuario?</h4>
+                        <button type="button" id="baja" value="{{$u->id}}">Si</button>
+                        <button type="button" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="col-12 ml-5">
             <h2 class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</h2>
             <hr>
@@ -14,12 +28,13 @@
         <div class="d-flex col-md-12">
             <div class="col-6 mt-3 ml-5 border">
                 @if (Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 )
-                <form class="userForm">
+                <form class="userForm" method="GET" action={{route('update')}}>
+                    <input type="hidden" name="id" value={{$u->id}}>
                     <button type="button" class="btn btn-link" id="update">Modificar usuario</button>
                     <p class="text-right" on>{{$u->dni}}</p>
                     <div class="d-flex">
                         <label>Modificar dni</label>
-                        <input type="text" name="dni" class="userForm" value="{{$u->dni}}">
+                        <input type="text" name="dni" class="userForm" value={{$u->dni}}>
                     </div>
                     <p class="font-weight-bold">Dirección:</p>
                     <p>{{$u->direccion}}</p>
@@ -59,9 +74,13 @@
                     </div>
                     <p class="font-weight-bold">TF asignada:</p>
                     <p>{{$u->tfn}} {{$u->tfa}}</p>
-                    <div class="d-flex">
-                        <label>Modificar TF</label>
-                        <input type="number" name="horas" class="userForm" value={{$u->tfa}}>
+                    <div class="d-flex flex-column">
+                        <label>Elegir nueva TF</label>
+                        <select name="tf">
+                            @foreach ($tfs as $tf )
+                            <option value={{$tf->id}}>{{$tf->nombre}} {{$tf->apellidos}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <input class="btn btn-primary" type="submit" value="Guardar cambios">
                 </form>
@@ -115,9 +134,9 @@
                         <td>{{$incidencia->descripcion}}</td>
                         <td>
                             @if($incidencia->estado == 1)
-                            <a href="">Cerrar</a>
+                            <a href="/cerrar/{{$incidencia->idi}}">Cerrar</a>
                             @else
-                            <a href="">Eliminar</a>
+                            <a href="/eliminar/{{$incidencia->idi}}">Eliminar</a>
                             @endif
                         </td>
                     </tr>
