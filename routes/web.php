@@ -35,8 +35,14 @@ Route::get('/eliminar/{id}', [App\Http\Controllers\IncidenciasController::class,
 
 Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('update');
 
+Route::get('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');
+
+Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::class, 'create'])->name('crear.evolutivo');
+
 Route::get('/trabajadoras', [App\Http\Controllers\UsersController::class, 'index'])->name('trabajadoras');
+
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
+
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
 
 Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
