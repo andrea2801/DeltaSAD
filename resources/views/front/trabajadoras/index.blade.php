@@ -50,8 +50,9 @@
                   <li class="list-group-item">{{$tf->zona}}</li>
                 </ul>
                 <div>
-                <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
-                <a href="trabajadoras/users/{{$tf->id}}" >Usuarios</a>
+                    <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                    <a href="/trabajadoras/users/{{$tf->id}}"  class="card-link" data-toggle="modal" data-target="#usuario" >Usuarios</a>
+
                 </div>
         </div>
         @endforeach
@@ -96,8 +97,9 @@
             <div class="modal-body">
               <h2>Usuarios</h2>
               @if (isset($users))
-              @foreach ($users as $user )
-                  <p>{{$user->nombre}}</p>
+
+              @foreach ($users as $key => $value)
+                  <p>{{$value->nombre}}</p>
               @endforeach
               @endif
 
