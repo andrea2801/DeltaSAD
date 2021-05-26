@@ -8,7 +8,10 @@
                 <h1 class="title-user">USUARIOS</h1>
             </div>
             <div class="col-12 ml-5">
-                <h2 class="subtitle-user">Lista usuarios</h2>
+                <div class="row">
+                <h2 class="subtitle-user col-md-6">Lista usuarios</h2>
+                    <button class="btn col-md-4 botton_general float-left mt-5">Nuevo usuario</button>
+                </div>
                 <hr class="user-underline">
             </div>
             <div class="row ml-5">
