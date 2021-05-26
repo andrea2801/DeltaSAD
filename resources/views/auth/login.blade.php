@@ -53,8 +53,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-8">
+                            <div class="row row d-flex justify-content-center">
+                                <div class="col-9 justify-content-center d-flex">
                                     <button type="submit" class="btn botton_general botton_login">
                                         {{ __('Login') }}
                                     </button>

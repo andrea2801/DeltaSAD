@@ -33,6 +33,7 @@ section{
         .login_form{
             border-radius: 5px;
             background-color: rgba(255,255,255,.8);
+            max-width: 700px;
             .formulario{
                 width: 100%;
                 .remerberme{
@@ -68,14 +69,15 @@ section{
                     width: 130px;
                 }
                 .botton_login{
-                    margin-left: 81px;
                     margin-top: 19px;
-
+                    width: 95%;
+                    font-size: 18px;
                 }
                 .forgot_password{
                     color: #1F1F1F;
                     margin-top: 37px;
                     font-size: 17px;
+                    margin-bottom: 37px;
                 }
             }
         }
