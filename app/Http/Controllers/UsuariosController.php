@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IncidenciasController;
+use Illuminate\Support\Facades\Redirect;
 
 class UsuariosController extends Controller
 {
     //comprobamos el rol de la trabajadora: si es coordinadora devuleve los usuarios por zona, si es
     //tf devuleve los usuarios que tengan esa tf asignada
-    public function index(Request $request){
+    public function index(){
 
         if(Auth::user()->rol_id == 1){
 
@@ -46,7 +47,7 @@ class UsuariosController extends Controller
         return redirect(); //redireccionar a la pag donde estabas estaria bien un popup conforme se ha creadp
     }
 
-    protected function show(Request $request, $user_id){
+    protected function show(Request $request,$user_id){
         if( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 ){
             $usuario = DB::table('usuarios')
                         ->join('users', 'users.id', '=','usuarios.tf_asignada')
@@ -56,7 +57,7 @@ class UsuariosController extends Controller
             $incidencias = DB::table('incidencias')
                             ->join('users', 'users.id', '=', 'incidencias.id_tf')
                             ->join('usuarios', 'usuarios.id', '=', 'incidencias.id_usuario')
-                            ->select()
+                            ->select( 'estado', 'descripcion', 'fecha', DB::raw('incidencias.id AS idi'))
                             ->where('usuarios.id', $user_id)
                             ->get();
             $evolutivos = DB::table('evolutivos')
@@ -66,8 +67,9 @@ class UsuariosController extends Controller
                             ->where('id_usuario', $user_id)
                             ->limit(4)
                             ->get();
+            $tf=DB::table('users')->select('id', 'nombre', 'apellidos')->where('zona', Auth::user()->zona)->where('rol_id', 2)->get();
 
-            return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos);
+            return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos)->with('tfs', $tf);
         }else{
             $usuario = DB::table('usuarios')
                         ->select('nombre', 'apellidos', 'direccion', 'detalle', 'tareas' )
@@ -90,10 +92,22 @@ class UsuariosController extends Controller
     }
 
     protected function update(Request $request){
-
+        $update=DB::table('usuarios')->where('id', $request->id)->update([
+            'direccion' => $request->direccion,
+            'telefono' => $request->telf,
+            'persona_contacto' => $request->contacto,
+            'detalle' => $request->detalle,
+            'tareas' => $request->tareas,
+            'tf_asignada' => $request->tf,
+            'horas_asignadas' => $request->horas
+        ]);
+        if($update == true){
+           return back()->with('message', 'Modificado');
+        }
+        return back()->withError('Error', 'Error');
     }
 
-    protected function delete(Request $request){
-
+    protected function delete($id){
+        $delete=DB::table('usuarios')->where('id', $id)->delete();
     }
 }

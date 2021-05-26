@@ -1,22 +1,101 @@
 html,body{
     height: 100%;
 }
-// Paleta de colores DeltaSAD
-//$rect_mobil: #2679B9,
-//$letras_negras: #1F1F1F,
-//$links_click:#50B2CE,
+//Paleta de colores DeltaSAD
+$rect_mobil: #2679B9;
+$letras_negras: #1F1F1F;
+$links_click:#50B2CE;
+//FUENTES
+/*
+@font-face{
+    font-family:"Montserrat";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
 
+@mixin MontserratNormal(){
+    font-family:"Montserrat";
+}
+
+@font-face{
+    font-family:"Nobile";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@mixin NobileNormal(){
+    font-family:"Nobile";
+}
+
+@font-face{
+    font-family:"Hind Guntur";
+    //src:url('');
+    //src:url('') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@mixin Hind_GunturNormal(){
+    font-family:"Hind Guntur";
+}
+*/
+//css
 .botton_general{
-    background-color: #2679b9e8;
-    border-radius: 2px;
-    color: white;
-    font-weight: bold;
+    background-color: #2679b9e8 !important;
+    border-radius: 2px !important;
+    color: white !important;
+    font-weight: bold !important;
     font-size: 18px;
     font-family: monospace;
 }
 .botton_general:hover{
-    background-color: #2679B9;
+    background-color: #2679B9 !important;
+}
+.input_general{
+
+        height: 38px;
+        font-size: 18px !important;
+        box-shadow: inset 0 0 5px #00000061 !important;
+        color: #ADADAD !important;
 }
 
-
-
+section{
+    .container-principal{
+        width: 95% !important;
+        max-width: 1440px !important;
+        margin: 0 auto;
+        margin: 119px auto 120px;
+    }
+    hr{
+        background-color: #2679B9;
+        height: 1px;
+        margin-top: 0 !important;
+    }
+    .btn-general{
+        background-color: #2679B9;
+        color: #ffffff;
+        font-size: 18px;
+        width: 198px;
+    }
+    .btn-general:hover{
+        opacity: 80%;
+        color: #ffffff;
+    }
+    thead{
+        background-color: #486C9C;
+        color: #ffffff;
+    }
+    tbody{
+        color: #151F1E;
+    }
+    thead, tbody{
+        font-size: 12px;
+    }
+}

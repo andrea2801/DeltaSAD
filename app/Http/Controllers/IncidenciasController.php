@@ -15,13 +15,13 @@ class IncidenciasController extends Controller
             'id_usuario' => $request->usuario,
             'id_tf' => $request->tf
         ]);
-        return back();
+        return back()->withInput();
     }
 
     protected function closeState($id){
-        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>1]);
+        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>0]);
         if( $result == true){
-            return back()->with('message', 'Incidencia cerrada');
+            return back()->withInput();
         }
         return back()->with('message', 'Error al cerrar incidencia');
     }
@@ -29,7 +29,7 @@ class IncidenciasController extends Controller
     protected function delete($id){
         $result = DB::table('incidencias')->where('id', $id)->delete();
         if( $result == true){
-            return back()->with('message', 'Incidencia eliminada');
+            return back()->withInput();
         }
         return back()->with('message', 'Error al eliminar incidencia');
     }

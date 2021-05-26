@@ -3,40 +3,99 @@
 @section('content')
 <div class="container-fluid p-0 m-0 d-flex usuarios">
     <div class="row">
-        <div class="col-12 mt-5 ml-5">
+        <div class="col-12 mt-5 ml-5 justify-content-between">
             <h1 class="title-user">Usuarios</h1>
+            <a href="" id="baja" data-toggle="modal" data-target="#confirmacion">Dar de baja</a>
         </div>
         @foreach ($usuario as $u )
+        <div class="modal fade" id="confirmacion">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h4>¿Confirmas que quieres eliminar este usuario?</h4>
+                        <button type="button" id="baja" value="{{$u->id}}">Si</button>
+                        <button type="button" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <div class="col-12 ml-5">
             <h2 class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</h2>
-            <hr class="user-underline">
+            <hr>
         </div>
         <div class="d-flex col-md-12">
             <div class="col-6 mt-3 ml-5 border">
-                @if(isset($u->dni))
-                <p class="text-right">{{$u->dni}}</p>
-                @endif
-                <p class="font-weight-bold">Dirección:</p>
-                <p>{{$u->direccion}}</p>
-                @if(isset($u->telefono))
-                <p class="font-weight-bold">Teléfono:</p>
-                <p>{{$u->telefono}}</p>
-                <p class="font-weight-bold">Persona de contacto:</p>
-                <p>{{$u->persona_contacto}}</p>
-                @endif
-                <p class="font-weight-bold">Detalle:</p>
-                <p>{{$u->detalle}}</p>
-                <p class="font-weight-bold">Tareas:</p>
-                <p>{{$u->tareas}}</p>
-                @if(isset($u->horas_asignadas))
-                <p class="font-weight-bold">Horas asignadas:</p>
-                <p>{{$u->horas_asignadas}}</p>
-                <p class="font-weight-bold">TF asignada:</p>
-                <p>{{$u->tfn}} {{$u->tfa}}</p>
+                @if (Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 )
+                <form class="userForm" method="GET" action={{route('update')}}>
+                    <input type="hidden" name="id" value={{$u->id}}>
+                    <button type="button" class="btn btn-link" id="update">Modificar usuario</button>
+                    <p class="text-right" on>{{$u->dni}}</p>
+                    <div class="d-flex">
+                        <label>Modificar dni</label>
+                        <input type="text" name="dni" class="userForm" value={{$u->dni}}>
+                    </div>
+                    <p class="font-weight-bold">Dirección:</p>
+                    <p>{{$u->direccion}}</p>
+                    <div class="d-flex">
+                        <label>Modificar dirección</label>
+                        <input type="text" name="direccion" class="userForm" value={{$u->direccion}}>
+                    </div>
+                    <p class="font-weight-bold">Teléfono:</p>
+                    <p>{{$u->telefono}}</p>
+                    <div class="d-flex">
+                        <label>Modificar teléfono</label>
+                        <input type="number" name="telf" class="userForm" value={{$u->telefono}}>
+                    </div>
+                    <p class="font-weight-bold">Persona de contacto:</p>
+                    <p>{{$u->persona_contacto}}</p>
+                    <div class="d-flex">
+                        <label>Modificar contacto</label>
+                        <input type="text" name="contacto" class="userForm" value={{$u->persona_contacto}}>
+                    </div>
+                    <p class="font-weight-bold">Detalle:</p>
+                    <p>{{$u->detalle}}</p>
+                    <div class="d-flex">
+                        <label>Modificar detalle</label>
+                        <input type="text" name="detalle" class="userForm" value={{$u->detalle}}>
+                    </div>
+                    <p class="font-weight-bold">Tareas:</p>
+                    <p>{{$u->tareas}}</p>
+                    <div class="d-flex">
+                        <label>Modificar tareas</label>
+                        <input type="text" name="tareas" class="userForm" value={{$u->tareas}}>
+                    </div>
+                    <p class="font-weight-bold">Horas asignadas:</p>
+                    <p>{{$u->horas_asignadas}}</p>
+                    <div class="d-flex">
+                        <label>Modificar horas</label>
+                        <input type="number" name="horas" class="userForm" value={{$u->horas_asignadas}}>
+                    </div>
+                    <p class="font-weight-bold">TF asignada:</p>
+                    <p>{{$u->tfn}} {{$u->tfa}}</p>
+                    <div class="d-flex flex-column">
+                        <label>Elegir nueva TF</label>
+                        <select name="tf">
+                            @foreach ($tfs as $tf )
+                            <option value={{$tf->id}}>{{$tf->nombre}} {{$tf->apellidos}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Guardar cambios">
+                </form>
+
+                @else
+                    <p class="text-right">{{$u->nombre}}</p>
+                    <p class="font-weight-bold">Dirección:</p>
+                    <p>{{$u->direccion}}</p>
+                    <p class="font-weight-bold">Detalle:</p>
+                    <p>{{$u->detalle}}</p>
+                    <p class="font-weight-bold">Tareas:</p>
+                    <p>{{$u->tareas}}</p>
                 @endif
             </div>
             @if(isset($notas))
-
             <div class="card border-primary mb-3" style="max-width: 18rem;">
                 <div class="card-header">Nota</div>
                 <div class="card-body text-primary">
@@ -75,9 +134,9 @@
                         <td>{{$incidencia->descripcion}}</td>
                         <td>
                             @if($incidencia->estado == 1)
-                            <a href="">Cerrar</a>
+                            <a href="/cerrar/{{$incidencia->idi}}">Cerrar</a>
                             @else
-                            <a href="">Eliminar</a>
+                            <a href="/eliminar/{{$incidencia->idi}}">Eliminar</a>
                             @endif
                         </td>
                     </tr>

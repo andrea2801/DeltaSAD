@@ -1,0 +1,25 @@
+section{
+    .container-principal{
+        .home-title{
+            font-size: 32px;
+            color: #151F1E;
+        }
+        .first-home-txt{
+            font-size: 24px;
+            color: #1D4E8E;
+        }
+        .mas{
+            width: 20px;
+        }
+        .mas:hover{
+            opacity: 80%;
+        }
+        .text-mostrar{
+            color: #1D4E8E;
+            font-size: 12px;
+            .arrow{
+                width: 20px;
+            }
+        }
+    }
+}

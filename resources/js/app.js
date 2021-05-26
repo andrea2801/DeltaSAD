@@ -18,22 +18,22 @@ require('./bootstrap');
     }, false);
   })();
 
-$(document).ready( function (){
+$(document).ready(function(){
     //LOGIN
     //animacion block dni
-    $("input#dni_input_login").click(function (){
+    $("input#dni_input_login").on('click',function (){
         $(".dni_mov").animate({top: "16px"}, 500)
     });
     //animacion block password
-    $("input#password_input_login").click(function (){
+    $("input#password_input_login").on('click',function (){
         $(".pass_mov").animate({top: "95px"}, 500)
     });
     //forgot password
-    $(".forgot_password").click(function (){
+    $(".forgot_password").on('click',function (){
         $(this).css("color","#50B2CE");
         $(".popup").css("display","block");
     });
-    $(".close_login").click(function (){
+    $(".close_login").on('click',function (){
         $(".popup").css("display","none");
     });
 
@@ -74,17 +74,22 @@ $(document).ready( function (){
         $("#tabla_filtrar").css("display","block");
         });
 
-    $(".limpiar_filtro").click(function (){
+    $(".limpiar_filtro").on('click',function (){
         $("#tabla_filtrar").css("display","none");
     });
 
+    //USUARIOS
+    //Modificar usuario
 
-
-
+    $("#update").on("click", function(){
+        $("input").css("display", "flex")
+        $("label").css("display", "flex")
+    })
 
 });
-//HEADER
+//HEADERs
 //datetime
+
 function datetime (){
     var datetime = new Date();
     var day= datetime.getDate();
