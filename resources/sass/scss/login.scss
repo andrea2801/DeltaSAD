@@ -1,117 +1,84 @@
 
 //PC
-.login_body{
+section{
     background-image: url('/img/fondo.jpg');
     background-size: cover;
-.popup{
-    border: 1px solid #2679B9;
-    box-shadow: 0px 0px 2px 2px rgb(29 78 142 / 50%);
-    display: none;
-    position: fixed;
-    margin-left: 294px;
-    height: 46px;
-    text-align: start;
-    font-size: 18px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
-
-    .close_login {
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-        .close-icon{
-            width: 15px;
+    height: 100%;
+    .login_body{
+        .popup{
+            border: 1px solid #2679B9;
+            box-shadow: 0px 0px 2px 2px rgb(29 78 142 / 50%);
+            display: none;
+            position: fixed;
+            margin-left: 294px;
+            height: 46px;
+            text-align: start;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            .close_login {
+                position: absolute;
+                right: 0;
+                cursor: pointer;
+                .close-icon{
+                    width: 15px;
+                }
+            }
         }
-    }
-}
-.footer_login {
-    position: absolute;
-    bottom: 0;
-    color: #1F1F1F;
-    right: 0;
-}
-
-div#app {
-    position: relative;
-    /* align-items: center; */
-    /* line-height: 98px; */
-    top: 140px;
-    .login_body {
-    margin-left: 70px;
-    }
-    input[type=checkbox]:checked  {
-        content: 'x' !important;
-        font-size: 85px;
-        color:#1F1F1F;
-    }
-    .logo{
-        margin-left: 163px;
-    }
-    .login_form{
-        height: 387px;
-        position: relative;
-        align-self: center;
-
-
-        .card{
-            height: 100%;
+        input[type=checkbox]:checked  {
+            content: 'x' !important;
+            font-size: 85px;
+            color:#1F1F1F;
+        }
+        .login_form{
             border-radius: 5px;
             background-color: rgba(255,255,255,.8);
-            .remerberme{
-                margin-left: 192px;
-                color:#1F1F1F;
-                margin-top: 26px;
-                font-weight: normal !important;
-                .form-check-input{
-                    position: relative;
+            .formulario{
+                width: 100%;
+                .remerberme{
+                    color:#1F1F1F;
+                    margin-top: 26px;
+                    font-weight: normal !important;
+                    .form-check-input{
+                        position: relative;
+                    }
+                    .form-check-label{
+                        position: relative;
+                        bottom: 2px;
+                        font-size: 14px;
+                    }
                 }
-                .form-check-label{
-                    position: relative;
-                    bottom: 2px;
-                    font-size: 14px;
+                .dni_login, .password_login{
+                    margin-top: 41px;
                 }
-            }
-            .dni_login, .password_login{
-                margin-top: 41px;
-                margin-left: 59px;
-                height: 38px;
-            }
-            #dni_input_login,#password_input_login{
-                height: 38px;
-                font-size: 18px;
-                box-shadow: inset 0 0 5px #00000061;
-                color: #ADADAD !important;
-            }
+                #dni_input_login,#password_input_login{
+                    font-size: 18px;
+                    box-shadow: inset 0 0 5px #00000061;
+                    color: #ADADAD !important;
+                }
+                .rect_mobil {
+                    background-color: #2679B9;
+                    border-radius: 2px;
+                    color: white;
+                    font-size: 18px;
+                    position: absolute;
+                    height: 33px;
+                    left: 16.8%;
+                    z-index: 9;
+                    width: 130px;
+                }
+                .botton_login{
+                    margin-left: 81px;
+                    margin-top: 19px;
 
-            .rect_mobil {
-                background-color: #2679B9;
-                border-radius: 2px;
-                -moz-text-align-last: start;
-                text-align-last: start;
-                color: white;
-                font-weight: bold;
-                font-size: 18px;
-                font-family: monospace;
-                position: absolute;
-                height: 37px;
-                left: 87px;
-                z-index: 9;
-            }
-            .botton_login{
-                margin-left: 81px;
-                margin-top: 19px;
-
-            }
-
-            .forgot_password{
-                color: #1F1F1F;
-                margin-top: 37px;
-                font-size: 17px;
+                }
+                .forgot_password{
+                    color: #1F1F1F;
+                    margin-top: 37px;
+                    font-size: 17px;
+                }
             }
         }
-
     }
-
-}
 }
 //Responsive movil

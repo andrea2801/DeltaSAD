@@ -22,11 +22,11 @@ $(document).ready(function(){
     //LOGIN
     //animacion block dni
     $("input#dni_input_login").on('click',function (){
-        $(".dni_mov").animate({top: "16px"}, 500)
+        $(".dni_mov").animate({top: "9px"}, 500)
     });
     //animacion block password
     $("input#password_input_login").on('click',function (){
-        $(".pass_mov").animate({top: "95px"}, 500)
+        $(".pass_mov").animate({top: "84px"}, 500)
     });
     //forgot password
     $(".forgot_password").on('click',function (){
