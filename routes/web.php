@@ -34,7 +34,7 @@ Route::get('/cerrar/{id}', [App\Http\Controllers\IncidenciasController::class, '
 Route::get('/eliminar/{id}', [App\Http\Controllers\IncidenciasController::class, 'delete'])->name('eliminar');
 
 Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('update');
-
+//trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\UsersController::class, 'index'])->name('trabajadoras');
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
