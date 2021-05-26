@@ -44,8 +44,14 @@ class TrabajadorasController extends Controller
 
     //mostrar todas
 
-    public function buscar(Request $request){
+    public function trabajadoras_filtrar(){
         return view('front/trabajadoras/todas_trabajadoras');
     }
-
+    public function dnibuscar(Request $request){
+        $bucardni = DB::table('users')
+        ->select()
+        ->where('dni', $request->dni)
+        ->get();
+        return $bucardni;
+    }
 }

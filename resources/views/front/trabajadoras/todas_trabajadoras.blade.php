@@ -76,16 +76,13 @@
                         <th>Zona</th>
                         <th>Horarios</th>
                         <th>Usuarios</th>
+                        <th>Opciones</th>
                     </tr>
                     </thead>
-                    <tr>
-                        <td>Andrea Alonso</td>
-                        <td>6529089</td>
-                        <td>andrea@gmail.com</td>
-                        <td class="zona_tabla_camp">clot</td>
-                        <td><a href="">ver</a></td>
-                        <td><a href="">ver</a></td>
-                    </tr>
+                   <tr class="dni_info">
+
+                   </tr>
+
                    <!--trabajadoras-->
                 </table>
 

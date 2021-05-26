@@ -39,9 +39,29 @@ $(document).ready( function (){
 
     //FILTRAR TRABAJADORAS
     $("#dni_search").blur(function (){
-        //ajax
-        $("#tabla_filtrar").css("display","block");
+        var valor=$(this).val();
+         $.ajax({
+            url:"/trabajadoras/busqueda/dni",
+            data:{dni:valor},
+            success:function(data){
+                console.log(data);
+                var nombre=data[0].nombre;
+                var apellido=data[0].apellidos;
+                var email=data[0].email;
+                var telefono=data[0].telefono;
+                var zona=data[0].zona;
+                $("tr.dni_info").html("<td>"+nombre+" "+apellido+"</td>"
+                +"<td>"+telefono+"</td>"
+                +"<td>"+email+"</td>"
+                +"<td>"+zona+"</td>"
+                +" <td><a href=''>ver</a></td>"
+                +" <td><a href=''>ver</a></td>"
+                +"<td><a href=''>ver</a></td>");
+                $("#tabla_filtrar").css("display","block");
+            }
+        });
     });
+
     $("#select_zonas").on("change",function(){
         var valor=$('select[name=select_zonas]').val();
        /* $.ajax({
