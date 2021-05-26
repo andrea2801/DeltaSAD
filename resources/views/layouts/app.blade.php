@@ -1,53 +1,35 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+    @yield('title')
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+    <link media="all" href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>{{ config('app.name', 'DeltaSAD') }}</title>
+    <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
 </head>
-<body class="body_login">
-    <div class="row">
-        <div class="col-12">
-            <div class="row mt-5">
-                <div class="col-7 popup p-3 ">
-                    <div class="row">
-                        <div class="col-11">
-                            <p>Porfavor pongase en contacto con su cordinador/a para restaurar sus credenciales. Grácias.</p>
-                        </div>
-                        <div class="col-1 close_login d-flex justify-content-end">
-                            <img class="close-icon" src="{{asset('img/icons/X.png')}}" alt="Close">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="app">
-                @yield('content')
-            </div>
-        </div>
-    </div>
+<body>
+    @yield('content')
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <script type="text/javascript" src="{{ asset('front/js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+
+    @yield('scripts')
 
 </body>
 </html>
