@@ -44,8 +44,9 @@ $(document).ready( function (){
 
 
 });
-//HEADER
+//HEADERs
 //datetime
+
 function datetime (){
     var datetime = new Date();
     var day= datetime.getDate();
