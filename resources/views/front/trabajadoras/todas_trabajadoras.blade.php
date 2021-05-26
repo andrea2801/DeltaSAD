@@ -41,16 +41,11 @@
                                            <label for="dni" class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
 
                                            <select id="select_zonas" class=" col-md-6 form-select" aria-label="Default select example" name="select_zonas">
-                                               <option selected="">Selecciona</option>
-                                               <!--solo es prueba, raquel no te enfades-->
-                                               @php
-                                                   use Illuminate\Support\Facades\DB;
-                                                   $zones = DB::table('zonas')->select('zonas')->get();
-                                                   for($i=0;$i<count($zones);$i++){
-                                                      echo "<option value='".$zones[$i]->zonas."'>".$zones[$i]->zonas."</option>";
-                                                   }
-                                                   //dd($zones[$i]->zonas) ;
-                                               @endphp
+                                               <option selected="" value="default">Selecciona</option>
+                                               @foreach ($zonas as $zona )
+                                                   <option value='{{$zona->id}}'>{{$zona->zonas}}</option>
+                                               @endforeach
+
                                            </select>
                                        </div>
 
@@ -68,7 +63,7 @@
             </div>
             <div class="col-md-8 ml-5 pl-5" id="tabla_filtrar">
                 <table class="table col-md-3">
-                    <thead>
+                    <thead class="info_zona">
                     <tr>
                         <th>Nombre y apellido</th>
                         <th>Teléfono</th>
@@ -78,13 +73,8 @@
                         <th>Usuarios</th>
                     </tr>
                     </thead>
-                    <tr>
-                        <td>Andrea Alonso</td>
-                        <td>6529089</td>
-                        <td>andrea@gmail.com</td>
-                        <td class="zona_tabla_camp">clot</td>
-                        <td><a href="">ver</a></td>
-                        <td><a href="">ver</a></td>
+                    <tr class="dni_info">
+
                     </tr>
                    <!--trabajadoras-->
                 </table>

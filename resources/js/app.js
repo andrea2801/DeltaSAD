@@ -62,18 +62,32 @@ $(document).ready(function(){
         });
     });
 
-    $("#select_zonas").on("change",function(){
-        var valor=$('select[name=select_zonas]').val();
-       /* $.ajax({
-            url:"",
-            data:{'valor':valor},
+    $("#select_zonas").change(function(){
+        var valor=$("#select_zonas option:selected").val();
+        $.ajax({
+            url:"/trabajadoras/busqueda/zona",
+            data:{zonas:valor},
             success:function(data){
+                console.log(data);
+                var nombre=data[0].nombre;
+                var apellido=data[0].apellidos;
+                var email=data[0].email;
+                var telefono=data[0].telefono;
+                var zona=data[0].zona;
+                $("thead.info_zona").append("<td>"+nombre+" "+apellido+"</td>"
+                    +"<td>"+telefono+"</td>"
+                    +"<td>"+email+"</td>"
+                    +"<td>"+zona+"</td>"
+                    +" <td><a href=''>ver</a></td>"
+                    +" <td><a href=''>ver</a></td>"
+                    +"<td><a href=''>ver</a></td>");
                 $("#tabla_filtrar").css("display","block");
-            }*/
-        $(".zona_tabla_camp").html(valor);
-        $("#tabla_filtrar").css("display","block");
+            }
         });
 
+
+
+    });
     $(".limpiar_filtro").on('click',function (){
         $("#tabla_filtrar").css("display","none");
     });

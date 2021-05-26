@@ -45,7 +45,10 @@ class TrabajadorasController extends Controller
     //mostrar todas
 
     public function trabajadoras_filtrar(){
-        return view('front/trabajadoras/todas_trabajadoras');
+        $zonasname = DB::table('zonas')
+            ->select('zonas','id')
+            ->get();
+        return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);;
     }
     public function dnibuscar(Request $request){
         $bucardni = DB::table('users')
@@ -54,4 +57,13 @@ class TrabajadorasController extends Controller
         ->get();
         return $bucardni;
     }
+    public function zonabuscar(Request $request){
+
+        $zonas = DB::table('users')
+            ->select()
+            ->where('zona', $request->zonas)
+            ->get();
+        return $zonas;
+    }
+
 }

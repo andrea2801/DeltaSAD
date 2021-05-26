@@ -34,8 +34,9 @@ Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update']
 //trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
-Route::post('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadoras_filtrar'])->name('todas_trabajadoras');
-Route::post('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dnibuscar']);
+Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadoras_filtrar'])->name('todas_trabajadoras');
+Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dnibuscar']);
+Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'zonabuscar']);
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 
 //horarios
