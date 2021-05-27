@@ -38,10 +38,11 @@ class TrabajadorasController extends Controller
 
         $users=DB::table('usuarios')->where('tf_asignada', $tfId)->orWhere('tf_asignada2', $tfId)->get();
 
-       // dd($users);
-
+       //dd($users);
 
         return $users;
+
+
     }
 
 
