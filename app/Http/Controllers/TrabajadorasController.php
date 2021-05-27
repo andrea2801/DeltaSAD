@@ -51,7 +51,10 @@ class TrabajadorasController extends Controller
     //mostrar todas
 
     public function trabajadoras_filtrar(){
-        return view('front/trabajadoras/todas_trabajadoras');
+        $zonasname = DB::table('zonas')
+            ->select('zonas','id')
+            ->get();
+        return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);;
     }
 
 
@@ -62,4 +65,44 @@ class TrabajadorasController extends Controller
         ->get();
         return $bucardni;
     }
+    public function zonabuscar(Request $request){
+
+        $zonas = DB::table('users')
+            ->select()
+            ->where('zona', $request->zonas)
+            ->get();
+        return $zonas;
+    }
+    protected function delete($id){
+        if (DB::table('usuarios')->where('tf_asignada', $id)->exists()) {
+            $update=DB::table('usuarios')->where('tf_asignada', $id)->update([
+                'tf_asignada' => null
+            ]);
+
+        }
+        if (DB::table('usuarios')->where('tf_asignada2', $id)->exists()) {
+            $update=DB::table('usuarios')->where('tf_asignada2', $id)->update([
+                'tf_asignada2' => null
+            ]);
+        }
+        if($update == true){
+             DB::table('users')
+                ->where('id', $id)
+                ->delete();
+            return back()->with('message', 'Eliminado');
+        }
+        return back()->withError('Error', 'Error');
+
+
+
+
+    }
+    public function viewusuarios(Request $request{
+        $bucardni = DB::table('usuarios')
+            ->select()
+            ->where('tf_asignada', $request->id)
+            ->get();
+        return $bucardni;
+    }
+
 }

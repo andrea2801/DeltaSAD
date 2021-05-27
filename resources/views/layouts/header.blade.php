@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="{{ route('home') }}" target="_blank">
+                    <a class="navbar-brand" href="{{ route('home') }}" >
                         <img src="{{asset('img/Logo2.png')}}" alt="logo">
                     </a>
                     <p class="d-none d-md-block align-items-center ml-5 pt-5">Bienvenido/a <span class="usuario"> {{Auth::user()->nombre}}</span></p>&nbsp;&nbsp;&nbsp;

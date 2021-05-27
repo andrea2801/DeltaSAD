@@ -8,7 +8,15 @@
                 <div class="col-10">
                     <p class="home-title">NOTIFICACIONES ENVIADAS</p>
                 </div>
+                <div class="col-2">
+                    <a href="nueva">
+                        <button class="btn btn-general">Crear nueva</button>
+                    </a>
+                </div>
             </div>
+            @if(isset($notificaciones))
+            @if(count($notificaciones) != 0)
+            @foreach ($notificaciones as $n )
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
                     <p class="first-home-txt">Enviadas</p>
@@ -16,7 +24,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>De:</th>
+                                <th>Para:</th>
                                 <th>Asunto:</th>
                                 <th>Prioridad:</th>
                                 <th>Fecha:</th>
@@ -25,10 +33,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>textoPrueba</th>
-                                <th>textoPrueba</th>
-                                <th>textoPrueba</th>
-                                <th>textoPrueba</th>
+                                <th>{{$n->nombre}} {{Apellidos}}</th>
+                                <th>{{$n->asunto}}</th>
+                                <th>
+                                    @if ($n->prioridad == 0)
+                                        Normal
+                                    @else
+                                        Alta
+                                    @endif
+                                </th>
+                                <th>{{$n->fecha}}</th>
                                 <th class="d-flex justify-content-center">
                                     <a href="">
                                         <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
@@ -46,6 +60,11 @@
                     </p>
                 </div>
             </div>
+            @endforeach
+            @else
+                <h2>No ha enviado notificaciones</h2>
+            @endif
+            @endif
         </div>
     </div>
 </section>

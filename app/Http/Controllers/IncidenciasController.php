@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UsuariosController;
+use Carbon\Carbon;
 
 class IncidenciasController extends Controller
 {
     protected function create(Request $request){
         DB::table('incidencias')->insert([
+            'fecha' => Carbon::now(),
             'descripcion' => $request->descripcion,
             'id_usuario' => $request->usuario,
             'id_tf' => $request->tf
