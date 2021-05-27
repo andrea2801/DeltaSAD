@@ -35,10 +35,16 @@ class TrabajadorasController extends Controller
     }
 
     protected function showTFusers($tfId){
+
         $users=DB::table('usuarios')->where('tf_asignada', $tfId)->orWhere('tf_asignada2', $tfId)->get();
-        var_dump($users); die('holi');
+
+       //dd($users);
+
         return $users;
+
+
     }
+
 
 
 
@@ -50,6 +56,8 @@ class TrabajadorasController extends Controller
             ->get();
         return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);;
     }
+
+
     public function dnibuscar(Request $request){
         $bucardni = DB::table('users')
         ->select()
