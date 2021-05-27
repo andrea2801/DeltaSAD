@@ -108,6 +108,11 @@ class UsuariosController extends Controller
     }
 
     protected function delete($id){
-        $delete=DB::table('usuarios')->where('id', $id)->delete();
+        DB::table('evolutivos')->where('id_usuario', $id)->delete();
+        DB::table('horarios')->where('id_usuario', $id)->delete();
+        DB::table('incidencias')->where('id_usuario', $id)->delete();
+        DB::table('notas')->where('id_usuario', $id)->delete();
+        DB::table('usuarios')->where('id', $id)->delete();
+        return $this->index();
     }
 }

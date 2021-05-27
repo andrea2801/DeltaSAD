@@ -22,7 +22,6 @@ class CreateNotificacionesTable extends Migration
             $table->string('estado')->default('nueva');
             $table->boolean('prioridad')->default(0);
             $table->date('fecha');
-            $table->string('archivo_adjunto')->nullable();
             $table->string('respuesta')->nullable();
             $table->timestamps();
             $table->foreign('destinatario')->references('id')->on('users');

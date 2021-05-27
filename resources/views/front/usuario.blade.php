@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<section>
 <div class="container-fluid p-0 m-0 d-flex usuarios">
     <div class="row">
         <div class="col-12 mt-5 ml-5 justify-content-between">
@@ -13,7 +14,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4>¿Confirmas que quieres eliminar este usuario?</h4>
-                        <button type="button" id="baja" value="{{$u->id}}">Si</button>
+                        <button type="button" id="baja" value="{{$u->id}}"><a href="/usuario/eliminar/{{$u->id}}">Si</a></button>
                         <button type="button" data-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -93,7 +94,7 @@
                     <p>{{$u->detalle}}</p>
                     <p class="font-weight-bold">Tareas:</p>
                     <p>{{$u->tareas}}</p>
-                @endif
+
             </div>
             @if(isset($notas))
             <div class="card border-primary mb-3" style="max-width: 18rem;">
@@ -104,10 +105,16 @@
                 </div>
             </div>
             @endif
+            @endif
         @endforeach
         @if(isset($incidencias))
             <div class="col-6 mt-3 ml-5">
-                <h2>Incidencias</h2>
+                <div class="d-flex justify-content-around">
+                    <h2>Incidencias</h2>
+                    <a href="#" class="card-link" data-toggle="modal" data-target="#incidencias">
+                        <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+                    </a>
+                </div>
             @if(count($incidencias) == 0)
                 <p>Usuari@ sin incidencias</p>
             @else
@@ -147,7 +154,12 @@
             @endif
             @if(isset($evolutivos))
                 <div class="col-12 ml-5">
-                    <h2>Evolutivos</h2>
+                    <div class="d-flex justify-content-around">
+                        <h2>Evolutivos</h2>
+                        <a href="#" class="card-link" data-toggle="modal" data-target="#evolutivos">
+                            <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+                        </a>
+                    </div>
                         @if(count($evolutivos) == 0)
                             <p>No hay evolutivos</p>
                         @else
@@ -166,10 +178,75 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6 ml-5">
-            <p>Esto será la paginacion</p>
+</div>
+
+
+<div class="modal fade" id="incidencias">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 >Nueva incidencia</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('crear.incidencia')}}" method="GET" class="form needs-validation" novalidate>
+                    <div class="form-group row">
+                        <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                        <div class="col-sm-12">
+                            <textarea name="descripcion" type="textarea" class="form-control" required rows="4"></textarea>
+                            <div class="invalid-feedback">
+                                Añadir descripción.
+                            </div>
+                        </div>
+                        @foreach ($usuario as $u )
+                        <input type="hidden" name="usuario" value="{{$u->id}}">
+                        @endforeach
+                        @foreach ($tfs as $tf )
+                            <input type="hidden" name="tf" value={{$tf->id}}>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="evolutivos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 >Nuevo evolutivo</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('crear.evolutivo')}}" method="GET" class="form needs-validation" novalidate>
+                    @foreach ($usuario as $u )
+                    <div class="form-group row">
+                        <label for="evolucion" class="col-sm-12 col-form-label">Evolución de {{$u->nombre}} {{$u->apellidos}}:</label>
+                        <div class="col-sm-12">
+                            <textarea name="evolucion" type="textarea" class="form-control" required rows="4"></textarea>
+                            <div class="invalid-feedback">
+                                Añadir evolutivo.
+                            </div>
+                        </div>
+                        <input type="hidden" name="usuario" value="{{$u->id}}">
+                        @foreach ($tfs as $tf )
+                            <input type="hidden" name="tf" value={{$tf->id}}>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                    @endforeach
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</section>
 @endsection
