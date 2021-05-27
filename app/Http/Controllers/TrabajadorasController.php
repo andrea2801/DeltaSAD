@@ -65,5 +65,36 @@ class TrabajadorasController extends Controller
             ->get();
         return $zonas;
     }
+    protected function delete($id){
+        if (DB::table('usuarios')->where('tf_asignada', $id)->exists()) {
+            $update=DB::table('usuarios')->where('tf_asignada', $id)->update([
+                'tf_asignada' => null
+            ]);
+
+        }
+        if (DB::table('usuarios')->where('tf_asignada2', $id)->exists()) {
+            $update=DB::table('usuarios')->where('tf_asignada2', $id)->update([
+                'tf_asignada2' => null
+            ]);
+        }
+        if($update == true){
+             DB::table('users')
+                ->where('id', $id)
+                ->delete();
+            return back()->with('message', 'Eliminado');
+        }
+        return back()->withError('Error', 'Error');
+
+
+
+
+    }
+    public function viewusuarios(Request $request{
+        $bucardni = DB::table('usuarios')
+            ->select()
+            ->where('tf_asignada', $request->id)
+            ->get();
+        return $bucardni;
+    }
 
 }

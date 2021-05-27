@@ -38,6 +38,7 @@ Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasControlle
 Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dnibuscar']);
 Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'zonabuscar']);
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
-
+Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);
+Route::get('trabajadoras/view/usuarios/', [App\Http\Controllers\TrabajadorasController::class, 'viewusuarios']);
 //horarios
 Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');

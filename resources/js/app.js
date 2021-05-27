@@ -38,59 +38,111 @@ $(document).ready(function(){
     });
 
     //FILTRAR TRABAJADORAS
-    $("#dni_search").blur(function (){
-        var valor=$(this).val();
+    //dni
+    $("img.buscar_dni").click(function (){
+        var valor=$(this).prev().val();
+        $("tbody.info_filtrar").html("");
          $.ajax({
             url:"/trabajadoras/busqueda/dni",
             data:{dni:valor},
             success:function(data){
-                console.log(data);
                 var nombre=data[0].nombre;
                 var apellido=data[0].apellidos;
                 var email=data[0].email;
                 var telefono=data[0].telefono;
                 var zona=data[0].zona;
-                $("tr.dni_info").html("<td>"+nombre+" "+apellido+"</td>"
+                var id=data[0].id;
+                $("tbody.info_filtrar").html("<td>"+nombre+" "+apellido+"</td>"
                 +"<td>"+telefono+"</td>"
                 +"<td>"+email+"</td>"
                 +"<td>"+zona+"</td>"
-                +" <td><a href=''>ver</a></td>"
-                +" <td><a href=''>ver</a></td>"
-                +"<td><a href=''>ver</a></td>");
+                +" <td> <a  class='card-link ver_horarios' data-toggle='modal' data-target='#horarios'>Ver</a></td>"
+                +" <td><a  data-idTrabajadora='"+id+"' class='card-link ver_usuarios'>Ver</a></td>"
+                +"<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
                 $("#tabla_filtrar").css("display","block");
             }
         });
     });
-
+//zona
     $("#select_zonas").change(function(){
         var valor=$("#select_zonas option:selected").val();
+        $("tbody.info_filtrar").html("");
+
         $.ajax({
             url:"/trabajadoras/busqueda/zona",
             data:{zonas:valor},
             success:function(data){
                 console.log(data);
-                var nombre=data[0].nombre;
-                var apellido=data[0].apellidos;
-                var email=data[0].email;
-                var telefono=data[0].telefono;
-                var zona=data[0].zona;
-                $("thead.info_zona").append("<td>"+nombre+" "+apellido+"</td>"
-                    +"<td>"+telefono+"</td>"
-                    +"<td>"+email+"</td>"
-                    +"<td>"+zona+"</td>"
-                    +" <td><a href=''>ver</a></td>"
-                    +" <td><a href=''>ver</a></td>"
-                    +"<td><a href=''>ver</a></td>");
-                $("#tabla_filtrar").css("display","block");
+
+                console.log(data.length);
+                for(var a=0; a<data.length;a++){
+                    var nombre=data[a].nombre;
+                    var apellido=data[a].apellidos;
+                    var email=data[a].email;
+                    var telefono=data[a].telefono;
+                    var zona=data[a].zona;
+                    var id=data[a].id;
+                    $("tbody.info_filtrar").append("<tr><td>"+nombre+" "+apellido+"</td>"
+                        +"<td>"+telefono+"</td>"
+                        +"<td>"+email+"</td>"
+                        +"<td>"+zona+"</td>"
+                        +" <td><a href=''>ver</a></td>"
+                        +" <td><a href=''>ver</a></td>"
+                          +"<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>eliminar</a></td></tr>");
+                    $("#tabla_filtrar").css("display","block");
+                }
+
             }
         });
 
 
 
+
     });
+    //limpiar
     $(".limpiar_filtro").on('click',function (){
-        $("#tabla_filtrar").css("display","none");
+        $("tbody.info_filtrar").html("");
     });
+//Ver horarios
+    $(".ver_usuarios").click(function (){
+        var valor=$(this).data("idTrabajadora");
+        console.log(valor);
+        $("#ver_usuarios").html("");
+        $.ajax({
+            url:"trabajadoras/view/usuarios/",
+            data:{id:valor},
+            success:function(data){
+                console.log(data);
+              /*  $("#ver_usuarios").html(" <div class='modal-dialog'>"
+                    +"<div class='modal-content'>"
+                    +"<div class='modal-header'>"
+                    +" <h4 >Usuarios Asignados</h4></div>"
+                    +"  <div class='modal-body'>"
+                    +"    <h2>Usuarios</h2>  </div>"
+                    +" <div class='modal-footer'>"+
+                    "<button type='button' class='close' data-dismiss='modal'>" +
+                    "<span class='span'>×</span>" +
+                    +"</button>" +
+                    +"</div>" +
+                    "</div>" +
+                    " </div>");*/
+
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //USUARIOS
     //Modificar usuario
