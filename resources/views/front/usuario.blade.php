@@ -94,7 +94,7 @@
                     <p>{{$u->detalle}}</p>
                     <p class="font-weight-bold">Tareas:</p>
                     <p>{{$u->tareas}}</p>
-                @endif
+
             </div>
             @if(isset($notas))
             <div class="card border-primary mb-3" style="max-width: 18rem;">
@@ -104,6 +104,7 @@
                 <p class="card-text">El: {{$nota->created_at}}</p>
                 </div>
             </div>
+            @endif
             @endif
         @endforeach
         @if(isset($incidencias))

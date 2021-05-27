@@ -51,6 +51,6 @@ Route::get('/home', function (){
     return view('home');
 })->name('home');
 
-Route::get('/sended', function (){
-    return view('front/enviadas');
-})->name('enviadas');
+Route::get('/sended', [App\Http\Controllers\NotificacionesController::class, 'viewSent'])->name('notificaciones.enviadas');
+
+Route::get('/notificaciones/nueva', [App\Http\Controllers\NotificacionesController::class, 'create'])->name('notificaciones.nueva');

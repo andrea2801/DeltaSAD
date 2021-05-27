@@ -9,7 +9,7 @@
                     <p class="home-title">NOTIFICACIONES RECIBIDAS</p>
                 </div>
                 <div class="col-2">
-                    <a href="{{route('enviadas')}}">
+                    <a href="{{route('notificaciones.enviadas')}}">
                         <button class="btn btn-general">Ver enviadas</button>
                     </a>
                 </div>
