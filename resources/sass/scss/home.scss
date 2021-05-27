@@ -1,5 +1,8 @@
-section{
+.home{
     .container-principal{
+        .btn-general{
+            width: 100%;
+        }
         .home-title{
             font-size: 32px;
             color: #151F1E;
@@ -19,6 +22,29 @@ section{
             font-size: 12px;
             .arrow{
                 width: 20px;
+            }
+        }
+    }
+}
+@media(max-width: 990px){
+    .home{
+        .container-principal{
+            .home-title{
+                font-size: 20px !important;
+            }
+            .first-home-txt{
+                font-size: 20px !important;
+            }
+        }
+    }
+}
+@media(max-width: 450px){
+    .home{
+        .container-principal{
+            .table{
+                .oculta{
+                    display: none;
+                }
             }
         }
     }

@@ -1,6 +1,4 @@
-
-//PC
-section{
+.login{
     background-image: url('/img/fondo.jpg');
     background-size: cover;
     height: 100%;
@@ -82,9 +80,8 @@ section{
         }
     }
 }
-//Responsive movil
 @media (max-width: 767px){
-    section{
+    .login{
         .login_body{
             .container-popup{
                 .popup{
@@ -115,7 +112,7 @@ section{
     }
 }
 @media (max-width: 430px){
-    section{
+    .login{
         .login_body{
             .container-popup{
                 .popup{

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section class="d-flex align-items-center justify-content-center p-5">
+<section class="login d-flex align-items-center justify-content-center p-5">
     <div class="container-fluid login_body">
         <div class="row container-popup justify-content-center">
             <div class="col-12 col-md-7 popup p-3 ">

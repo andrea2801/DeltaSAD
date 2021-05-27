@@ -71,7 +71,7 @@ section{
         width: 95% !important;
         max-width: 1440px !important;
         margin: 0 auto;
-        margin: 119px auto 120px;
+        margin: 5% auto 5%;
     }
     hr{
         background-color: #2679B9;
@@ -100,5 +100,13 @@ section{
     }
     thead, tbody{
         font-size: 12px;
+    }
+}
+@media(max-width: 990px){
+    section{
+        .btn-general{
+            font-size: 14px;
+            width: 100%;
+        }
     }
 }

@@ -97,7 +97,7 @@ class TrabajadorasController extends Controller
 
 
     }
-    public function viewusuarios(Request $request{
+    public function viewusuarios(Request $request){
         $bucardni = DB::table('usuarios')
             ->select()
             ->where('tf_asignada', $request->id)
