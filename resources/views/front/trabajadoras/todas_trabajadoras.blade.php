@@ -12,7 +12,6 @@
             </div>
             <div class="row">
                 <div class="col-12">
-
                 </div>
             </div>
             <div class="col-12 mt-3 ml-5 " id="filtrar_block">
@@ -24,9 +23,7 @@
                                <div class="form-group row dni_trabajadoras ">
                                    <div class="col-12">
                                        <div class="col-md-12">
-
                                            <label for="dni" class="col-4 col-md-4 col-form-label text-md-right dni_view">{{ __('Dni:') }}</label>
-
                                            <div class="col-md-6">
                                                <input id="dni_search" type="text" class="form-control col-md-10" name="dni" required="" autocomplete="dni">
                                                <img class="buscar_dni col-md-2" src="{{asset('img/icons/buscar.png')}}" alt="buscar">
@@ -36,31 +33,25 @@
                                </div>
                            </div>
                            <div class="col-md-5">
-                               <div class="form-group  row dni_trabajadoras">
+                               <div class="form-group  row zona_trabajadoras">
                                    <div class="col-12">
                                        <div class="col-md-12">
-                                           <label for="dni" class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
+                                           <label for="zonas" class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
 
                                            <select id="select_zonas" class=" col-md-6 form-select" aria-label="Default select example" name="select_zonas">
                                                <option selected="" value="default">Selecciona</option>
-                                               @foreach ($zonas as $zona )
+                                               @foreach ($zonas as $zona)
                                                    <option value='{{$zona->id}}'>{{$zona->zonas}}</option>
                                                @endforeach
-
                                            </select>
                                        </div>
-
                                    </div>
                                </div>
                            </div>
                            <a class=" col-md-2 limpiar_filtro">Limpiar</a>
-
                        </div>
                    </div>
                 </div>
-
-
-
             </div>
             <div class="col-md-8 ml-5 pl-5" id="tabla_filtrar">
                 <table class="table col-md-3">
@@ -83,12 +74,7 @@
                 </table>
 
             </div>
-
-
-
-
-
-        </div>
-
+  </div>
+        @include('front.trabajadoras.trabajadora_editar')
     </div>
 @endsection

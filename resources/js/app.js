@@ -57,8 +57,8 @@ $(document).ready(function(){
                 +"<td>"+email+"</td>"
                 +"<td>"+zona+"</td>"
                 +" <td> <a href=''>Ver</a></td>"
-                +" <td><a href=''>Ver</a></td>"
-                +"<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
+                +" <td><a  class='ver_usuarios'>Ver</a></td>"
+                +"<td ><a href='/trabajadoras/editar/"+id+"' class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
                 $("#tabla_filtrar").css("display","block");
             }
         });
@@ -104,8 +104,9 @@ $(document).ready(function(){
         $("tbody.info_filtrar").html("");
     });
 
-
-
+    $('td.editar_trabajadora').on('click',function (){
+        console.log("pepa");
+    });
     //USUARIOS
     //Modificar usuario
 
