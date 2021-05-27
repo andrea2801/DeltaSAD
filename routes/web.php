@@ -39,7 +39,6 @@ Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::clas
 
 //trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
-
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
 Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadoras_filtrar'])->name('todas_trabajadoras');
 Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dnibuscar']);

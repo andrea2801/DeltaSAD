@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@include('front.notificaciones.nueva_noti', ['users' => $users])
 @section('content')
 <section>
     <div class="row container-principal">
@@ -9,8 +9,8 @@
                     <p class="home-title">NOTIFICACIONES ENVIADAS</p>
                 </div>
                 <div class="col-2">
-                    <a href="nueva">
-                        <button class="btn btn-general">Crear nueva</button>
+                    <a href="#">
+                        <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal" data-target="#nuevaNoti">Crear nueva</button>
                     </a>
                 </div>
             </div>

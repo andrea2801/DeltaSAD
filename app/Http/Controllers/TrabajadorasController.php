@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\IncidenciasController;
 use App\Models\User;
 use App\Models\Flash;
 
@@ -36,11 +35,8 @@ class TrabajadorasController extends Controller
 
     protected function showTFusers($tfId){
         $users=DB::table('usuarios')->where('tf_asignada', $tfId)->orWhere('tf_asignada2', $tfId)->get();
-        var_dump($users); die('holi');
         return $users;
     }
-
-
 
     //mostrar todas
 
@@ -84,12 +80,9 @@ class TrabajadorasController extends Controller
             return back()->with('message', 'Eliminado');
         }
         return back()->withError('Error', 'Error');
-
-
-
-
     }
-    public function viewusuarios(Request $request{
+
+    public function viewusuarios(Request $request){
         $bucardni = DB::table('usuarios')
             ->select()
             ->where('tf_asignada', $request->id)
@@ -98,3 +91,4 @@ class TrabajadorasController extends Controller
     }
 
 }
+
