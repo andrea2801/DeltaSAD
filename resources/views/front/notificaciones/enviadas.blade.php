@@ -1,17 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-<section>
+<section class="notificaciones">
     <div class="row container-principal">
         <div class="col-12">
             <div class="row d-flex align-items-center justify-content-center mb-5">
-                <div class="col-10">
+                <div class="col-12 text-center col-md-8 text-md-left">
                     <p class="home-title">NOTIFICACIONES ENVIADAS</p>
                 </div>
-                <div class="col-2">
-                    <a href="nueva">
-                        <button class="btn btn-general">Crear nueva</button>
-                    </a>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="{{route('notificaciones.nueva')}}">
+                            <button class="btn btn-general">Crear nueva</button>
+                        </a>
+                    </div>
                 </div>
             </div>
             @if(isset($notificaciones))
@@ -62,7 +64,13 @@
             </div>
             @endforeach
             @else
-                <h2>No ha enviado notificaciones</h2>
+                    <script type="text/javascript">
+                       Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'No tienes notificaciones enviadas'
+                        })
+                    </script>
             @endif
             @endif
         </div>

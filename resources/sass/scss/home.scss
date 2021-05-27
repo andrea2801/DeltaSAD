@@ -1,4 +1,4 @@
-.home{
+.notificaciones{
     .container-principal{
         .btn-general{
             width: 100%;
@@ -27,7 +27,7 @@
     }
 }
 @media(max-width: 990px){
-    .home{
+    .notificaciones{
         .container-principal{
             .home-title{
                 font-size: 20px !important;
@@ -39,7 +39,7 @@
     }
 }
 @media(max-width: 450px){
-    .home{
+    .notificaciones{
         .container-principal{
             .table{
                 .oculta{

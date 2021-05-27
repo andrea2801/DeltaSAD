@@ -31,7 +31,7 @@ class NotificacionesController extends Controller
     protected function viewSent(){
         $notification=DB::table('notificaciones')->join('users', 'users.id', '=', 'destinatario')->where('creador', Auth::user()->id)
                             ->select('notificaciones.*', DB::raw('users.nombre AS nombre, users.apellidos AS apellidos'))->get();
-        return view('front/enviadas')->with('notificaciones', $notification);
+        return view('front/notificaciones/enviadas')->with('notificaciones', $notification);
     }
 
     protected function create(Request $request){

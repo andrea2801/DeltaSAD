@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="home">
+<section class="notificaciones">
     <div class="row container-principal">
         <div class="col-12">
             <div class="row d-flex align-items-center justify-content-center mb-5">
@@ -15,7 +15,7 @@
                         </a>
                     </div>
                     <div class="col-6">
-                        <a href="">
+                        <a href="{{route('notificaciones.nueva')}}">
                             <button class="btn btn-general">Crear nueva</button>
                         </a>
                     </div>

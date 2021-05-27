@@ -65,8 +65,14 @@ $links_click:#50B2CE;
         box-shadow: inset 0 0 5px #00000061 !important;
         color: #ADADAD !important;
 }
-
+.swal2-styled.swal2-confirm{
+    background-color: #2679B9 !important;
+}
+.swal2-styled.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px rgba(103, 158, 240, 0.5) !important;
+}
 section{
+
     .container-principal{
         width: 95% !important;
         max-width: 1440px !important;
