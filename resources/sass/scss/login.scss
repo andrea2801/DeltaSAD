@@ -5,30 +5,29 @@ section{
     background-size: cover;
     height: 100%;
     .login_body{
-        .popup{
-            border: 1px solid #2679B9;
-            box-shadow: 0px 0px 2px 2px rgb(29 78 142 / 50%);
-            display: none;
-            position: fixed;
-            margin-left: 294px;
-            height: 46px;
-            text-align: start;
-            font-size: 18px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 5px;
-            .close_login {
-                position: absolute;
-                right: 0;
-                cursor: pointer;
-                .close-icon{
-                    width: 15px;
+        .container-popup{
+            .popup{
+                max-width: 750px;
+                border: 1px solid #2679B9;
+                box-shadow: 0px 0px 2px 2px rgb(29 78 142 / 50%);
+                display: none;
+                height: 55px;
+                text-align: start;
+                font-size: 14px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 5px;
+                position: relative;
+                top: -70px;
+                .close_login {
+                    position: absolute;
+                    right: 0;
+                    cursor: pointer;
+                    .close-icon{
+                        min-width: 15px;
+                        max-width: 15px;
+                    }
                 }
             }
-        }
-        input[type=checkbox]:checked  {
-            content: 'x' !important;
-            font-size: 85px;
-            color:#1F1F1F;
         }
         .login_form{
             border-radius: 5px;
@@ -84,3 +83,46 @@ section{
     }
 }
 //Responsive movil
+@media (max-width: 767px){
+    section{
+        .login_body{
+            .container-popup{
+                .popup{
+                    top: 250px;
+                    z-index: 10;
+                }
+            }
+            .login_form{
+                .formulario{
+                    .rect_mobil{
+                        font-size: 14px;
+                        width: 100px;
+                    }
+                    .botton_login{
+                        font-size: 14px;
+                    }
+                    .remerberme{
+                        .form-check-label{
+                            font-size: 12px;
+                        }
+                    }
+                    .forgot_password{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 430px){
+    section{
+        .login_body{
+            .container-popup{
+                .popup{
+                    height: 90px;
+                    top: 250px;
+                }
+            }
+        }
+    }
+}

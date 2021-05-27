@@ -32,9 +32,12 @@ $(document).ready(function(){
     $(".forgot_password").on('click',function (){
         $(this).css("color","#50B2CE");
         $(".popup").css("display","block");
+        $(".container-popup").css("margin-top","-45px")
     });
     $(".close_login").on('click',function (){
         $(".popup").css("display","none");
+        $(".forgot_password").css("color","#1F1F1F");
+        $(".container-popup").css("margin-top","0")
     });
 
     //FILTRAR TRABAJADORAS
