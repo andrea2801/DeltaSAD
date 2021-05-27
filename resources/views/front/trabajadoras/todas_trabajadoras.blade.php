@@ -83,52 +83,10 @@
                 </table>
 
             </div>
-            <div class="modal fade" id="horarios">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <h4>Horarios</h4>
-
-                        </div>
-                        <div class="modal-body">
-                            <p>Lu - Ma 08:00-14:00 </p>
-                            <p>Lu - Ma 08:00-14:00 </p>
-                            <p>Lu - Ma 08:00-14:00 </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span>×</span>
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="modal fade" id="ver_usuarios">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <h4 >Usuarios Asignados</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h2>Usuarios</h2>
 
 
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span class="span">×</span>
-                            </button>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
 
