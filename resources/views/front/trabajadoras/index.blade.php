@@ -24,7 +24,7 @@
                     <a href="#" class="nav-link active" data-toggle="modal" data-target="#nueva" ><h2>Nueva</h2></a>
                   </li>
                   <li class="nav-items border-left">
-                    <a class="nav-link active" href="{{route('todas_trabajadoras')}}"><h2>Mostras todas</h2></a>
+                    <a class="nav-link active" href="{{route('todasTrabajadoras')}}"><h2>Mostras todas</h2></a>
                   </li>
 
              </ul>

@@ -39,12 +39,11 @@ Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::clas
 //trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
-Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadoras_filtrar'])->name('todas_trabajadoras');
-Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dnibuscar']);
-Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'zonabuscar']);
+Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadorasFiltrar'])->name('todasTrabajadoras');
+Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dniBuscar']);
+Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'zonaBuscar']);
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);
-Route::get('trabajadoras/view/usuarios/', [App\Http\Controllers\TrabajadorasController::class, 'viewusuarios']);
 //horarios
 Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
 

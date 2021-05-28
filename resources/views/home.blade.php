@@ -123,7 +123,6 @@
             </div>
         </div>
     </div>
-
+    @include('layouts.footer')
 </section>
-@include('layouts.footer')
 @endsection

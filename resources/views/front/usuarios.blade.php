@@ -22,5 +22,6 @@
             <p>Esto será la paginacion</p>
         </div>
     </div>
+    @include('layouts.footer')
 </section>
 @endsection

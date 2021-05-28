@@ -148,7 +148,7 @@ function datetime (){
         s = "0" + s;
     }
 
-    $(".date").html(day+"/"+month+"/"+year+"-"+h+":"+m+":"+s);
+    $(".date").html(day+"/"+month+"/"+year+"-"+h+":"+m+"H");
 
 }
 setInterval(datetime,1000);
