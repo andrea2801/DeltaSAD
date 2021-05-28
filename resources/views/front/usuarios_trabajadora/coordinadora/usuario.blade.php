@@ -85,7 +85,7 @@
                 <tbody>
                     @foreach ($incidencias as $incidencia )
                     <tr>
-                        <td>{{$incidencia->fecha}}</td>
+                        <td>{{$incidencia->created_at}}</td>
                         <td>
                             @if($incidencia->estado == 1)
                             <p>Abierta</p>

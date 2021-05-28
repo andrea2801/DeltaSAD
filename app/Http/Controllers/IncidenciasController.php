@@ -12,7 +12,7 @@ class IncidenciasController extends Controller
 {
     protected function create(Request $request){
         DB::table('incidencias')->insert([
-            'fecha' => Carbon::now(),
+            'created_at' => Carbon::now(),
             'descripcion' => $request->descripcion,
             'id_usuario' => $request->usuario,
             'id_tf' => $request->tf
@@ -21,7 +21,7 @@ class IncidenciasController extends Controller
     }
 
     protected function closeState($id){
-        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>0]);
+        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>0, 'updated_at' => Carbon::now()]);
         if( $result == true){
             return back()->withInput();
         }
