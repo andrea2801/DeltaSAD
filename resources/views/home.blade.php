@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @include('front.notificaciones.nueva_noti', ['users' => $users])
+@include('front.notificaciones.popUpLeerNoti')
 @section('content')
 <section class="notificaciones">
     <div class="row container-principal">
@@ -15,7 +16,7 @@
                         </a>
                     </div>
                     <div class="col-6">
-                        <a href="{{route('notificaciones.nueva')}}">
+                        <a href="#">
                             <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal" data-target="#nuevaNoti">Crear nueva</button>
                         </a>
                     </div>
@@ -51,7 +52,7 @@
                                     </th>
                                     <th class="oculta">{{$notification->fecha}}</th>
                                     <th class="d-flex justify-content-center">
-                                        <a href="">
+                                        <a href="#" id="leerNotificacion" data-toggle="modal" data-target="#ver">
                                             <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
                                         </a>
                                     </th>

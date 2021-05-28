@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @include('front.notificaciones.nueva_noti', ['users' => $users])
+@include('front.notificaciones.popUpNotificacion', ['users' => $users])
 @section('content')
 <section class="notificaciones">
     <div class="row container-principal">
@@ -10,7 +11,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <a href="{{route('notificaciones.nueva')}}">
+                        <a href="#">
                             <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal" data-target="#nuevaNoti">Crear nueva</button>
                         </a>
                     </div>
