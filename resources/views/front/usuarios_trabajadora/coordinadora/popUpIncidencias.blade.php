@@ -1,9 +1,14 @@
 <div class="modal fade" id="incidencias">
     <div class="modal-dialog">
         <div class="modal-content">
+            @foreach ($usuario as $u )
             <div class="modal-header">
                 <h4 >Nueva incidencia</h4>
             </div>
+            <div class="modal-body">
+                 <p>Usuario: {{$u->nombre}} {{$u->apellidos}}</p>
+            </div>
+
             <div class="modal-body">
                 <form action="{{route('crear.incidencia')}}" method="GET" class="form needs-validation" novalidate>
                     <div class="form-group row">
@@ -14,7 +19,7 @@
                                 Añadir descripción.
                             </div>
                         </div>
-                        @foreach ($usuario as $u )
+
                         <input type="hidden" name="usuario" value="{{$u->id}}">
                         @endforeach
                         @foreach ($tfs as $tf )
