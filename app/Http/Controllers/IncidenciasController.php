@@ -21,7 +21,7 @@ class IncidenciasController extends Controller
     }
 
     protected function closeState($id){
-        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>0, 'updated_at' => Carbon::now()]);
+        $result = DB::table('incidencias')->where('id', $id)->update(['estado'=>1, 'updated_at' => Carbon::now()]);
         if( $result == true){
             return back()->withInput();
         }
