@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@include('front.notificaciones.nueva_noti', ['users' => $users])
 @section('content')
 <section class="notificaciones">
     <div class="row container-principal">
@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-12">
                         <a href="{{route('notificaciones.nueva')}}">
-                            <button class="btn btn-general">Crear nueva</button>
+                            <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal" data-target="#nuevaNoti">Crear nueva</button>
                         </a>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>{{$n->nombre}} {{Apellidos}}</th>
+                                <th>{{$n->nombre}} {{$n->apellidos}}</th>
                                 <th>{{$n->asunto}}</th>
                                 <th>
                                     @if ($n->prioridad == 0)

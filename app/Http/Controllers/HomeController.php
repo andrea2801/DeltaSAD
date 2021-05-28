@@ -25,8 +25,23 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-       // $request->user()->authorizeRoles([1, 2, 3]);
-        $notifications=DB::select('select * from notificaciones where destinatario = ?', [Auth::id()]);
-        return view('home', compact('notifications', $notifications));
+        $new = $this->viewNew();
+        $pending = $this->viewPending();
+        $users = DB::table('users')->select('id', 'nombre', 'apellidos')->get();
+        return view('home')->with('new', $new)->with('pending', $pending)->with('users', $users);
     }
+
+    protected function viewNew(){
+        $notification=DB::table('notificaciones')
+                        ->join('users', 'notificaciones.creador', '=', 'users.id')
+                        ->select('notificaciones.*', 'users.nombre', 'users.apellidos')
+                        ->where('estado', 0)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
+        return $notification;
+    }
+
+    protected function viewPending(){
+        $notification=DB::table('notificaciones')->where('estado', 1)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
+        return $notification;
+    }
+
 }
