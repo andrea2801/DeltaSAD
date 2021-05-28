@@ -16,7 +16,13 @@ require('./bootstrap');
         }, false);
       });
     }, false);
-  })();
+
+  }
+
+  )();
+
+
+
 
 $(document).ready(function(){
     //LOGIN
@@ -67,9 +73,9 @@ $(document).ready(function(){
                 +"<td>"+telefono+"</td>"
                 +"<td>"+email+"</td>"
                 +"<td>"+zona+"</td>"
-                +" <td> <a href=''>Ver</a></td>"
-                +" <td><a  class='ver_usuarios'>Ver</a></td>"
-                +"<td ><a href='/trabajadoras/editar/"+id+"' class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
+                +" <td> <a href='#'>Ver</a></td>"
+                +" <td><a  href='#' class='card-link' data-toggle='modal' data-target='#usuario'>Ver</a></td>"
+                +"<td ><a href='/trabajadoras/editar/"+id+"'  class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
                 $("#tabla_filtrar").css("display","block");
             }
         });
@@ -152,3 +158,5 @@ function datetime (){
 
 }
 setInterval(datetime,1000);
+
+
