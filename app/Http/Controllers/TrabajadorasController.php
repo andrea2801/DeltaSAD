@@ -34,13 +34,14 @@ class TrabajadorasController extends Controller
        return $tfs;
     }
 
-    protected function showTFusers($tfId){
+    protected function showTFusers(Request $request){
+        //dd($_GET['id']);
 
-        $users=DB::table('usuarios')->where('tf_asignada', $tfId)->orWhere('tf_asignada2', $tfId)->get();
+        $users=DB::table('usuarios')->where('tf_asignada', $_GET['id'])->orWhere('tf_asignada2', $_GET['id'])->get();
 
-       //dd($users);
 
-        return $users;
+       return view('front/trabajadoras/show')->with('users', $users);
+
 
 
     }
@@ -97,7 +98,7 @@ class TrabajadorasController extends Controller
 
 
     }
-    public function viewusuarios(Request $request{
+    public function viewusuarios(Request $request){
         $bucardni = DB::table('usuarios')
             ->select()
             ->where('tf_asignada', $request->id)
