@@ -23,12 +23,11 @@
                 </div>
                 <div class="col-12 ml-5">
                     <h2 class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</h2>
-
                 </div>
             @endforeach
             @endif
             <div class="d-flex col-md-12">
-                <div class="col-6 mt-3 ml-5 border">
+                <div class="col-12 mt-3 ml-5 border">
                     @if (Auth::user()->rol_id == 1)
                         @include('front.usuarios_trabajadora.coordinadora.usuario', ['usuario' => $usuario, 'incidencias' => $incidencias, 'evolutivos' => $evolutivos,'tfs' => $tfs])
                     @elseif (Auth::user()->rol_id == 2)

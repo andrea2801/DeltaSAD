@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h4>Enviar notificación</h4>
             </div>
-            <form action="" method="POST" class=" form needs-validation" novalidate>
+            <form action="{{route('notificaciones.nueva')}}" method="GET" class=" form needs-validation" novalidate>
             @csrf
                 <div class="modal-body">
                     <div class="form-group row">
@@ -43,7 +43,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Prioridad</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="zona" id="inlineRadio3" value="1" required>
+                            <input class="form-check-input" type="radio" name="zona" id="inlineRadio3" value="1" >
                         </div>
                     </div>
                 </div>

@@ -71,9 +71,11 @@ class UsuariosController extends Controller
 
             return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos)->with('tfs', $tf);
         }else{
-            $usuario = DB::table('usuarios')->select('nombre', 'apellidos', 'direccion', 'detalle', 'tareas' )
+            $usuario = DB::table('usuarios')->select('id','nombre', 'apellidos', 'direccion', 'detalle', 'tareas' )
                         ->where('id', $user_id)->get();
-            $notas = DB::table('notas')->where('id_usuario', $user_id)->get();
+            $notas = DB::table('notas')->join('users', 'notas.id_tf', '=', 'users.id')
+                        ->select('notas.*', 'users.nombre', 'users.apellidos')
+                        ->where('id_usuario', $user_id)->get();
 
             return view('front/usuario', compact('usuario', $usuario), compact('notas', $notas));
         }

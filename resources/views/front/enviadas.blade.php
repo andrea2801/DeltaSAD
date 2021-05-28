@@ -33,7 +33,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>{{$n->nombre}} {{Apellidos}}</th>
+                                <th>{{$n->nombre}} {{$n->apellidos}}</th>
                                 <th>{{$n->asunto}}</th>
                                 <th>
                                     @if ($n->prioridad == 0)

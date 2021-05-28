@@ -19,10 +19,9 @@ class CreateNotificacionesTable extends Migration
             $table->string('detalle');
             $table->unsignedBigInteger('creador');
             $table->unsignedBigInteger('destinatario');
-            $table->string('estado')->default('nueva');
+            $table->boolean('estado')->default(0);
             $table->boolean('prioridad')->default(0);
             $table->date('fecha');
-            $table->string('respuesta')->nullable();
             $table->timestamps();
             $table->foreign('destinatario')->references('id')->on('users');
             $table->foreign('creador')->references('id')->on('users');

@@ -17,7 +17,6 @@
               <li class="user-list"><a href="/usuario/{{$usuario->id}}">{{$usuario->apellidos}}, {{$usuario->nombre}}</a></li>
             </ul>
             @endforeach
-
         </div>
         <div class="col-12 ml-5">
             <p>Esto será la paginacion</p>

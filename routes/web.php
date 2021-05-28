@@ -21,9 +21,6 @@ Auth::routes();
 
 //home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', function (){
-    return view('home');
-})->name('home');
 
 //usuarios
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
@@ -33,6 +30,8 @@ Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update']
 
 //incidencias
 Route::get('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');
+Route::get('/cerrar/{id}', [App\Http\Controllers\IncidenciasController::class, 'closeState'])->name('cerrar');
+Route::get('/eliminar/{id}', [App\Http\Controllers\IncidenciasController::class, 'delete'])->name('eliminar');
 
 //evolutivos
 Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::class, 'create'])->name('crear.evolutivo');
@@ -53,3 +52,6 @@ Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'
 Route::get('/notificaciones/enviadas', [App\Http\Controllers\NotificacionesController::class, 'viewSent'])->name('notificaciones.enviadas');
 Route::get('/notificaciones/nueva', [App\Http\Controllers\NotificacionesController::class, 'create'])->name('notificaciones.nueva');
 
+//notas
+Route::get('/notas/nueva', [App\Http\Controllers\NotasController::class, 'create'])->name('crear.nota');
+Route::get('/notas/eliminar/{id}', [App\Http\Controllers\NotasController::class, 'delete'])->name('nota.eliminar');
