@@ -32,14 +32,12 @@ class TrabajadorasController extends Controller
        $tfs = DB::table('users')->where('rol_id', 2)->where('zona', Auth::user()->zona)->get();
        return $tfs;
     }
-
     protected function showTFusers(Request $request){
         //dd($_GET['id']);
         $users=DB::table('usuarios')->where('tf_asignada', $_GET['id'])->orWhere('tf_asignada2', $_GET['id'])->get();
         return view('front/trabajadoras/show')->with('users', $users);
 
     }
-
     //mostrar todas
 
     public function trabajadorasFiltrar(){

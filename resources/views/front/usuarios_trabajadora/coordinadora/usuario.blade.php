@@ -87,7 +87,7 @@
                     <tr>
                         <td>{{$incidencia->created_at}}</td>
                         <td>
-                            @if($incidencia->estado == 1)
+                            @if($incidencia->estado == 0)
                             <p>Abierta</p>
                             @else
                             <p>Cerrada</p>
@@ -95,7 +95,7 @@
                         </td>
                         <td>{{$incidencia->descripcion}}</td>
                         <td>
-                            @if($incidencia->estado == 1)
+                            @if($incidencia->estado == 0)
                             <a href="/cerrar/{{$incidencia->idi}}">Cerrar</a>
                             @else
                             <a href="/eliminar/{{$incidencia->idi}}">Eliminar</a>
