@@ -33,10 +33,10 @@ class TrabajadorasController extends Controller
        return $tfs;
     }
 
-    protected function showTFusers($tfId){
-
-        $users=DB::table('usuarios')->where('tf_asignada', $tfId)->orWhere('tf_asignada2', $tfId)->get();
-        return $users;
+    protected function showTFusers(Request $request){
+        //dd($_GET['id']);
+        $users=DB::table('usuarios')->where('tf_asignada', $_GET['id'])->orWhere('tf_asignada2', $_GET['id'])->get();
+        return view('front/trabajadoras/show')->with('users', $users);
 
     }
 
