@@ -67,9 +67,9 @@ $(document).ready(function(){
                 +"<td>"+telefono+"</td>"
                 +"<td>"+email+"</td>"
                 +"<td>"+zona+"</td>"
-                +" <td> <a  class='card-link ver_horarios' data-toggle='modal' data-target='#horarios'>Ver</a></td>"
-                +" <td><a  data-idTrabajadora='"+id+"' class='card-link ver_usuarios'>Ver</a></td>"
-                +"<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
+                +" <td> <a href=''>Ver</a></td>"
+                +" <td><a  class='ver_usuarios'>Ver</a></td>"
+                +"<td ><a href='/trabajadoras/editar/"+id+"' class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/"+id+"'>Eliminar</a></td>");
                 $("#tabla_filtrar").css("display","block");
             }
         });
@@ -114,47 +114,10 @@ $(document).ready(function(){
     $(".limpiar_filtro").on('click',function (){
         $("tbody.info_filtrar").html("");
     });
-//Ver horarios
-    $(".ver_usuarios").click(function (){
-        var valor=$(this).data("idTrabajadora");
-        console.log(valor);
-        $("#ver_usuarios").html("");
-        $.ajax({
-            url:"trabajadoras/view/usuarios/",
-            data:{id:valor},
-            success:function(data){
-                console.log(data);
-              /*  $("#ver_usuarios").html(" <div class='modal-dialog'>"
-                    +"<div class='modal-content'>"
-                    +"<div class='modal-header'>"
-                    +" <h4 >Usuarios Asignados</h4></div>"
-                    +"  <div class='modal-body'>"
-                    +"    <h2>Usuarios</h2>  </div>"
-                    +" <div class='modal-footer'>"+
-                    "<button type='button' class='close' data-dismiss='modal'>" +
-                    "<span class='span'>×</span>" +
-                    +"</button>" +
-                    +"</div>" +
-                    "</div>" +
-                    " </div>");*/
 
-            }
-        });
+    $('td.editar_trabajadora').on('click',function (){
+        console.log("pepa");
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //USUARIOS
     //Modificar usuario
 
