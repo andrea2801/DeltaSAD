@@ -45,6 +45,9 @@ Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasCont
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);
 Route::get('trabajadoras/view/usuarios/', [App\Http\Controllers\TrabajadorasController::class, 'viewusuarios']);
+Route::get('trabajadoras/users/', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.showTFusers');;
+
+
 //horarios
 Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
 
