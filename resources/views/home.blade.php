@@ -28,7 +28,7 @@
                     <hr>
             @if(isset($new))
                 @if(count($new) != 0)
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>De:</th>
@@ -78,7 +78,7 @@
                     <hr>
                     @if(isset($pending))
                         @if(count($pending) != 0)
-                            <table class="table table-bordered">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>De:</th>

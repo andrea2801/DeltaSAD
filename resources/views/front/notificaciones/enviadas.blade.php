@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @include('front.notificaciones.nueva_noti', ['users' => $users])
-@include('front.notificaciones.popUpNotificacion', ['users' => $users])
+@include('front.notificaciones.popUpLeerNoti', ['users' => $users])
 @section('content')
 <section class="notificaciones">
     <div class="row container-principal">
@@ -19,39 +19,40 @@
             </div>
             @if(isset($notificaciones))
             @if(count($notificaciones) != 0)
-            @foreach ($notificaciones as $n )
             <div class="row d-flex justify-content-center">
                 <div class="col-10">
                     <p class="first-home-txt">Enviadas</p>
                     <hr>
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Para:</th>
                                 <th>Asunto:</th>
-                                <th>Prioridad:</th>
-                                <th>Fecha:</th>
+                                <th class="oculta">Prioridad:</th>
+                                <th class="oculta">Fecha:</th>
                                 <th>Abrir:</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($notificaciones as $n )
                             <tr>
                                 <th>{{$n->nombre}} {{$n->apellidos}}</th>
                                 <th>{{$n->asunto}}</th>
-                                <th>
+                                <th class="oculta">
                                     @if ($n->prioridad == 0)
                                         Normal
                                     @else
                                         Alta
                                     @endif
                                 </th>
-                                <th>{{$n->fecha}}</th>
+                                <th class="oculta">{{$n->fecha}}</th>
                                 <th class="d-flex justify-content-center">
-                                    <a href="">
+                                    <a href="#" id="leerNotificacion" data-toggle="modal" data-target="#ver">
                                         <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
                                     </a>
                                 </th>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -63,15 +64,14 @@
                     </p>
                 </div>
             </div>
-            @endforeach
             @else
-                    <script type="text/javascript">
-                       Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'No tienes notificaciones enviadas'
-                        })
-                    </script>
+                <script type="text/javascript">
+                   Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'No tienes notificaciones enviadas'
+                    })
+                </script>
             @endif
             @endif
         </div>
