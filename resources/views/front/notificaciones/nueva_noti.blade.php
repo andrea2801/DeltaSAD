@@ -2,53 +2,66 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4>Enviar notificación</h4>
+                <div class="row container-fluid p-0">
+                    <div class="col-6">
+                        <p>Nueva notificación</p>
+                    </div>
+                    <div class="col-6 justify-content-end d-flex p-0">
+                        <a href="">
+                            <img class="close-cross" src="{{asset('/img/icons/X.png')}}" alt="salir">
+                        </a>
+                    </div>
+                </div>
             </div>
-            <form action="{{route('notificaciones.nueva')}}" method="GET" class=" form needs-validation" novalidate>
-            @csrf
+            <form action="{{route('notificaciones.nueva')}}" method="GET" class="form needs-validation">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="inputNombre" class="col-sm-2 col-form-label">Para:</label>
-                        <div class="col-sm-8">
-                        @if(isset($users))
-                        <select name="para" type="text" class="custom-select mr-sm-2" id="inputNombre" required>
-                          @foreach ($users as $u )
-                            <option value={{$u->id}}>{{$u->nombre}} {{$u->apellidos}}</option>
-                          @endforeach
-                        </select>
-                        @endif
-                            <div class="invalid-feedback">
-                                Porfavor, ingresa destinatari@.
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-12 col-md-2">
+                                    <p class="first-text">Para:</p>
+                                </div>
+                                <div class="col-12 col-md-10">
+                                    @if(isset($users))
+                                    <select name="para" type="text" class="content-text mr-sm-2" required>
+                                        <option value=''>Elija un/a trabajador/a</option>
+                                        @foreach ($users as $u )
+                                        <option value={{$u->id}}>{{$u->nombre}} {{$u->apellidos}}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputAsunto" class="col-sm-2 col-form-label">Asunto:</label>
-                        <div class="col-sm-8">
-                        <input name="asunto" type="text" class="form-control" id="inputAsunto" required>
-                            <div class="invalid-feedback">
-                                Indicar asunto.
+                            <div class="form-group row">
+                                <div class="col-12 col-md-2">
+                                    <p class="first-text">Asunto:</p>
+                                </div>
+                                <div class="col-12 col-md-10">
+                                    <input name="asunto" type="text" class="content-text" required>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputMensaje" class="col-sm-2 col-form-label">Mensaje:</label>
-                        <div class="col-sm-8">
-                            <textarea name="detalle" type="textarea" class="form-control" required rows="6"></textarea>
-                            <div class="invalid-feedback">
-                                Completar mensaje.
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <p class="first-text">Mensaje:</p>
+                                    <small class="text-muted"><em>(Máx. 500)</em></small>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="textarea-write" maxlength="500" rows="7" cols="41" name="detalle" required></textarea>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Prioridad</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="zona" id="inlineRadio3" value="1" >
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <p class="first-text">Prioridad alta:&nbsp;<span><input class="form-check-input" type="checkbox" name="zona" id="checkPrioridad"></span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Añadir</button>
+                    <div class="row container-fluid d-flex justify-content-end">
+                        <button type="submit" class="btn btn-general">Enviar</button>
+                    </div>
                 </div>
             </form>
         </div>

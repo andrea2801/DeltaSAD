@@ -3,6 +3,27 @@
         .modal-content{
             box-shadow: 0px 0px 19px 3px rgba(29,78,142,0.8) !important;
             background-color: #F3F3F3 !important;
+            .modal-header{
+                font-size: 18px;
+                color: #1F1F1F;
+            }
+            .modal-body{
+                font-size: 18px;
+                color: #1F1F1F;
+                select{
+                    cursor: pointer;
+                }
+                .content-text{
+                    width: 100%;
+                }
+                .textarea-write{
+                    resize: none;
+                    border: #1D4E8E 1px solid;
+                    font-size: 18px;
+                    color: #1F1F1F;
+                    width: 100%;
+                }
+            }
             .first-text{
                 color: #1D4E8E;
                 font-size: 18px;
@@ -14,7 +35,7 @@
                 border-radius: 5px;
                 border: #1D4E8E 1px solid;
             }
-            textarea{
+            .textarea-read{
                 border: none;
                 resize: none;
                 width: 100%;
@@ -34,7 +55,7 @@
                 .content-text{
                     font-size: 14px;
                 }
-                textarea{
+                .textarea-read{
                     font-size: 14px;
                 }
             }
