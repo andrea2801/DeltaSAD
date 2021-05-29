@@ -22,6 +22,12 @@ class EvolutivosController extends Controller
         ]);
         return back()->withInput();
     }
+    protected function view(Request $request){
+        $evolutivos=DB::table('evolutivos')
+                ->where('id', $request->id)
+                ->get();
+        return $evolutivos;
+    }
 
 
 }
