@@ -44,7 +44,7 @@ class TrabajadorasController extends Controller
         $zonasname = DB::table('zonas')
             ->select('zonas','id')
             ->get();
-        return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);;
+        return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);
     }
 
 

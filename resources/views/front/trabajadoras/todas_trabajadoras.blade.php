@@ -25,8 +25,8 @@
                                        <div class="col-md-12">
                                            <label for="dni" class="col-4 col-md-4 col-form-label text-md-right dni_view">{{ __('Dni:') }}</label>
                                            <div class="col-md-6">
-                                               <input id="dni_search" type="text" class="form-control col-md-10" name="dni" required="" autocomplete="dni">
-                                               <img class="buscar_dni col-md-2" src="{{asset('img/icons/buscar.png')}}" alt="buscar">
+                                               <input id="dni_search" type="text" class="form-control col-md-8" name="dni" required="" autocomplete="dni">
+                                               <img class="buscar_dni col-md-4" src="{{asset('img/icons/buscar.png')}}" alt="buscar">
                                            </div>
                                        </div>
                                    </div>
@@ -72,6 +72,15 @@
 
                    <!--trabajadoras-->
                 </table>
+
+            </div>
+            <div class="modal fade" id="usuario">
+                <div class="modal-dialog">
+                    <div id="usuariocontent" class="modal-content">
+
+
+                    </div>
+                </div>
 
             </div>
   </div>

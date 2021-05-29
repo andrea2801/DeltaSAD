@@ -65,7 +65,6 @@ class UsuariosController extends Controller
                             ->join('users', 'id_tf', '=', 'users.id')
                             ->select('evolutivos.id', 'evolutivos.fecha_creacion', 'evolutivos.descripcion', 'users.nombre')
                             ->where('id_usuario', $user_id)
-                            ->limit(4)
                             ->get();
             $tf=DB::table('users')->select('id', 'nombre', 'apellidos')->where('zona', Auth::user()->zona)->where('rol_id', 2)->get();
 

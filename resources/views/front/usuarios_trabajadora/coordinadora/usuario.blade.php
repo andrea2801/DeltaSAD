@@ -2,9 +2,10 @@
 
     @include('front.usuarios_trabajadora.coordinadora.popUpEvolutivos', ['usuario' => $usuario, 'tfs' => $tfs])
     @include('front.usuarios_trabajadora.coordinadora.popUpIncidencias', ['usuario' => $usuario, 'tfs' => $tfs])
-
+<div class="row">
+<div class="col-md-12">
     @foreach ($usuario as $u )
-    <form class="userForm" method="GET" action={{route('update')}}>
+    <form class="userForm col-md-5 p-5 bloque_general" method="GET" action={{route('update')}}>
         <input type="hidden" name="id" value={{$u->id}}>
         <button type="button" class="btn btn-link" id="update">Modificar usuario</button>
         <p class="text-right" on>{{$u->dni}}</p>
@@ -62,10 +63,10 @@
     </form>
     @endforeach
 @endif
-<div class="col-6 mt-3 ml-5">
+<div class="col-md-6 mt-3 ml-5">
     <div class="d-flex justify-content-around">
         <h2>Incidencias</h2>
-        <a href="#" class="card-link" data-toggle="modal" data-target="#incidencias">
+        <a href="#" class="card-link mt-5" data-toggle="modal" data-target="#incidencias">
             <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
         </a>
     </div>
@@ -107,27 +108,40 @@
             </table>
         @endif
     @endif
+
+</div>
+</div>
+</div>
+
+<div class="col-md-11 mt-3 ml-5">
     @if(isset($evolutivos))
-        <div class="col-12 ml-5">
-            <div class="d-flex justify-content-around">
-                <h2>Evolutivos</h2>
-                <a href="#" class="card-link" data-toggle="modal" data-target="#evolutivos">
-                    <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+    <div class="col-12 ml-5">
+        <div class=" col-md-12">
+            <div class=" col-md-12">
+                <h2 class="col-md-2">Evolutivos</h2>
+
+                <a href="#" class="card-link " data-toggle="modal" data-target="#evolutivos">
+                    <img class="mas mt-5" src="{{asset('img/icons/mas.png')}}" alt="mas">
                 </a>
             </div>
-            @if(count($evolutivos) == 0)
-                <p>No hay evolutivos</p>
-            @else
-                @foreach ($evolutivos as $evolutivo)
-                    <div class="card border-primary mb-3" style="max-width: 18rem;">
-                        <div class="card-header">{{$evolutivo->fecha_creacion}}</div>
-                        <div class="card-body text-primary">
-                        <h5 class="card-title">Evolución</h5>
-                        <p class="card-text">{{substr($evolutivo->descripcion,0, 45)}}...</p>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
+            <hr class="user-underline col-md-10">
         </div>
-    @endif
+
+
+
+        @if(count($evolutivos) == 0)
+            <p>No hay evolutivos</p>
+        @else
+            @foreach ($evolutivos as $evolutivo)
+                <div class="card border-primary mb-3 col-md-5 mr-4" style="max-width: 18rem;">
+                    <div class="card-header">{{$evolutivo->fecha_creacion}}</div>
+                    <div class="card-body text-primary">
+                    <h5 class="card-title">Evolución</h5>
+                    <p class="card-text">{{substr($evolutivo->descripcion,0, 15)}}...</p>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>
+@endif
 </div>

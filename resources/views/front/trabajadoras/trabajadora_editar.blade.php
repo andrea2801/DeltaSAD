@@ -9,6 +9,7 @@
                 @csrf
                 <div class="modal-body">
 
+
                     <div class="form-group row">
                         <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
                         <div class="col-sm-4">
