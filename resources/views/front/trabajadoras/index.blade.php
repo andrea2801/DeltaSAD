@@ -98,13 +98,14 @@
 @include('front.trabajadoras.store')
 
 
+
              </div>
         </div>
     </div>
 </div>
-
+<!-- Pendiente que funcione desde app.js-->
 <script>
-    function usuarios(id) {
+   function usuarios(id) {
         $.ajax({
             url: "{{Route('trabajadoras.showTFusers')}}",
             data:`id=${id}`,
