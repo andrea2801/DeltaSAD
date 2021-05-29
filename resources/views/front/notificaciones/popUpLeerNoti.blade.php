@@ -8,7 +8,7 @@
                             <div class="mb-3 col-12">
                                 <div class="row">
                                     <div class="col-12 justify-content-end d-flex mb-5">
-                                        <a href="#">
+                                        <a href="">
                                             <img class="close-cross" src="{{asset('/img/icons/X.png')}}" alt="salir">
                                         </a>
                                     </div>
