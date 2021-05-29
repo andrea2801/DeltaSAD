@@ -35,6 +35,7 @@ Route::get('/eliminar/{id}', [App\Http\Controllers\IncidenciasController::class,
 
 //evolutivos
 Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::class, 'create'])->name('crear.evolutivo');
+Route::get('/evolutivos/id', [App\Http\Controllers\EvolutivosController::class, 'view']);
 
 //trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');

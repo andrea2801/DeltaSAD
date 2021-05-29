@@ -1,53 +1,60 @@
-#filtrar_block{
+#filtrar_block {
 
-        .limpiar_filtro{
-            color:#1d4e8eba;
-            cursor: pointer;
-        }
+    .limpiar_filtro {
+        color: #1d4e8eba;
+        cursor: pointer;
+    }
 
 
-
-    p{
+    p {
         font-size: 24px;
         color: #1D4E8E;
     }
-    .row{
+
+    .row {
         font-size: 18px;
     }
-    input{
+
+    input {
         box-shadow: inset 0 0 5px #00000061;
         color: #ADADAD !important;
         border-radius: 5px;
     }
 
-    .buscar_dni{
+    .buscar_dni {
         cursor: pointer;
     }
-    select{
+
+    select {
         height: 35px;
         background-color: #486C9C;
         border: 1px solid #ADADAD;
         border-radius: 5px;
+
         option {
             background-color: #6499e0;
             border: 1px solid #ADADAD;
             border-radius: 5px;
             height: 35px;
         }
-        option:hover{
+
+        option:hover {
             background-color: red !important;
         }
     }
 
 }
-#tabla_filtrar{
+
+#tabla_filtrar {
     display: none;
-    table{
-        thead{
+
+    table {
+        thead {
             background-color: #486C9C;
         }
     }
 }
-.ver_usuarios{
+
+.ver_usuarios {
     cursor: pointer;
 }

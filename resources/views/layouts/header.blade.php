@@ -11,17 +11,29 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse pt-5" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
-                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" href="{{route ('trabajadoras.index')}}"><img class="nav-icon-img" src="{{asset('img/icons/trabajadora.png')}}" alt="trabajadoras">Trabajadoras</a>
-                            </li>
-                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
-                            </li>
-                            <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                <a class="nav-link" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
-                            </li>
+                            @if (Auth::user()->rol_id == 1)
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('trabajadoras.index')}}"><img class="nav-icon-img" src="{{asset('img/icons/trabajadora.png')}}" alt="trabajadoras">Trabajadoras</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
+                                </li>
+                            @elseif (Auth::user()->rol_id == 2 || Auth::user()->rol_id == 3)
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
+                                </li>
+                            @endif
+
+
                         </ul>
                     </div>
                     <p class="d-none d-md-flex pt-5">Salir&nbsp;
