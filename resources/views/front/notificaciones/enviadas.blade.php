@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @include('front.notificaciones.nueva_noti', ['users' => $users])
-@include('front.notificaciones.popUpNotificacion', ['users' => $users])
+@include('front.notificaciones.popUpNotificacionNueva', ['users' => $users])
 @section('content')
 <section class="notificaciones">
     <div class="row container-principal">

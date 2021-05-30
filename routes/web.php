@@ -52,6 +52,8 @@ Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'
 //notificaciones
 Route::get('/notificaciones/enviadas', [App\Http\Controllers\NotificacionesController::class, 'viewSent'])->name('notificaciones.enviadas');
 Route::get('/notificaciones/nueva', [App\Http\Controllers\NotificacionesController::class, 'create'])->name('notificaciones.nueva');
+Route::get('/notificaciones/ver/', [App\Http\Controllers\NotificacionesController::class, 'show'])->name('notificaciones.ver');
+Route::get('/notificaciones/estado/', [App\Http\Controllers\NotificacionesController::class, 'changeState'])->name('notificaciones.ver');
 
 //notas
 Route::get('/notas/nueva', [App\Http\Controllers\NotasController::class, 'create'])->name('crear.nota');

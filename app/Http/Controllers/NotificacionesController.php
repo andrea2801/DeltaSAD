@@ -40,4 +40,26 @@ class NotificacionesController extends Controller
         return back()->with('message', 'Error al enviar notificacion');
     }
 
+    protected function show (Request $request){
+        $notification=DB::table('notificaciones')
+                        ->join('users', 'users.id', '=', 'creador')
+                        ->where('notificaciones.id', $request->notification)
+                        ->select('notificaciones.*', DB::raw('users.nombre AS nombre, users.apellidos AS apellidos'))
+                        ->get();
+
+        return $notification;
+
+    }
+
+    protected function changeState (Request $request){
+        $notification=DB::table('notificaciones')
+                        ->where('id', $request->notification)
+                        ->update(['estado'=> 1 ]);
+
+        return $notification;
+
+    }
+
+
+
 }

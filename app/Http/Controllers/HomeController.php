@@ -40,7 +40,10 @@ class HomeController extends Controller
     }
 
     protected function viewPending(){
-        $notification=DB::table('notificaciones')->where('estado', 1)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
+        $notification=DB::table('notificaciones')
+                        ->join('users', 'notificaciones.creador', '=', 'users.id')
+                        ->select('notificaciones.*', 'users.nombre', 'users.apellidos')
+                        ->where('estado', 1)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
         return $notification;
     }
 
