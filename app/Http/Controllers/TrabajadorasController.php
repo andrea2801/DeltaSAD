@@ -55,6 +55,7 @@ class TrabajadorasController extends Controller
         ->get();
         return $bucardni;
     }
+
     public function zonaBuscar(Request $request){
 
         $zonas = DB::table('users')
@@ -63,6 +64,7 @@ class TrabajadorasController extends Controller
             ->get();
         return $zonas;
     }
+
     protected function delete($id){
         if (DB::table('usuarios')->where('tf_asignada', $id)->exists()) {
             $update=DB::table('usuarios')->where('tf_asignada', $id)->update([

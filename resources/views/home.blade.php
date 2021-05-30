@@ -17,7 +17,8 @@
                     </div>
                     <div class="col-6">
                         <a href="#">
-                            <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal" data-target="#nuevaNoti">Crear nueva</button>
+                            <button class="btn btn-general" id="nuevaNotificacion" data-toggle="modal"
+                                data-target="#nuevaNoti">Crear nueva</button>
                         </a>
                     </div>
                 </div>
@@ -40,29 +41,29 @@
                         </thead>
                         <tbody>
                             @foreach ($new as $notification )
-                                <tr>
-                                    <th>{{$notification->nombre}} {{$notification->apellidos}}</th>
-                                    <th>{{$notification->asunto}}</th>
-                                    <th class="oculta">
-                                        @if($notification->prioridad = 0)
-                                            Media
-                                        @else
-                                            Alta
-                                        @endif
-                                    </th>
-                                    <th class="oculta">{{$notification->fecha}}</th>
-                                    <th class="d-flex justify-content-center">
-                                        <a href="#" id="leerNotificacion" data-toggle="modal" data-target="#ver">
-                                            <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
-                                        </a>
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>{{$notification->nombre}} {{$notification->apellidos}}</th>
+                                <th>{{$notification->asunto}}</th>
+                                <th class="oculta">
+                                    @if($notification->prioridad = 0)
+                                    Media
+                                    @else
+                                    Alta
+                                    @endif
+                                </th>
+                                <th class="oculta">{{$notification->fecha}}</th>
+                                <th class="d-flex justify-content-center">
+                                    <a href="#" class="leerNotificacion" data-noti={{$notification->id}} data-toggle="modal" data-target="#ver">
+                                        <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+                                    </a>
+                                </th>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
-                @endif
-                <p>No tienes notificaciones nuevas</p>
-            @endif
+                    @endif
+                    <p>No tienes notificaciones nuevas</p>
+                    @endif
                 </div>
                 <div class="col-12 col-md-10 d-flex justify-content-end">
                     <p class="text-mostrar">Mostrar más

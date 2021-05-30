@@ -160,6 +160,42 @@ $(document).ready(function(){
     });
 
 
+    $(".leerNotificacion").on("click", function (){
+        var id = $(this).data("noti");
+        var prioridad;
+        $.ajax({
+            url: "/notificaciones/ver/",
+            data: {
+                notification: id
+            },
+            success: function (data) {
+                for(let i = 0; i<data.length; i++){
+                    if(data[i].estado == 0){
+                        $.ajax({
+                            url: "/notificaciones/estado/",
+                            data: {
+                                notification: id
+                            },
+                            success: function (data) {
+                                console.log("hola")
+                            }
+                        });
+                    }
+                    if(data[i].prioridad == 0){
+                        prioridad = "Moderada";
+                    } else {
+                        prioridad = "Alta";
+                    }
+                    $("#priority").text(prioridad)
+                    $("#creator").text(data[i].nombre+" "+data[i].apellidos)
+                    $("#date").text(data[i].fecha)
+                    $("#affair").text(data[i].asunto)
+                    $("#message").text(data[i].detalle)
+                }
+            }
+        });
+    })
+
 });
 //HEADERs
 //datetime
@@ -185,5 +221,4 @@ function datetime() {
     $(".date").html(day + "/" + month + "/" + year + "-" + h + ":" + m + "H");
 
 }
-
 setInterval(datetime, 1000);
