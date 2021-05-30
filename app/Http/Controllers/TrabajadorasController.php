@@ -38,6 +38,7 @@ class TrabajadorasController extends Controller
         return view('front/trabajadoras/show')->with('users', $users);
 
     }
+
     //mostrar todas
 
     public function trabajadorasFiltrar(){
@@ -47,14 +48,31 @@ class TrabajadorasController extends Controller
         return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);
     }
 
-
+    protected function viewUsers($id){
+        $users=DB::table('usuarios')
+        ->select()
+        ->where('tf_asignada', $id)
+        ->orWhere('tf_asignada2', $id)
+        ->get();
+        return $users;
+    }
     public function dniBuscar(Request $request){
-        $bucardni = DB::table('users')
+        $buscardni = DB::table('users')
         ->select()
         ->where('dni', $request->dni)
         ->get();
-        return $bucardni;
+        $id=$buscardni[0]->id;
+        $users=DB::table('usuarios')
+        ->select('nombre','apellidos')
+        ->where('tf_asignada', $id)
+        ->orWhere('tf_asignada2',  $id)
+        ->get();
+        $data = [ 'buscardni' => $buscardni, 'users' => $users];
+        return $data;
+
+
     }
+
 
     public function zonaBuscar(Request $request){
 
@@ -62,7 +80,17 @@ class TrabajadorasController extends Controller
             ->select()
             ->where('zona', $request->zonas)
             ->get();
-        return $zonas;
+        /*for($i=0;$i<count( $zonas);$i++){
+        $users=DB::table('usuarios')
+            ->select('nombre','apellidos')
+             ->where('tf_asignada', $zonas[$i]->id)
+             ->orWhere('tf_asignada2',  $zonas[$i]->id)
+            ->get();
+        }*/
+
+    return  $zonas;
+
+
     }
 
     protected function delete($id){
