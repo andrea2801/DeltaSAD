@@ -82,6 +82,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-10 mt-5">
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-4 col-md-2 p-0">
+                            <a href="#">
+                                <button class="btn btn-general btn-alta p-2">Crear alta</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     @include('layouts.footer')

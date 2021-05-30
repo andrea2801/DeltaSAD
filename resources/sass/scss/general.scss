@@ -92,7 +92,7 @@ $links_click:#50B2CE;
 .btn-general{
     background-color: #2679B9;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 18px !important;
 }
 .btn-general:hover{
     background-color: #50b2ce;
@@ -128,7 +128,7 @@ section{
 @media(max-width: 990px){
     section{
         .btn-general{
-            font-size: 14px;
+            font-size: 14px !important;
         }
     }
 }
