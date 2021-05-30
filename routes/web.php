@@ -50,6 +50,13 @@ Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasCont
 Route::get('/trabajadoras/users', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.showTFusers');
 Route::get('/trabajadoras/busqueda/users', [App\Http\Controllers\TrabajadorasController::class, 'viewUsers']);
 
+Route::get('/trabajadoras/alta', function (){
+    return view('front/usuarios_trabajadora/ts/alta');
+})->name('alta_nueva');
+Route::get('/trabajadoras/busqueda/usuario', function (){
+    return view('front/usuarios_trabajadora/ts/busqueda');
+})->name('busqueda_usuarios');
+
 //horarios
 Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
 
