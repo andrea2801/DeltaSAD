@@ -35,7 +35,7 @@ class HomeController extends Controller
         $notification=DB::table('notificaciones')
                         ->join('users', 'notificaciones.creador', '=', 'users.id')
                         ->select('notificaciones.*', 'users.nombre', 'users.apellidos')
-                        ->where('estado', 0)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
+                        ->where('estado', 0)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->paginate(10);
         return $notification;
     }
 
@@ -43,7 +43,7 @@ class HomeController extends Controller
         $notification=DB::table('notificaciones')
                         ->join('users', 'notificaciones.creador', '=', 'users.id')
                         ->select('notificaciones.*', 'users.nombre', 'users.apellidos')
-                        ->where('estado', 1)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->get();
+                        ->where('estado', 1)->where('destinatario', Auth::user()->id)->orderBy('prioridad')->paginate(10);
         return $notification;
     }
 

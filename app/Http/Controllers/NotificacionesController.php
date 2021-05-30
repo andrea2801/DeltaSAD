@@ -15,13 +15,15 @@ class NotificacionesController extends Controller
 
     protected function viewSent(){
         $notification=DB::table('notificaciones')->join('users', 'users.id', '=', 'destinatario')->where('creador', Auth::user()->id)
-                            ->select('notificaciones.*', DB::raw('users.nombre AS nombre, users.apellidos AS apellidos'))->get();
+                            ->select('notificaciones.*', DB::raw('users.nombre AS nombre, users.apellidos AS apellidos'))->paginate(10);
         $users=DB::table('users')->select('id', 'nombre', 'apellidos')->get();
         return view('front/notificaciones/enviadas')->with('notificaciones', $notification)->with('users', $users);
     }
 
     protected function create(Request $request){
-        if($request->prioridad == null){
+        if($request->prioridad != null){
+            $prioridad = 1;
+        }else{
             $prioridad = 0;
         }
         $isCreated=DB::table('notificaciones')->insert(

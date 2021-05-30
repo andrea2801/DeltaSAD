@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <p class="first-text">Prioridad alta:&nbsp;<span><input class="form-check-input" type="checkbox" name="zona" id="checkPrioridad"></span></p>
+                                    <p class="first-text">Prioridad alta:&nbsp;<span><input class="form-check-input" type="checkbox" name="prioridad" id="checkPrioridad"></span></p>
                                 </div>
                             </div>
                         </div>

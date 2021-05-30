@@ -82,13 +82,13 @@ class UsuariosController extends Controller
 
     protected function showByZone($zone){
         //mostrar usuarios x zona en pantalla principal de usuarios
-        $users=DB::table('usuarios')->where('zona', $zone)->get();
+        $users=DB::table('usuarios')->where('zona', $zone)->paginate(20);
         return $users;
     }
 
     protected function showByTf(){
         //mostrar usuarios x zona en pantalla principal de usuarios
-        $users=DB::table('usuarios')->select('id', 'nombre', 'apellidos', 'direccion', 'telefono', 'detalle', 'tareas')->where('tf_asignada',Auth::id())->orWhere('tf_asignada2', Auth::id())->orderBy('apellidos', 'desc')->get();
+        $users=DB::table('usuarios')->select('id', 'nombre', 'apellidos', 'direccion', 'telefono', 'detalle', 'tareas')->where('tf_asignada',Auth::id())->orWhere('tf_asignada2', Auth::id())->orderBy('apellidos', 'desc')->paginate(20);
         return $users;
     }
 

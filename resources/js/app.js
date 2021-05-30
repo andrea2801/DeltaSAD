@@ -15,15 +15,6 @@ require('./bootstrap');
       });
     }, false);
   });
-/*//check enviar noti
-$(document).ready(function(){
-    $("input#dni_input_login").on('change',function(){
-        alert("hola")
-        if ($("input#checkPrioridad").checked==true){
-            $("input#checkPrioridad").value=1;
-        }
-    });
-});*/
 $(document).ready(function(){
     //LOGIN
     //animacion block dni
@@ -182,7 +173,7 @@ $(document).ready(function(){
                         });
                     }
                     if(data[i].prioridad == 0){
-                        prioridad = "Moderada";
+                        prioridad = "Media";
                     } else {
                         prioridad = "Alta";
                     }

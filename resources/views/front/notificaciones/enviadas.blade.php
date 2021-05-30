@@ -6,7 +6,7 @@
     <div class="row container-principal">
         <div class="col-12">
             <div class="row d-flex align-items-center justify-content-center mb-5">
-                <div class="col-12 text-center col-md-8 text-md-left">
+                <div class="col-12 text-center col-md-9 text-md-left">
                     <p class="home-title">NOTIFICACIONES ENVIADAS</p>
                 </div>
                 <div class="row">
@@ -57,11 +57,7 @@
                     </table>
                 </div>
                 <div class="col-10 d-flex justify-content-end">
-                    <p class="text-mostrar">Mostrar más
-                        <a href="">
-                            <img class="arrow" src="{{asset('img/icons/flecha_abajo.png')}}" alt="flecha abajo">
-                        </a>
-                    </p>
+                    {!!$notificaciones->links()!!}
                 </div>
             </div>
             @else
