@@ -18,7 +18,13 @@
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link text-center" href="{{route ('trabajadoras.index')}}"><img class="nav-icon-img" src="{{asset('img/icons/trabajadora.png')}}" alt="trabajadoras">Trabajadoras</a>
                                 </li>
-                            @elseif (Auth::user()->rol_id == 1 || Auth::user()->rol_id == 2)
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link text-center" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
+                                </li>
+                            @elseif (Auth::user()->rol_id == 2)
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
                                 </li>
