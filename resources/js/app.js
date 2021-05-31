@@ -20,6 +20,11 @@ require('./bootstrap');
 $(document).ready(function () {
     //LOGIN
     //animacion block dni
+    if (!$("input#dni_input_login").val() === "") {
+        $(".dni_mov").animate({
+            top: "9px"
+        }, 500)
+      }
     $("input#dni_input_login").on('click', function () {
         $(".dni_mov").animate({
             top: "9px"
@@ -77,7 +82,7 @@ $(document).ready(function () {
                         "<td>" + zona + "</td>" +
                         " <td class='horarios_usuarios'></td>" +
                         " <td class='usuarios_trabajadora'></td>" +
-                        "<td ><a href='/trabajadoras/editar/" + id + "'  class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
+                        "<td ><a href='#'  class='nav-link editar_trabajadora '  data-idtrab='" + id + "' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
                     $("#tabla_filtrar").css("display", "block");
                     if (usuarios.length === 0) {
                         $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
@@ -88,16 +93,13 @@ $(document).ready(function () {
                             $("td.horarios_usuarios").append("<p>" + usuarios[i].horas_asignadas + "</p>");
                         }
                     }
-
-
-
-
-
             }
 
 
         });
+
     });
+
     //zona
     $("#select_zonas").change(function () {
         var valor = $("#select_zonas option:selected").val();
@@ -139,29 +141,20 @@ $(document).ready(function () {
                         for (var i = 0; i < usuarios.length; i++) {
                              var tf_asignada = usuarios[i].tf_asignada;
                              var tf_asignada2 = usuarios[i].tf_asignada2;
-                              var usuario = usuarios[i].usuario;
-                                console.log("usuario "+usuario)
 
-                                var horasasig = usuarios[i].horas_asignadas;
+                                console.log("usuario "+usuario)
+                            if(code===tf_asignada ||code===tf_asignada2  ){
+                                 var usuario = usuarios[i].usuario;
+                                 var horasasig = usuarios[i].horas_asignadas;
                                 $("td.usuarios_trabajadora").append("<p>" + usuario+ "</p>");
                                 $("td.horarios_usuarios").append("<p>" + horasasig + "</p>");
-
-
-
-
+                            }
 
                         }
-
-
-
                     }
                     }
-
-
 
                 }
-
-
 
             }
         });
@@ -175,6 +168,7 @@ $(document).ready(function () {
     $(".limpiar_filtro").on('click', function () {
         $("tbody.info_filtrar").html("");
     });
+    //editar trabajadora
 
     $('td.editar_trabajadora').on('click', function () {
         console.log("pepa");
