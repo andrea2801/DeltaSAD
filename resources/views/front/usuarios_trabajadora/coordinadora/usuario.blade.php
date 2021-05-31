@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-12 col-md-6">
                         @foreach ($usuario as $u )
-                            <form class="content-box p-5" method="GET" action={{route('update')}}>
+                            <form class="content-box p-5" method="GET" action={{route('usuario.update')}}>
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-right dni">{{$u->dni}}</p>

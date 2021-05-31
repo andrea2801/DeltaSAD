@@ -26,6 +26,23 @@
                 </div>
             </div>
         </div>
+        @if(Session::has('eliminado'))
+            <script type="text/javascript">
+                Swal.fire({
+                     icon: 'success',
+                     title: 'done',
+                     text: {!!Session::get('eliminado')!!}
+                 })
+             </script>
+        @elseif(Session::has('error'))
+        <script type="text/javascript">
+            Swal.fire({
+                 icon: 'error',
+                 title: 'Ups!',
+                 text: 'Error al dar de baja'
+             })
+         </script>
+         @endif
     </div>
     @include('layouts.footer')
 </section>

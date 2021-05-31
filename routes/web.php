@@ -28,7 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
 Route::get('/usuario', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
 Route::get('/usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
-Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('update');
+Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('usuario.update');
+Route::get('/usuario/eliminar/{id}', [App\Http\Controllers\UsuariosController::class, 'delete'])->name('eliminar');
 
 //incidencias
 Route::get('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');

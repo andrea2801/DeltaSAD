@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<section>
-    <div class="container-fluid p-0 m-0 d-flex usuarios">
+<section class="usuarios">
+    <div class="container-fluid p-0 m-0 d-flex">
         <div class="row">
             @if (Auth::user()->rol_id == 1)
             <div class="col-12 mt-5 ml-5 justify-content-between">
@@ -43,6 +43,16 @@
                     @endif
                 </div>
             </div>
+
+            @if(Session::has('errorCarga'))
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ups!',
+                        text: {!!Session::get('errorCarga')!!}
+                    })
+                </script>
+            @endif
         </div>
     </div>
     @include('layouts.footer')
