@@ -85,4 +85,5 @@
 
     @include('front.trabajadoras.trabajadora_editar')
 </div>
+@include('layouts.footer')
 @endsection
