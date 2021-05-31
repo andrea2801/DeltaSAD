@@ -6,54 +6,53 @@
 <div class="row">
     <div class="col-md-12">
         @foreach ($usuario as $u )
-        <form class="userForm col-md-5 p-5 bloque_general" method="GET" action={{route('update')}}>
+        <form class="userForm bg-light col-md-5 p-5 bloque_general" method="GET" action={{route('update')}}>
             <input type="hidden" name="id" value={{$u->id}}>
-
             <p class="text-right" on>{{$u->dni}}</p>
             <div class="d-flex">
-                <label>Modificar dni</label>
+                <label class="mr-5">Modificar dni</label>
                 <input type="text" name="dni" class="userForm" value={{$u->dni}}>
             </div>
-            <p class="font-weight-bold">Dirección:</p>
-            <p>{{$u->direccion}}</p>
+            <p class="font-weight-bold subtitleform">Dirección:</p>
+            <p class="bg-white p-3">{{$u->direccion}}</p>
             <div class="d-flex">
-                <label>Modificar dirección</label>
+                <label class="mr-5">Modificar dirección</label>
                 <input type="text" name="direccion" class="userForm" value={{$u->direccion}}>
             </div>
-            <p class="font-weight-bold">Teléfono:</p>
-            <p>{{$u->telefono}}</p>
+            <p class="font-weight-bold subtitleform">Teléfono:</p>
+            <p class="bg-white p-3">{{$u->telefono}}</p>
             <div class="d-flex">
-                <label>Modificar teléfono</label>
+                <label class="mr-5">Modificar teléfono</label>
                 <input type="number" name="telf" class="userForm" value={{$u->telefono}}>
             </div>
-            <p class="font-weight-bold">Persona de contacto:</p>
-            <p>{{$u->persona_contacto}}</p>
+            <p class="font-weight-bold subtitleform">Persona de contacto:</p>
+            <p class="bg-white p-3">{{$u->persona_contacto}}</p>
             <div class="d-flex">
-                <label>Modificar contacto</label>
+                <label class="mr-5">Modificar contacto</label>
                 <input type="text" name="contacto" class="userForm" value={{$u->persona_contacto}}>
             </div>
-            <p class="font-weight-bold">Detalle:</p>
-            <p>{{$u->detalle}}</p>
+            <p class="font-weight-bold subtitleform">Detalle:</p>
+            <p class="bg-white p-3">{{$u->detalle}}</p>
             <div class="d-flex">
-                <label>Modificar detalle</label>
+                <label class="mr-5">Modificar detalle</label>
                 <input type="text" name="detalle" class="userForm" value={{$u->detalle}}>
             </div>
-            <p class="font-weight-bold">Tareas:</p>
-            <p>{{$u->tareas}}</p>
+            <p class="font-weight-bold subtitleform">Tareas:</p>
+            <p class="bg-white p-3">{{$u->tareas}}</p>
             <div class="d-flex">
-                <label>Modificar tareas</label>
+                <label class="mr-5">Modificar tareas</label>
                 <input type="text" name="tareas" class="userForm" value={{$u->tareas}}>
             </div>
-            <p class="font-weight-bold">Horas asignadas:</p>
-            <p>{{$u->horas_asignadas}}</p>
+            <p class="font-weight-bold subtitleform">Horas asignadas:</p>
+            <p class="bg-white p-3">{{$u->horas_asignadas}}</p>
             <div class="d-flex">
-                <label>Modificar horas</label>
+                <label class="mr-5">Modificar horas</label>
                 <input type="number" name="horas" class="userForm" value={{$u->horas_asignadas}}>
             </div>
-            <p class="font-weight-bold">TF asignada:</p>
-            <p>{{$u->tfn}} {{$u->tfa}}</p>
+            <p class="font-weight-bold subtitleform">TF asignada:</p>
+            <p class="bg-white p-3">{{$u->tfn}} {{$u->tfa}}</p>
             <div class="d-flex flex-column">
-                <label>Elegir nueva TF</label>
+                <label class="mr-5">Elegir nueva TF</label>
                 <select name="tf">
                     @foreach ($tfs as $tf )
                     <option value={{$tf->id}}>{{$tf->nombre}} {{$tf->apellidos}}</option>

@@ -11,15 +11,15 @@
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Dirección:</h3>
-                    <p class="bg-white">{{$u->direccion}}</p>
+                    <p class="bg-white p-3">{{$u->direccion}}</p>
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Detalle:</h3>
-                    <p class="bg-white">{{$u->detalle}}</p>
+                    <p class="bg-white p-3">{{$u->detalle}}</p>
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Tarea:</h3>
-                    <ul class="bg-white">
+                    <ul class="bg-white p-5">
                         <li><p class="text-dark">{{$u->tareas}}</p></li>
                     </ul>
 
