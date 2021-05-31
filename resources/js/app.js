@@ -1,21 +1,23 @@
+const { isSet } = require('lodash');
+
 require('./bootstrap');
 //VALIDAR POPUPS FORM
-(function() {
+(function () {
     'use strict';
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
+    window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
     }, false);
-  });
-$(document).ready(function(){
+});
+$(document).ready(function () {
     //LOGIN
     //animacion block dni
     $("input#dni_input_login").on('click', function () {
@@ -60,30 +62,35 @@ $(document).ready(function(){
                 dni: valor
             },
             success: function (data) {
-                console.log(data.users);
-                var dni=data.buscardni;
-                var usuarios=data.users;
-                var nombre = dni[0].nombre;
-                var apellido = dni[0].apellidos;
-                var email = dni[0].email;
-                var telefono = dni[0].telefono;
-                var zona = dni[0].zona;
-                var id = dni[0].id;
-               $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
-                    "<td>" + telefono + "</td>" +
-                    "<td>" + email + "</td>" +
-                    "<td>" + zona + "</td>" +
-                    " <td> <a href='#'>Ver</a></td>" +
-                    " <td class='usuarios_trabajadora'></td>" +
-                    "<td ><a href='/trabajadoras/editar/" + id + "'  class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
-                $("#tabla_filtrar").css("display", "block");
-                if(usuarios.length===0){
-                    $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                }else{
-                    for(var i=0;i<usuarios.length;i++){
-                    $("td.usuarios_trabajadora").append("<p>" + usuarios[i].nombre +" "+usuarios[i].apellidos + "</p>");
-                }
-                }
+
+                    var dni = data.buscardni;
+                    var usuarios = data.users;
+                    var nombre = dni[0].nombre;
+                    var apellido = dni[0].apellidos;
+                    var email = dni[0].email;
+                    var telefono = dni[0].telefono;
+                    var zona = dni[0].zona;
+                    var id = dni[0].id;
+                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                        "<td>" + telefono + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + zona + "</td>" +
+                        " <td class='horarios_usuarios'></td>" +
+                        " <td class='usuarios_trabajadora'></td>" +
+                        "<td ><a href='/trabajadoras/editar/" + id + "'  class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
+                    $("#tabla_filtrar").css("display", "block");
+                    if (usuarios.length === 0) {
+                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                        $("td.horarios_usuarios").append("<p>No tiene usuarios asignados</p>");
+                    } else {
+                        for (var i = 0; i < usuarios.length; i++) {
+                            $("td.usuarios_trabajadora").append("<p>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</p>");
+                            $("td.horarios_usuarios").append("<p>" + usuarios[i].horas_asignadas + "</p>");
+                        }
+                    }
+
+
+
 
 
             }
@@ -102,27 +109,63 @@ $(document).ready(function(){
                 zonas: valor
             },
             success: function (data) {
+                var zonass = data.zonas;
+                var usuarios = data.users;
+                console.log(zonass);
+                console.log(usuarios);
 
-                for (var a = 0; a < data.length; a++) {
-                    var code = data[a].id;
-                    var nombre = data[a].nombre;
-                    var apellido = data[a].apellidos;
-                    var email = data[a].email;
-                    var telefono = data[a].telefono;
-                    var zona = data[a].zona;
-                    $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
+                    for (var a = 0; a < zonass.length; a++) {
+                    var nombre = zonass[a].nombre;
+                    var apellido = zonass[a].apellidos;
+                    var email = zonass[a].email;
+                    var telefono = zonass[a].telefono;
+                    var zona = zonass[a].zona;
+                    var code = zonass[a].id;
+                    var rol = zonass[a].rol_id;
+                    if(rol==2 || rol==3){
+                        $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        " <td> <a href='#'>Ver</a></td>" +
+                        " <td class='horarios_usuarios'></td>" +
                         " <td class='usuarios_trabajadora'></td>" +
-                        "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" +  code+ "'>eliminar</a></td></tr>");
+                        "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
                     $("#tabla_filtrar").css("display", "block");
+                    $("#tabla_filtrar").css("display", "block");
+                    if (usuarios.length == 0) {
+                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                        $("td.horarios_usuarios").append("<p>No tiene usuarios asignados</p>");
+                    } else {
+                        for (var i = 0; i < usuarios.length; i++) {
+                             var tf_asignada = usuarios[i].tf_asignada;
+                             var tf_asignada2 = usuarios[i].tf_asignada2;
+                              var usuario = usuarios[i].usuario;
+                                console.log("usuario "+usuario)
+
+                                var horasasig = usuarios[i].horas_asignadas;
+                                $("td.usuarios_trabajadora").append("<p>" + usuario+ "</p>");
+                                $("td.horarios_usuarios").append("<p>" + horasasig + "</p>");
+
+
+
+
+
+                        }
+
+
+
+                    }
+                    }
+
+
 
                 }
 
+
+
             }
         });
+
     });
 
 
@@ -144,8 +187,8 @@ $(document).ready(function(){
         $("label").css("display", "flex")
     });
     //ver un evolutivo
-    $(".verEvol").click( function () {
-        var id=$(this).data("idevol");
+    $(".verEvol").click(function () {
+        var id = $(this).data("idevol");
         console.log(id);
         $.ajax({
             url: "/evolutivos/id",
@@ -154,18 +197,18 @@ $(document).ready(function(){
             },
             success: function (data) {
                 console.log(data);
-               $("#evolutivoContent").html("<div class='modal-header header_popup'>"+
-                " <h4>Evolutiva del "+data[0].fecha_creacion +"</h4>"+
-                "</div>"+
-                "<div class='modal-body '>"+
-                "<div class='card-body text-primary popup_body'>"+
-                " <h5 class='card-title'>Evolución</h5>"+
-                " <p class='card-text'>"+data[0].descripcion  +"</p>"+
-                "</div>"+
-                "<div class='modal-footer'>"+
-                "<button type='button' class='close' data-dismiss='modal'>"+
-                "  <span class='span'>×</span>  </button>"+
-                  "</div>");
+                $("#evolutivoContent").html("<div class='modal-header header_popup'>" +
+                    " <h4>Evolutiva del " + data[0].fecha_creacion + "</h4>" +
+                    "</div>" +
+                    "<div class='modal-body '>" +
+                    "<div class='card-body text-primary popup_body'>" +
+                    " <h5 class='card-title'>Evolución</h5>" +
+                    " <p class='card-text'>" + data[0].descripcion + "</p>" +
+                    "</div>" +
+                    "<div class='modal-footer'>" +
+                    "<button type='button' class='close' data-dismiss='modal'>" +
+                    "  <span class='span'>×</span>  </button>" +
+                    "</div>");
             }
         })
     });
@@ -174,7 +217,7 @@ $(document).ready(function(){
 
 
 
-    $(".leerNotificacion").on("click", function (){
+    $(".leerNotificacion").on("click", function () {
         var id = $(this).data("noti");
         var prioridad;
         $.ajax({
@@ -183,8 +226,8 @@ $(document).ready(function(){
                 notification: id
             },
             success: function (data) {
-                for(let i = 0; i<data.length; i++){
-                    if(data[i].estado == 0){
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].estado == 0) {
                         $.ajax({
                             url: "/notificaciones/estado/",
                             data: {
@@ -195,13 +238,13 @@ $(document).ready(function(){
                             }
                         });
                     }
-                    if(data[i].prioridad == 0){
+                    if (data[i].prioridad == 0) {
                         prioridad = "Media";
                     } else {
                         prioridad = "Alta";
                     }
                     $("#priority").text(prioridad)
-                    $("#creator").text(data[i].nombre+" "+data[i].apellidos)
+                    $("#creator").text(data[i].nombre + " " + data[i].apellidos)
                     $("#date").text(data[i].fecha)
                     $("#affair").text(data[i].asunto)
                     $("#message").text(data[i].detalle)

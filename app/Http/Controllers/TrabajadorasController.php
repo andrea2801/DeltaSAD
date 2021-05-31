@@ -48,14 +48,7 @@ class TrabajadorasController extends Controller
         return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);
     }
 
-    protected function viewUsers($id){
-        $users=DB::table('usuarios')
-        ->select()
-        ->where('tf_asignada', $id)
-        ->orWhere('tf_asignada2', $id)
-        ->get();
-        return $users;
-    }
+
     public function dniBuscar(Request $request){
         $buscardni = DB::table('users')
         ->select()
@@ -63,7 +56,7 @@ class TrabajadorasController extends Controller
         ->get();
         $id=$buscardni[0]->id;
         $users=DB::table('usuarios')
-        ->select('nombre','apellidos')
+        ->select('nombre','apellidos','horas_asignadas')
         ->where('tf_asignada', $id)
         ->orWhere('tf_asignada2',  $id)
         ->get();
@@ -75,22 +68,25 @@ class TrabajadorasController extends Controller
 
 
     public function zonaBuscar(Request $request){
-
         $zonas = DB::table('users')
             ->select()
             ->where('zona', $request->zonas)
             ->get();
-        /*for($i=0;$i<count( $zonas);$i++){
-        $users=DB::table('usuarios')
-            ->select('nombre','apellidos')
-             ->where('tf_asignada', $zonas[$i]->id)
-             ->orWhere('tf_asignada2',  $zonas[$i]->id)
-            ->get();
-        }*/
+        for($i=0;$i<count( $zonas);$i++){
+            $users=DB::table('usuarios')
+                ->join('users', 'users.id', '=','usuarios.tf_asignada')
+                    ->select(DB::raw('CONCAT(usuarios.nombre," ",usuarios.apellidos) AS usuario'),'usuarios.tf_asignada','usuarios.tf_asignada2','usuarios.horas_asignadas')
+                     ->where('users.zona', $request->zonas)
+                     ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
+                     ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
+                    ->get();
 
-    return  $zonas;
 
 
+
+        }
+        $data = [ 'zonas' => $zonas, 'users' => $users];
+        return $data;
     }
 
     protected function delete($id){
@@ -105,13 +101,11 @@ class TrabajadorasController extends Controller
                 'tf_asignada2' => null
             ]);
         }
-        if($update == true){
-             DB::table('users')
+        DB::table('users')
                 ->where('id', $id)
                 ->delete();
             return back()->with('message', 'Eliminado');
-        }
-        return back()->withError('Error', 'Error');
+
     }
 
 
