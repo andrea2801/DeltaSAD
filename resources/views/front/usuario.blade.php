@@ -43,6 +43,16 @@
                     @endif
                 </div>
             </div>
+
+            @if(Session::has('errorCarga'))
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ups!',
+                        text: {!!Session::get('errorCarga')!!}
+                    })
+                </script>
+            @endif
         </div>
     </div>
     @include('layouts.footer')

@@ -7,16 +7,21 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UsuariosController;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class IncidenciasController extends Controller
 {
     protected function create(Request $request){
-        DB::table('incidencias')->insert([
+        $insert=DB::table('incidencias')->insert([
             'created_at' => Carbon::now(),
             'descripcion' => $request->descripcion,
             'id_usuario' => $request->usuario,
             'id_tf' => $request->tf
         ]);
+
+        if($insert == false){
+            Session::flash('ierror', 'Error al crear incidencia');
+        }
         return back()->withInput();
     }
 

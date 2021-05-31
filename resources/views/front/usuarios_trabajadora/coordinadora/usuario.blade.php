@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             @foreach ($usuario as $u )
-                <form class="userForm col-md-5 p-5 bloque_general" method="GET" action={{route('update')}}>
+                <form class="userForm col-md-5 p-5 bloque_general" method="GET" action={{route('usuario.update')}}>
                     <input type="hidden" name="id" value={{$u->id}}>
 
                     <p class="text-right" on>{{$u->dni}}</p>
@@ -146,3 +146,20 @@
             </div>
         @endif
     </div>
+    @if(Session::has('umodificado'))
+            <script type="text/javascript">
+                Swal.fire({
+                     icon: 'success',
+                     title: 'done',
+                     text: {!!Session::get('umodificado')!!}
+                 })
+             </script>
+        @elseif(Session::has('uerror'))
+        <script type="text/javascript">
+            Swal.fire({
+                 icon: 'error',
+                 title: 'Ups!',
+                 text: {!!Session::get('uerror')!!}
+             })
+         </script>
+         @endif
