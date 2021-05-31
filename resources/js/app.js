@@ -140,8 +140,12 @@ $(document).ready(function(){
     //Modificar usuario
 
     $("#update").on("click", function () {
-        $("input").css("display", "flex")
-        $("label").css("display", "flex")
+        $(".edit-text").css("display", "flex")
+        $(".edit-input").css("display", "flex")
+        $(".first-text").css("display", "none")
+        $(".content-text").css("display", "none")
+        $(".edit-margin").css("margin-top", "20px")
+        $(".edit-btn").css("display", "flex")
     });
     //ver un evolutivo
     $(".verEvol").click( function () {

@@ -39,7 +39,7 @@
                     </div>
                     <div class="row row d-flex justify-content-center">
                         <div class="col-9 justify-content-center d-flex">
-                            <button type="submit" class="btn botton_general botton_login">
+                            <button type="submit" class="btn btn-general botton_login">
                                 {{ __('Entrar') }}
                             </button>
                         </div>

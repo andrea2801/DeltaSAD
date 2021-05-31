@@ -1,28 +1,19 @@
 .usuarios{
-    width: 95%;
     .title-user{
         font-size: 32px;
         color: #151F1E;
     }
     .subtitle-user{
-        font-size: 36px;
+        font-size: 24px;
         color: #1D4E8E;
     }
     .user-list{
         list-style-image: url('/img/icons/usuario.png');
+        font-size: 14px;
     }
     .subtitleform{
         color: #1D4E8E;
-
     }
-}
-.userForm input{
-    display: none;
-}
-.userForm label{
-    display: none;
-    font-size: smaller;
-    color: crimson;
 }
 
 .usuarios_ts{
@@ -106,6 +97,17 @@
             .text-general{
                 font-size: 14px;
             }
+        }
+    }
+    .usuarios{
+        .title-user{
+            font-size: 24px;
+        }
+        .subtitle-user{
+            font-size: 20px;
+        }
+        .user-list{
+            font-size: 12px;
         }
     }
 }
