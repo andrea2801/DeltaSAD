@@ -80,17 +80,14 @@ $(document).ready(function () {
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        " <td class='horarios_usuarios'></td>" +
                         " <td class='usuarios_trabajadora'></td>" +
                         "<td ><a href='#'  class='nav-link editar_trabajadora '  data-idtrab='" + id + "' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
                     $("#tabla_filtrar").css("display", "block");
                     if (usuarios.length === 0) {
                         $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                        $("td.horarios_usuarios").append("<p>No tiene usuarios asignados</p>");
                     } else {
                         for (var i = 0; i < usuarios.length; i++) {
                             $("td.usuarios_trabajadora").append("<p>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</p>");
-                            $("td.horarios_usuarios").append("<p>" + usuarios[i].horas_asignadas + "</p>");
                         }
                     }
             }
@@ -129,14 +126,12 @@ $(document).ready(function () {
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        " <td class='horarios_usuarios'></td>" +
                         " <td class='usuarios_trabajadora'></td>" +
                         "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
                     $("#tabla_filtrar").css("display", "block");
                     $("#tabla_filtrar").css("display", "block");
                     if (usuarios.length == 0) {
                         $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                        $("td.horarios_usuarios").append("<p>No tiene usuarios asignados</p>");
                     } else {
                         for (var i = 0; i < usuarios.length; i++) {
                              var tf_asignada = usuarios[i].tf_asignada;
@@ -145,9 +140,7 @@ $(document).ready(function () {
                                 console.log("usuario "+usuario)
                             if(code===tf_asignada ||code===tf_asignada2  ){
                                  var usuario = usuarios[i].usuario;
-                                 var horasasig = usuarios[i].horas_asignadas;
                                 $("td.usuarios_trabajadora").append("<p>" + usuario+ "</p>");
-                                $("td.horarios_usuarios").append("<p>" + horasasig + "</p>");
                             }
 
                         }

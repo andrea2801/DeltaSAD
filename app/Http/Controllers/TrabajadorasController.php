@@ -56,7 +56,7 @@ class TrabajadorasController extends Controller
         ->get();
         $id=$buscardni[0]->id;
         $users=DB::table('usuarios')
-        ->select('nombre','apellidos','horas_asignadas')
+        ->select('nombre','apellidos')
         ->where('tf_asignada', $id)
         ->orWhere('tf_asignada2',  $id)
         ->get();
@@ -75,7 +75,7 @@ class TrabajadorasController extends Controller
         for($i=0;$i<count( $zonas);$i++){
             $users=DB::table('usuarios')
                 ->join('users', 'users.id', '=','usuarios.tf_asignada')
-                    ->select(DB::raw('CONCAT(usuarios.nombre," ",usuarios.apellidos) AS usuario'),'usuarios.tf_asignada','usuarios.tf_asignada2','usuarios.horas_asignadas')
+                    ->select(DB::raw('CONCAT(usuarios.nombre," ",usuarios.apellidos) AS usuario'),'usuarios.tf_asignada','usuarios.tf_asignada2')
                      ->where('users.zona', $request->zonas)
                      ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
                      ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
