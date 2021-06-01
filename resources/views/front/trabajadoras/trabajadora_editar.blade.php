@@ -1,68 +1,68 @@
-<div class="modal fade" id="editar_trabajadora">
+<div class="modal fade" id="trabajadora">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div id="trabajadoracontent" class="modal-content">
             <div class="modal-header">
-
-                <h4>Modificar trabajadora</h4>
+                <h4 >Modificar Trabajadora</h4>
             </div>
-            <form action="" method="POST" class=" form " novalidate>
+
+            <form id="update_employee" action="{{route('trabajadoras.update')}}" method="POST" >
                 @csrf
                 <div class="modal-body">
 
-
                     <div class="form-group row">
-                        <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+                        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre:</label>
                         <div class="col-sm-4">
-                            <input name="nombre" type="text" class="form-control" value="" placeholder="" required>
+                        <input name="nombre" type="text" class="form-control"  value="" placeholder="">
 
                         </div>
-                        <label for="apellidos" class="col-sm-2 col-form-label">Apellidos:</label>
+                        <label for="inputApellido" class="col-sm-2 col-form-label">Apellidos:</label>
                         <div class="col-sm-4">
-                            <input name="apellidos" type="text" class="form-control" value="" placeholder="" required>
+                        <input name="apellidos" type="text" class="form-control"  placeholder="" >
 
                         </div>
-
                     </div>
+
                     <div class="form-group row">
                         <label for="inputTelf" class="col-sm-2 col-form-label">Teléfono:</label>
                         <div class="col-sm-4">
-                            <input name="telefono" type="text" class="form-control" value="" placeholder="" required>
+                        <input name="telefono" type="text" class="form-control"  placeholder="" >
 
                         </div>
 
 
-                        <label for="email" class="col-sm-2 col-form-label">Correo:</label>
+                        <label for="inputEmail4" class="col-sm-2 col-form-label">Correo:</label>
                         <div class="col-sm-4">
-                            <input name="email" type="email" class="form-control" value="" placeholder="" required>
+                        <input name="email" type="email" class="form-control"  placeholder="" >
 
                         </div>
 
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Zona:</label>
 
-                    <div class="form-group  row zona_trabajadoras">
-                        <div class="col-12">
-                            <div class="col-md-12">
-                                <label for="zonas"
-                                    class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="zona"  value="1" required>
+                            <label class="form-check-label" for="inlineRadio1">Zona I</label>
+                        </div>
 
-                                <select id="select_zonas_edit" class=" col-md-6 form-select"
-                                    aria-label="Default select example" name="select_zonas_edit">
-                                    <option selected="" value="default">Selecciona</option>
-                                    @foreach ($zonas as $zona)
-                                    <option value='{{$zona->id}}'>{{$zona->zonas}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="zona" id="inlineRadio2" value="2" required>
+                            <label class="form-check-label" for="inlineRadio2">Zona II</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="zona" id="inlineRadio3" value="3" required>
+                            <label class="form-check-label" for="inlineRadio3">Zona III</label>
                         </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-
             </form>
 
         </div>
     </div>
 </div>
-</div>
+
+

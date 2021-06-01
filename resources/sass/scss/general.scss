@@ -1,51 +1,43 @@
 html,body{
     height: 100%;
+    font-family: 'Montserrat';
 }
 //Paleta de colores DeltaSAD
 $rect_mobil: #2679B9;
 $letras_negras: #1F1F1F;
 $links_click:#50B2CE;
 //FUENTES
-/*
+
 @font-face{
     font-family:"Montserrat";
-    //src:url('');
-    //src:url('') format('truetype');
+    src:url('/public/fonts/Monserrat/Montserrat-Regular.ttf');
+    src:url('/public/fonts/Monserrat/Montserrat-Regular.ttf') format('truetype');
     font-weight:normal;
     font-style:normal;
     font-display:swap;
 }
 
-@mixin MontserratNormal(){
-    font-family:"Montserrat";
-}
 
 @font-face{
     font-family:"Nobile";
-    //src:url('');
-    //src:url('') format('truetype');
+    src:url('/public/fonts/Nobile/nobile.ttf');
+    src:url('/public/fonts/Nobile/nobile.ttf') format('truetype');
     font-weight:normal;
     font-style:normal;
     font-display:swap;
 }
 
-@mixin NobileNormal(){
-    font-family:"Nobile";
-}
 
 @font-face{
     font-family:"Hind Guntur";
-    //src:url('');
-    //src:url('') format('truetype');
+    src:url('/public/fonts/Hind_Guntur/hind-guntur.ttf');
+    src:url('/public/fonts/Hind_Guntur/hind-guntur.ttf') format('truetype');
     font-weight:normal;
     font-style:normal;
     font-display:swap;
 }
 
-@mixin Hind_GunturNormal(){
-    font-family:"Hind Guntur";
-}
-*/
+
 //css
 
 .input_general{
@@ -57,9 +49,11 @@ $links_click:#50B2CE;
 .modal-header{
     background-color: #486C9C !important;
     color: #ffffff !important;
+    font-family: 'Montserrat'!important;
 }
 .modal-body {
     color: #1F1F1F !important;
+    font-family: 'Nobile' !important;
 }
 .content-box {
     box-shadow: 0px 0px 19px 3px rgba(29,78,142,0.8) !important;
@@ -78,6 +72,7 @@ $links_click:#50B2CE;
     background-color: #2679B9;
     color: #ffffff;
     font-size: 18px !important;
+    font-family:'Nobile';
 }
 .btn-general:hover{
     background-color: #50b2ce;
