@@ -17,17 +17,28 @@ class TrabajadorasController extends Controller
     }
 
     public function store(Request $request){
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/imagenUser/',$name);
+
+
+
         $inputs=$request->all();
         $inputs['password']=bcrypt($inputs['password']);
-
-       //dd($inputs);
-       //Flash::success('ok');
-       //@include('Flash::message') esto en index
+        $inputs['img']=$name;
         User::create($inputs);
+        return redirect(route('trabajadoras.index'));
+        }
 
-    return redirect(route('trabajadoras.index'));
-
+        $inputs=$request->all();
+        $inputs['password']=bcrypt($inputs['password']);
+        //$inputs['img']=$name;
+        User::create($inputs);
+        return redirect(route('trabajadoras.index'));
     }
+
+
     protected function showTFS(){
        $tfs = DB::table('users')->where('rol_id', 2)->where('zona', Auth::user()->zona)->get();
        return $tfs;
@@ -93,7 +104,7 @@ class TrabajadorasController extends Controller
 
     }
 
-    protected function delete($id){
+     protected function delete($id){
         if (DB::table('usuarios')->where('tf_asignada', $id)->exists()) {
             $update=DB::table('usuarios')->where('tf_asignada', $id)->update([
                 'tf_asignada' => null
@@ -116,4 +127,3 @@ class TrabajadorasController extends Controller
 
 
 }
-

@@ -5,7 +5,7 @@
                 <h4 >Nueva Alta</h4>
             </div>
 
-            <form action="{{route('trabajadoras.store')}}" method="POST" class=" form needs-validation" novalidate>
+            <form action="{{route('trabajadoras.store')}}" enctype="multipart/form-data" method="POST" class=" form needs-validation" novalidate>
             @csrf
                 <div class="modal-body">
 
@@ -84,17 +84,19 @@
                         <label class="col-sm-2 col-form-label">Rol:</label>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio2" value="1" required>
+                            <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio2" value="2" required>
                             <label class="form-check-label" for="inlineRadio2">T. Familiar</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio3" value="2" required>
+                            <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio3" value="3" required>
                             <label class="form-check-label" for="inlineRadio3">T. Social</label>
                         </div>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                        <input type="file" name="img" accept="image/*" class="custom-file-input" id="" lang="es">
+                        <label class="custom-file-label" for="img">Seleccionar Archivo </label>
+                        {!! $errors->first('img','<span class=error>:message</span>') !!}
+
                     </div>
                 </div>
                 <div class="modal-footer">
