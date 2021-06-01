@@ -1,20 +1,21 @@
 require('./bootstrap');
 //VALIDAR POPUPS FORM
-(function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+(function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
           }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  });
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+
 $(document).ready(function(){
     //LOGIN
     //animacion block dni

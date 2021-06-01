@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Flash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Redirect;
 
 
 class TrabajadorasController extends Controller
@@ -17,17 +20,34 @@ class TrabajadorasController extends Controller
     }
 
     public function store(Request $request){
-        $inputs=$request->all();
-        $inputs['password']=bcrypt($inputs['password']);
+        if($request->hasFile('img')){
+            $validator = Validator::make($request->all(),[
+                "img"    => "dimensions:max_width=250,max_height=250,'image','mimes:jpg,png,jpeg,gif'",
 
-       //dd($inputs);
-       //Flash::success('ok');
-       //@include('Flash::message') esto en index
-        User::create($inputs);
+            ]);
+            if($validator->fails()){
+                return Redirect::back()->withInput()->withErrors($validator);
+            }else{
+                    $file=$request->file('img');
+                    $name = time().$file->getClientOriginalName();
+                    $file->move(public_path().'/imagenUser/',$name);
 
-    return redirect(route('trabajadoras.index'));
+                    $inputs=$request->all();
+                    $inputs['password']=bcrypt($inputs['password']);
+                    $inputs['img']=$name;
+                    User::create($inputs);
+                    return redirect(route('trabajadoras.index'));
+                }
+            }
+            $inputs=$request->all();
+            $inputs['password']=bcrypt($inputs['password']);
+            //$inputs['img']=$name;
+            User::create($inputs);
+            return redirect(route('trabajadoras.index'));
 
     }
+
+
     protected function showTFS(){
        $tfs = DB::table('users')->where('rol_id', 2)->where('zona', Auth::user()->zona)->get();
        return $tfs;
@@ -93,7 +113,7 @@ class TrabajadorasController extends Controller
 
     }
 
-    protected function delete($id){
+     protected function delete($id){
         if (DB::table('usuarios')->where('tf_asignada', $id)->exists()) {
             $update=DB::table('usuarios')->where('tf_asignada', $id)->update([
                 'tf_asignada' => null
@@ -116,4 +136,3 @@ class TrabajadorasController extends Controller
 
 
 }
-
