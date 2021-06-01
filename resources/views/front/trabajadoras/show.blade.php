@@ -9,7 +9,7 @@
 
             @foreach ($users as $value)
 
-                <p>{{$value->nombre}} {{$value->apellidos}}</p>
+                <p><a href="/usuario/"{{$value->id}}>{{$value->nombre}} {{$value->apellidos}}</a></p>
 
 
                 @endforeach
