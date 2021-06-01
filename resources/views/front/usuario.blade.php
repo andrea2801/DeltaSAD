@@ -21,7 +21,9 @@
                                             <button type="button" class="btn btn-general" id="update">Modificar usuario</button>
                                         </div>
                                         <div class="col-6">
-                                            <button type="button" class="btn btn-general" data-id={{$u->id}} id="bajaUsuario">Dar de baja</button>
+                                            <a href="/usuario/eliminar/{{$u->id}}" id="bajaUsuario">
+                                            <button type="button" class="btn btn-general" >Dar de baja</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
