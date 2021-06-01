@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class=" col-md-2 limpiar_filtro">Limpiar</a>
+
                     </div>
                 </div>
             </div>

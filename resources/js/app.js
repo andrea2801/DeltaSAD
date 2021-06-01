@@ -156,15 +156,8 @@ $(document).ready(function(){
 
 
 
-    //limpiar
-    $(".limpiar_filtro").on('click', function () {
-        $("tbody.info_filtrar").html("");
-    });
-    //editar trabajadora
 
-    $('td.editar_trabajadora').on('click', function () {
-        console.log("pepa");
-    });
+
     //USUARIOS
     //Modificar usuario
 
