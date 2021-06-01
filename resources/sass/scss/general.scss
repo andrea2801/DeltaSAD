@@ -90,6 +90,10 @@ section{
         margin: 0 auto;
         margin: 5% auto 5%;
     }
+    .text-general{
+        font-size: 18px;
+        color: #1F1F1F;
+    }
     .content-text{
         font-size: 18px;
         color: #1F1F1F;
@@ -130,6 +134,9 @@ section{
             font-size: 14px !important;
         }
         .content-text{
+            font-size: 14px;
+        }
+        .text-general{
             font-size: 14px;
         }
         .first-text{
