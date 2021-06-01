@@ -67,91 +67,89 @@ $(document).ready(function () {
                 dni: valor
             },
             success: function (data) {
-
-                    var dni = data.buscardni;
+                    var trabajadora = data.trabajadora;
                     var usuarios = data.users;
-                    var nombre = dni[0].nombre;
-                    var apellido = dni[0].apellidos;
-                    var email = dni[0].email;
-                    var telefono = dni[0].telefono;
-                    var zona = dni[0].zona;
-                    var id = dni[0].id;
-                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                    var nombre = trabajadora[0].nombre;
+                    var apellido = trabajadora[0].apellidos;
+                    var email = trabajadora[0].email;
+                    var telefono = trabajadora[0].telefono;
+                    var zona = trabajadora[0].zona;
+                    var id = trabajadora[0].id;
+                    var rol = trabajadora[0].rol_id;
+                    if (rol===1 || rol===3) {
+                        $("thead tr th.ver_usuarios").css("display","none");
+                        $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                        "<td>" + telefono + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + zona + "</td>" +
+                        "<td ><a href='#'  class='nav-link editar_trabajadora '  data-toggle='modal' data-target='#trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
+                    }else {
+                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
+                         $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
                         " <td class='usuarios_trabajadora'></td>" +
-                        "<td ><a href='#'  class='nav-link editar_trabajadora '  data-idtrab='" + id + "' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
-                    $("#tabla_filtrar").css("display", "block");
-                    if (usuarios.length === 0) {
-                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                    } else {
-                        for (var i = 0; i < usuarios.length; i++) {
-                            $("td.usuarios_trabajadora").append("<p>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</p>");
+                        "<td ><a href='#'  class='nav-link editar_trabajadora '  data-toggle='modal' data-target='#trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
+                        if (usuarios.length === 0 && rol===2) {
+                            $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                        } else {
+                            for (var i = 0; i < usuarios.length; i++) {
+                                $("td.usuarios_trabajadora").append("<p><a href='/usuario/"+id+"'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
+                            }
                         }
                     }
-            }
+                    $("#tabla_filtrar").css("display", "block");
 
 
+        }
         });
-
     });
 
     //zona
     $("#select_zonas").change(function () {
         var valor = $("#select_zonas option:selected").val();
         $("tbody.info_filtrar").html("");
-
         $.ajax({
             url: "/trabajadoras/busqueda/zona",
             data: {
                 zonas: valor
             },
             success: function (data) {
-                var zonass = data.zonas;
-                var usuarios = data.users;
-                console.log(zonass);
-                console.log(usuarios);
-
-                    for (var a = 0; a < zonass.length; a++) {
-                    var nombre = zonass[a].nombre;
-                    var apellido = zonass[a].apellidos;
-                    var email = zonass[a].email;
-                    var telefono = zonass[a].telefono;
-                    var zona = zonass[a].zona;
-                    var code = zonass[a].id;
-                    var rol = zonass[a].rol_id;
-                    if(rol==2 || rol==3){
+                var trabajadora = data.trabajadora;
+                    for (var a = 0; a < trabajadora.length; a++) {
+                    var nombre = trabajadora[a].nombre;
+                    var apellido = trabajadora[a].apellidos;
+                    var email = trabajadora[a].email;
+                    var telefono = trabajadora[a].telefono;
+                    var zona = trabajadora[a].zona;
+                    var code = trabajadora[a].id;
+                    var rol = trabajadora[a].rol_id;
+                    if (rol===1 || rol===3) {
+                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        " <td class='usuarios_trabajadora'></td>" +
-                        "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
-                    $("#tabla_filtrar").css("display", "block");
-                    $("#tabla_filtrar").css("display", "block");
-                    if (usuarios.length == 0) {
-                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                    } else {
-                        for (var i = 0; i < usuarios.length; i++) {
-                             var tf_asignada = usuarios[i].tf_asignada;
-                             var tf_asignada2 = usuarios[i].tf_asignada2;
+                        "<td>nada<td>" +
+                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
-                                console.log("usuario "+usuario)
-                            if(code===tf_asignada ||code===tf_asignada2  ){
-                                 var usuario = usuarios[i].usuario;
-                                $("td.usuarios_trabajadora").append("<p>" + usuario+ "</p>");
-                            }
+                    }else{
+                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
+                        $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
+                        "<td>" + telefono + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + zona + "</td>" +
+                        "<td><a href='#' onclick='usuarios("+code+")' data-toggle='modal' data-target='#usuario' >ver</a><td>" +
+                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
-                        }
                     }
-                    }
+                         $("#tabla_filtrar").css("display", "block");
+
 
                 }
-
             }
         });
-
     });
 
 
@@ -266,3 +264,8 @@ function datetime() {
 
 }
 setInterval(datetime, 1000);
+
+
+
+
+

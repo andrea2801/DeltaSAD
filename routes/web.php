@@ -42,13 +42,14 @@ Route::get('/evolutivos/id', [App\Http\Controllers\EvolutivosController::class, 
 //trabajadoras
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
-Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadorasFiltrar'])->name('todasTrabajadoras');
+Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadorasFiltrar'])->name('trabajadoras.todas');
 Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dniBuscar']);
-Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'zonaBuscar']);
+Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'employeeByZone'])->name('trabajadoras.zona');
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);
 Route::get('/trabajadoras/users', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.showTFusers');
-Route::get('/trabajadoras/busqueda/users', [App\Http\Controllers\TrabajadorasController::class, 'viewUsers']);
+Route::get('/trabajadoras/trabajadora', [App\Http\Controllers\TrabajadorasController::class, 'edit'])->name('trabajadoras.edit');
+Route::post('/trabajadoras/update', [App\Http\Controllers\TrabajadorasController::class, 'update'])->name('trabajadoras.update');
 
 Route::get('/trabajadoras/alta', function (){
     return view('front/usuarios_trabajadora/ts/alta');

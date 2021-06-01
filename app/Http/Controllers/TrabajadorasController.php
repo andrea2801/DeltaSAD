@@ -50,42 +50,28 @@ class TrabajadorasController extends Controller
 
 
     public function dniBuscar(Request $request){
-        $buscardni = DB::table('users')
+        $trabajadora = DB::table('users')
         ->select()
         ->where('dni', $request->dni)
         ->get();
-        $id=$buscardni[0]->id;
-        $users=DB::table('usuarios')
+        $id=$trabajadora[0]->id;
+            $users=DB::table('usuarios')
         ->select('nombre','apellidos')
         ->where('tf_asignada', $id)
         ->orWhere('tf_asignada2',  $id)
         ->get();
-        $data = [ 'buscardni' => $buscardni, 'users' => $users];
+         $data = [ 'trabajadora' => $trabajadora, 'users' => $users];
         return $data;
-
 
     }
 
 
-    public function zonaBuscar(Request $request){
-        $zonas = DB::table('users')
+    public function employeeByZone(Request $request){
+        $trabajadora = DB::table('users')
             ->select()
             ->where('zona', $request->zonas)
             ->get();
-        for($i=0;$i<count( $zonas);$i++){
-            $users=DB::table('usuarios')
-                ->join('users', 'users.id', '=','usuarios.tf_asignada')
-                    ->select(DB::raw('CONCAT(usuarios.nombre," ",usuarios.apellidos) AS usuario'),'usuarios.tf_asignada','usuarios.tf_asignada2')
-                     ->where('users.zona', $request->zonas)
-                     ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
-                     ->orWhere('usuarios.tf_asignada', $zonas[$i]->id)
-                    ->get();
-
-
-
-
-        }
-        $data = [ 'zonas' => $zonas, 'users' => $users];
+        $data = [ 'trabajadora' => $trabajadora];
         return $data;
     }
 
@@ -107,7 +93,24 @@ class TrabajadorasController extends Controller
             return back()->with('message', 'Eliminado');
 
     }
+    protected function edit(){
+        $trabajadora = DB::table('users')
+        ->select()
+        ->where('id', $_GET['id'])
+        ->get();
+        return  $trabajadora;
 
+    }
+    protected function update(Request $request){
+        $update=DB::table('users')->where('id', $request->id)->update([
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            'zona' => $request->zona
+        ]);
+        return redirect(route('trabajadoras.todas'));
+    }
 
 }
 
