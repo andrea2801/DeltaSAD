@@ -5,7 +5,7 @@
                 <h4 >Nueva Alta</h4>
             </div>
 
-            <form action="{{route('trabajadoras.store')}}" enctype="multipart/form-data" method="POST" class=" form needs-validation" novalidate>
+            <form action="{{route('trabajadoras.store')}}" enctype="multipart/form-data" method="POST" class="needs-validation" novalidate>
             @csrf
                 <div class="modal-body">
 
@@ -95,7 +95,7 @@
                     <div class="custom-file">
                         <input type="file" name="img" accept="image/*" class="custom-file-input" id="" lang="es">
                         <label class="custom-file-label" for="img">Seleccionar Archivo </label>
-                        {!! $errors->first('img','<span class=error>:message</span>') !!}
+                        {!! $errors->first('img','<span class="error">:message</span>') !!}
 
                     </div>
                 </div>

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Flash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Redirect;
 
 
 class TrabajadorasController extends Controller
@@ -18,24 +21,30 @@ class TrabajadorasController extends Controller
 
     public function store(Request $request){
         if($request->hasFile('img')){
-            $file=$request->file('img');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/imagenUser/',$name);
+            $validator = Validator::make($request->all(),[
+                "img"    => "dimensions:max_width=250,max_height=250,'image','mimes:jpg,png,jpeg,gif'",
 
+            ]);
+            if($validator->fails()){
+                return Redirect::back()->withInput()->withErrors($validator);
+            }else{
+                    $file=$request->file('img');
+                    $name = time().$file->getClientOriginalName();
+                    $file->move(public_path().'/imagenUser/',$name);
 
+                    $inputs=$request->all();
+                    $inputs['password']=bcrypt($inputs['password']);
+                    $inputs['img']=$name;
+                    User::create($inputs);
+                    return redirect(route('trabajadoras.index'));
+                }
+            }
+            $inputs=$request->all();
+            $inputs['password']=bcrypt($inputs['password']);
+            //$inputs['img']=$name;
+            User::create($inputs);
+            return redirect(route('trabajadoras.index'));
 
-        $inputs=$request->all();
-        $inputs['password']=bcrypt($inputs['password']);
-        $inputs['img']=$name;
-        User::create($inputs);
-        return redirect(route('trabajadoras.index'));
-        }
-
-        $inputs=$request->all();
-        $inputs['password']=bcrypt($inputs['password']);
-        //$inputs['img']=$name;
-        User::create($inputs);
-        return redirect(route('trabajadoras.index'));
     }
 
 

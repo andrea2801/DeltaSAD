@@ -26,27 +26,32 @@
             <hr class="user-underline">
             <div class="container justify-content-center align-items-center vh-100">
 
-                    @if(isset($tfs))
-                    @foreach ($tfs as $tf )
-                    <div class="card mb-3 p-0 col-md-5 mr-4 ml-5" style="width: 18rem;">
+                @if(isset($tfs))
+                @foreach ($tfs as $tf )
+                <div class="card mb-3 p-0 col-md-5 mr-4 ml-5" style="width: 18rem;">
+
+                    @if(isset($tf->img))
                     <img src="imagenUser/{{$tf->img}}" class="card-img-top" alt="...">
-                        <div class="card-body bg-primary">
-                            <h5 class="card-title">{{$tf->nombre}}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">{{$tf->dni}}</li>
-                            <li class="list-group-item">{{$tf->telefono}}</li>
-                            <li class="list-group-item">{{$tf->email}}</li>
-                            <li class="list-group-item">{{$tf->zona}}</li>
-                        </ul>
-                        <div>
-                            <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
-                            <a href="#" onclick="usuarios({{$tf->id}})" class="card-link" data-toggle="modal"
-                                data-target="#usuario">Usuarios</a>
-                        </div>
-                    </div>
-                    @endforeach
+                    @else
+                    <img src="/img/icons/trabajadora.png" class="card-img-top" alt="...">
                     @endif
+                    <div class="card-body bg-primary">
+                        <h5 class="card-title">{{$tf->nombre}}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{$tf->dni}}</li>
+                        <li class="list-group-item">{{$tf->telefono}}</li>
+                        <li class="list-group-item">{{$tf->email}}</li>
+                        <li class="list-group-item">{{$tf->zona}}</li>
+                    </ul>
+                    <div>
+                        <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                        <a href="#" onclick="usuarios({{$tf->id}})" class="card-link" data-toggle="modal"
+                            data-target="#usuario">Usuarios</a>
+                    </div>
+                </div>
+                @endforeach
+                @endif
 
                 <div class="modal fade" id="horarios">
                     <div class="modal-dialog">
