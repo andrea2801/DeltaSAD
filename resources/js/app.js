@@ -1,4 +1,6 @@
-const { isSet } = require('lodash');
+const {
+    isSet
+} = require('lodash');
 
 require('./bootstrap');
 //VALIDAR POPUPS FORM
@@ -6,26 +8,26 @@ require('./bootstrap');
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
     Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
 
-$(document).ready(function(){
+$(document).ready(function () {
     //LOGIN
     //animacion block dni
     if (!$("input#dni_input_login").val() === "") {
         $(".dni_mov").animate({
             top: "9px"
         }, 500)
-      }
+    }
     $("input#dni_input_login").on('click', function () {
         $(".dni_mov").animate({
             top: "9px"
@@ -68,54 +70,61 @@ $(document).ready(function(){
                 dni: valor
             },
             success: function (data) {
-                    var trabajadora = data.trabajadora;
-                    var usuarios = data.users;
-                    var nombre = trabajadora[0].nombre;
-                    var apellido = trabajadora[0].apellidos;
-                    var email = trabajadora[0].email;
-                    var telefono = trabajadora[0].telefono;
-                    var zona = trabajadora[0].zona;
-                    var id = trabajadora[0].id;
-                    var rol = trabajadora[0].rol_id;
-                    if (rol===1) {
-                        $("thead tr th.ver_usuarios").css("display","none");
-                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
-                        $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                var trabajadora = data.trabajadora;
+                var usuarios = data.users;
+                var nombre = trabajadora[0].nombre;
+                var apellido = trabajadora[0].apellidos;
+                var email = trabajadora[0].email;
+                var telefono = trabajadora[0].telefono;
+                var zona = trabajadora[0].zona;
+                var id = trabajadora[0].id;
+                var rol = trabajadora[0].rol_id;
+                if (rol === 1) {
+                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                        "<th>Teléfono</th>" +
+                        "<th>Email</th>" +
+                        "<th>Zona</th>" +
+                        "<th colspan='2'>Opciones</th>");
+                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        "<td><a href='#' onclick='trabajadoras("+id+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
-                    }else if(rol===2){
-                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
-                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
-                         $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                } else if (rol === 2) {
+                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                        "<th>Teléfono</th>" +
+                        "<th>Email</th>" +
+                        "<th>Zona</th>" +
+                        "<th>Usuarios</th>" +
+                        "<th colspan='2'>Opciones</th>");
+                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
                         " <td class='usuarios_trabajadora'></td>" +
-                        "<td><a href='#' onclick='trabajadoras("+id+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
-                        if (usuarios.length === 0 && rol===2) {
-                            $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
-                        } else {
-                            for (var i = 0; i < usuarios.length; i++) {
-                                $("td.usuarios_trabajadora").append("<p><a href='/usuario/"+id+"'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
-                            }
+                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                    if (usuarios.length === 0 && rol === 2) {
+                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                    } else {
+                        for (var i = 0; i < usuarios.length; i++) {
+                            $("td.usuarios_trabajadora").append("<p><a href='/usuario/" + id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
                         }
-                    }else {
-                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
-                        $("thead tr th.ver_zona").css({"display":"none", "border":"none"});
-                        $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
-                       "<td>" + telefono + "</td>" +
-                       "<td>" + email + "</td>" +
-                       "<td>" + zona + "</td>" +
-                       " <td class='usuarios_trabajadora'></td>" +
-                       "<td><a href='#' onclick='trabajadoras("+id+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
-
                     }
-                    $("#tabla_filtrar").css("display", "block");
+                } else {
+                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                        "<th>Teléfono</th>" +
+                        "<th>Email</th>" +
+                        "<th colspan='2'>Opciones</th>");
+                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                        "<td>" + telefono + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + zona + "</td>" +
+                        " <td class='usuarios_trabajadora'></td>" +
+                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
 
-
-        }
+                }
+                $("#tabla_filtrar").css("display", "block");
+            }
         });
     });
 
@@ -130,7 +139,7 @@ $(document).ready(function(){
             },
             success: function (data) {
                 var trabajadora = data.trabajadora;
-                    for (var a = 0; a < trabajadora.length; a++) {
+                for (var a = 0; a < trabajadora.length; a++) {
                     var nombre = trabajadora[a].nombre;
                     var apellido = trabajadora[a].apellidos;
                     var email = trabajadora[a].email;
@@ -138,36 +147,45 @@ $(document).ready(function(){
                     var zona = trabajadora[a].zona;
                     var code = trabajadora[a].id;
                     var rol = trabajadora[a].rol_id;
-                    if (rol===1) {
-                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
-                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
-                        $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td>" + zona + "</td>" +
-                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
-                    }else if(rol===2){
-                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
-                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
+                    if (rol === 1) {
+                        $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                            "<th>Teléfono</th>" +
+                            "<th>Email</th>" +
+                            "<th>Zona</th>" +
+                            "<th colspan='2'>Opciones</th>");
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td>" + zona + "</td>" +
-                        "<td><a href='#' onclick='usuarios("+code+")' data-toggle='modal' data-target='#usuario' >ver</a><td>" +
-                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+                            "<td>" + telefono + "</td>" +
+                            "<td>" + email + "</td>" +
+                            "<td>" + zona + "</td>" +
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
-                    }else{
-                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
-                        $("thead tr th.ver_zona").css({"display":"none", "border":"none"});
+                    } else if (rol === 2) {
+                        $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                            "<th>Teléfono</th>" +
+                            "<th>Email</th>" +
+                            "<th>Zona</th>" +
+                            "<th>Usuarios</th>" +
+                            "<th colspan='2'>Opciones</th>");
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+                            "<td>" + telefono + "</td>" +
+                            "<td>" + email + "</td>" +
+                            "<td>" + zona + "</td>" +
+                            "<td><a href='#' onclick='usuarios(" + code + ")' data-toggle='modal' data-target='#usuario' >ver</a><td>" +
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
+                    } else {
+                        $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                            "<th>Teléfono</th>" +
+                            "<th>Email</th>" +
+                            "<th colspan='2'>Opciones</th>");
+                        $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
+                            "<td>" + telefono + "</td>" +
+                            "<td>" + email + "</td>" +
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
                     }
-                         $("#tabla_filtrar").css("display", "block");
 
+                    $("#tabla_filtrar").css("display", "block");
 
                 }
             }
@@ -190,7 +208,7 @@ $(document).ready(function(){
         $(".edit-margin").css("margin-top", "20px")
         $(".edit-btn").css("display", "flex")
     });
-    $("#cancel").on("click", function(){
+    $("#cancel").on("click", function () {
         $(".edit-text").css("display", "none")
         $(".edit-input").css("display", "none")
         $(".first-text").css("display", "flex")
@@ -200,19 +218,19 @@ $(document).ready(function(){
     })
 
     //Baja de usuario
-    $("#bajaUsuario").on("click", function(event){
+    $("#bajaUsuario").on("click", function (event) {
         event.preventDefault();
         const url = $(this).attr('href');
 
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
-              confirmButton: 'btn btn-success',
-              cancelButton: 'btn btn-danger'
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
             },
             buttonsStyling: false
-          })
+        })
 
-          swalWithBootstrapButtons.fire({
+        swalWithBootstrapButtons.fire({
             title: '¿Seguro que quieres eliminarlo?',
             text: "Si lo haces no lo se podrá revertir!",
             icon: 'warning',
@@ -220,20 +238,20 @@ $(document).ready(function(){
             confirmButtonText: 'Si, borra!',
             cancelButtonText: 'No, cancela!',
             reverseButtons: true
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = url;
             } else if (
-              /* Read more about handling dismissals below */
-              result.dismiss === Swal.DismissReason.cancel
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
             ) {
-              swalWithBootstrapButtons.fire(
-                'Cancelado',
-                'Tu usuari@ está a salvo :)',
-                'error'
-              )
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'Tu usuari@ está a salvo :)',
+                    'error'
+                )
             }
-          })
+        })
     })
     //ver un evolutivo
     $(".verEvol").click(function () {
@@ -328,8 +346,3 @@ function datetime() {
 
 }
 setInterval(datetime, 1000);
-
-
-
-
-

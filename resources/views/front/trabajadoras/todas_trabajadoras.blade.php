@@ -44,10 +44,10 @@
 
                                             <select id="select_roles" class=" col-md-6 form-select"
                                                 aria-label="Default select example" name="select_roles">
-                                                <option selected="" value="default">Selecciona</option>
-                                                <option selected="" value="1">Coordinadora</option>
-                                                <option selected="" value="2">Trabajadora Familiar</option>
-                                                <option selected="" value="3">Trabajadora Social</option>
+                                                <option selected="" value="default" active>Selecciona</option>
+                                                <option  value="1">Coordinadora</option>
+                                                <option  value="2">Trabajadora Familiar</option>
+                                                <option  value="3">Trabajadora Social</option>
                                             </select>
 
                                     </div>
@@ -63,12 +63,7 @@
             <table class="table col-md-3">
                 <thead class="tabla_trabajadoras">
                     <tr>
-                        <th>Nombre y apellido</th>
-                        <th>Teléfono</th>
-                        <th>Email</th>
-                        <th class="ver_zona" >Zona</th>
-                        <th class="ver_usuarios" >Usuarios</th>
-                        <th colspan="2">Opciones</th>
+
                     </tr>
                 </thead>
                 <tbody class="info_filtrar">
@@ -94,8 +89,8 @@
 
 
 </div>
-<!-- Pendiente que funcione desde app.js-->
-<script>
+<!--funcion para mostrar los usuarios y otra de trabajadores-->
+<script type=" text/javascript">
     function usuarios(id) {
          $.ajax({
              url: "{{Route('trabajadoras.showTFusers')}}",
@@ -106,6 +101,8 @@
              }
          });
      }
+
+
      function trabajadoras(id) {
          $.ajax({
             url: "{{Route('trabajadoras.edit')}}",

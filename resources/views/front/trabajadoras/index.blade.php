@@ -17,7 +17,7 @@
                 </li>
                 <li class="nav-items border-left">
                     <a class="nav-link active" href="{{route('trabajadoras.todas')}}">
-                        <h2>Mostras todas</h2>
+                        <h2>Buscar</h2>
                     </a>
                 </li>
             </ul>
