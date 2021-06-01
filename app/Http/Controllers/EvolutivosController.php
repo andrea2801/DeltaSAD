@@ -9,9 +9,6 @@ use Illuminate\Support\Carbon;
 
 class EvolutivosController extends Controller
 {
-    public function index(){
-
-    }
 
     protected function create(Request $request){
         DB::table('evolutivos')->insert([

@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <form action="{{route('notificaciones.nueva')}}" method="GET" class="form needs-validation">
+            <form action="{{route('notificaciones.nueva')}}" method="POST" class="form needs-validation">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                 <div class="modal-body">
                     <div class="row">

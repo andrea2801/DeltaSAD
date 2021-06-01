@@ -25,8 +25,8 @@
             <script type="text/javascript">
                 Swal.fire({
                      icon: 'success',
-                     title: 'done',
-                     text: {!!Session::get('eliminado')!!}
+                     title: 'Done',
+                     text: 'Usuario eliminado'
                  })
              </script>
         @elseif(Session::has('error'))

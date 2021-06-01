@@ -10,7 +10,7 @@
             </div>
 
             <div class="modal-body">
-                <form action="{{route('crear.incidencia')}}" method="GET" class="form needs-validation" novalidate>
+                <form action="{{route('crear.incidencia')}}" method="POST" class="form needs-validation" novalidate>
                     <div class="form-group row">
                         <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
                         <div class="col-sm-12">
@@ -29,6 +29,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
             </div>
         </div>

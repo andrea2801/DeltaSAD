@@ -11,15 +11,9 @@ use Illuminate\Support\Facades\Session;
 
 class UsuariosController extends Controller
 {
-    //comprobamos el rol de la trabajadora: si es coordinadora devuleve los usuarios por zona, si es
-    //tf devuleve los usuarios que tengan esa tf asignada
-    public function index($message=null){
+    public function index(){
         if(Auth::user()->rol_id == 1){
-
             $usuarios = $this->showByZone(Auth::user()->zona);
-            if($message!=null){
-                return view('front/usuarios')->with('usuarios', $usuarios)->with('message', $message);
-            }
             return view('front/usuarios', compact('usuarios', $usuarios));
         }
         $usuarios= $this->showByTf();

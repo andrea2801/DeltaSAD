@@ -45,9 +45,10 @@
               <h5 class="card-title">{{$tf->nombre}}</h5>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{$tf->telefono}}</li>
-              <li class="list-group-item">{{$tf->email}}</li>
-              <li class="list-group-item">{{$tf->zona}}</li>
+                <li class="list-group-item">{{$tf->dni}}</li>
+                 <li class="list-group-item">{{$tf->telefono}}</li>
+                 <li class="list-group-item">{{$tf->email}}</li>
+                <li class="list-group-item">{{$tf->zona}}</li>
             </ul>
             <div>
                 <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
@@ -120,7 +121,7 @@
 
     }
 </script>
-
+@include('layouts.footer')
 @endsection
 
 

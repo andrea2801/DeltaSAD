@@ -60,21 +60,35 @@ $(document).ready(function(){
                 dni: valor
             },
             success: function (data) {
-                var nombre = data[0].nombre;
-                var apellido = data[0].apellidos;
-                var email = data[0].email;
-                var telefono = data[0].telefono;
-                var zona = data[0].zona;
-                var id = data[0].id;
-                $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                console.log(data.users);
+                var dni=data.buscardni;
+                var usuarios=data.users;
+                var nombre = dni[0].nombre;
+                var apellido = dni[0].apellidos;
+                var email = dni[0].email;
+                var telefono = dni[0].telefono;
+                var zona = dni[0].zona;
+                var id = dni[0].id;
+               $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                     "<td>" + telefono + "</td>" +
                     "<td>" + email + "</td>" +
                     "<td>" + zona + "</td>" +
                     " <td> <a href='#'>Ver</a></td>" +
-                    " <td><a  href='#' class='card-link' data-toggle='modal' data-target='#usuario'>Ver</a></td>" +
+                    " <td class='usuarios_trabajadora'></td>" +
                     "<td ><a href='/trabajadoras/editar/" + id + "'  class='nav-link active ' data-toggle='modal' data-target='#editar_trabajadora'>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td>");
                 $("#tabla_filtrar").css("display", "block");
+                if(usuarios.length===0){
+                    $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                }else{
+                    for(var i=0;i<usuarios.length;i++){
+                    $("td.usuarios_trabajadora").append("<p>" + usuarios[i].nombre +" "+usuarios[i].apellidos + "</p>");
+                }
+                }
+
+
             }
+
+
         });
     });
     //zona
@@ -88,29 +102,32 @@ $(document).ready(function(){
                 zonas: valor
             },
             success: function (data) {
-                console.log(data);
 
-                console.log(data.length);
                 for (var a = 0; a < data.length; a++) {
+                    var code = data[a].id;
                     var nombre = data[a].nombre;
                     var apellido = data[a].apellidos;
                     var email = data[a].email;
                     var telefono = data[a].telefono;
                     var zona = data[a].zona;
-                    var id = data[a].id;
                     $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        " <td><a href=''>ver</a></td>" +
-                        " <td><a href=''>ver</a></td>" +
-                        "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                        " <td> <a href='#'>Ver</a></td>" +
+                        " <td class='usuarios_trabajadora'></td>" +
+                        "<td><a href=''>editar</a><span> </span><a href='/trabajadoras/eliminar/" +  code+ "'>eliminar</a></td></tr>");
                     $("#tabla_filtrar").css("display", "block");
+
                 }
 
             }
         });
     });
+
+
+
+
     //limpiar
     $(".limpiar_filtro").on('click', function () {
         $("tbody.info_filtrar").html("");
@@ -145,10 +162,16 @@ $(document).ready(function(){
                 " <h5 class='card-title'>Evolución</h5>"+
                 " <p class='card-text'>"+data[0].descripcion  +"</p>"+
                 "</div>"+
+                "<div class='modal-footer'>"+
+                "<button type='button' class='close' data-dismiss='modal'>"+
+                "  <span class='span'>×</span>  </button>"+
                   "</div>");
             }
         })
     });
+
+
+
 
 
     $(".leerNotificacion").on("click", function (){

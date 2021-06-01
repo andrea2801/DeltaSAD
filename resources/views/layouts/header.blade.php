@@ -16,24 +16,30 @@
                         <ul class="navbar-nav ml-auto py-4 py-md-0">
                             @if (Auth::user()->rol_id == 1)
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{route ('trabajadoras.index')}}"><img class="nav-icon-img" src="{{asset('img/icons/trabajadora.png')}}" alt="trabajadoras">Trabajadoras</a>
+                                    <a class="nav-link text-center" href="{{route ('trabajadoras.index')}}"><img class="nav-icon-img" src="{{asset('img/icons/trabajadora.png')}}" alt="trabajadoras">Trabajadoras</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
+                                    <a class="nav-link text-center" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
                                 </li>
-                            @elseif (Auth::user()->rol_id == 2 || Auth::user()->rol_id == 3)
+                            @elseif (Auth::user()->rol_id == 2)
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="{{route ('horarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/horario.png')}}" alt="horarios">Horarios</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
+                                    <a class="nav-link text-center" href="{{route ('usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios">Usuarios</a>
                                 </li>
                             @endif
-
-
+                            @if (Auth::user()->rol_id == 3)
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link text-center" href="{{route ('busqueda_usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/buscar.png')}}" alt="horarios"> Búsqueda de usuarios</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link text-center" href="{{route ('alta_nueva')}}"><img class="nav-icon-img" src="{{asset('img/icons/familia.png')}}" alt="usuarios"> Alta nueva</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     <p class="d-none d-md-flex pt-5">Salir&nbsp;

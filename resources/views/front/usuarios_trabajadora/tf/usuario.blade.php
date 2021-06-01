@@ -4,22 +4,22 @@
 
 <div class="d-flex justify-content-md-around">
     @if(isset($usuario))
-        <div class="card bloque_general col-md-6">
+        <div class=" bg-light card bloque_general col-md-6">
             @foreach ($usuario as $u )
                 <div class="modal-header ">
                     <h3>{{$u->nombre}} {{$u->apellidos}}</h3>
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Dirección:</h3>
-                    <p>{{$u->direccion}}</p>
+                    <p class="bg-white p-3">{{$u->direccion}}</p>
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Detalle:</h3>
-                    <p>{{$u->detalle}}</p>
+                    <p class="bg-white p-3">{{$u->detalle}}</p>
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Tarea:</h3>
-                    <ul>
+                    <ul class="bg-white p-5">
                         <li><p class="text-dark">{{$u->tareas}}</p></li>
                     </ul>
 

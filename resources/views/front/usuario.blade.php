@@ -26,9 +26,10 @@
                 <button type="button" class="btn btn-link col-md-1 mt-4 pt-4" id="update">Modificar
                     usuario
                 </button>
+                <button type="button" class="btn btn-link col-md-1 mt-4 pt-4">
+                    <a href="/usuario/eliminar/{{$u->id}}" id="bajaUsuario" >Dar de baja</a>
+                </button>
 
-                <a href="" id="baja" class=" col-md-1 mt-5 pt-1" data-toggle="modal" data-target="#confirmacion">Dar de
-                    baja</a>
                 <hr class="user-underline col-md-12">
             </div>
             @endforeach

@@ -11,9 +11,9 @@ use App\Models\Flash;
 
 class HorariosController extends Controller
 {
-    public function index(Request $request){
+    public function index(){
 
-        return view('/front/horarios_cord');
+
     }
 
 
