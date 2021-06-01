@@ -82,7 +82,10 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Rol:</label>
-
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio1" value="1" required>
+                            <label class="form-check-label" for="inlineRadio1">Coordinadora</label>
+                        </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="rol_id" id="inlineRadio2" value="2" required>
                             <label class="form-check-label" for="inlineRadio2">T. Familiar</label>
