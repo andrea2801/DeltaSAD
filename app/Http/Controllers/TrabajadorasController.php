@@ -70,16 +70,17 @@ class TrabajadorasController extends Controller
 
 
     public function dniBuscar(Request $request){
-        $trabajadora = DB::table('users')
-        ->select()
-        ->where('dni', $request->dni)
-        ->get();
-        $id=$trabajadora[0]->id;
+
+            $trabajadora = DB::table('users')
+            ->select()
+            ->where('dni', $request->dni)
+            ->get();
+            $id=$trabajadora[0]->id;
             $users=DB::table('usuarios')
-        ->select('nombre','apellidos')
-        ->where('tf_asignada', $id)
-        ->orWhere('tf_asignada2',  $id)
-        ->get();
+                ->select('nombre','apellidos')
+                ->where('tf_asignada', $id)
+                ->orWhere('tf_asignada2',  $id)
+                ->get();
          $data = [ 'trabajadora' => $trabajadora, 'users' => $users];
         return $data;
 
@@ -122,7 +123,7 @@ class TrabajadorasController extends Controller
 
     }
     protected function update(Request $request){
-        $update=DB::table('users')->where('id', $request->id)->update([
+        DB::table('users')->where('id', $request->id)->update([
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'email' => $request->email,

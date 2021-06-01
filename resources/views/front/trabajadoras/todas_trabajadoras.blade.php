@@ -118,12 +118,14 @@
                  var email=data[0].email;
                  var telefono=data[0].telefono;
                  var zona=data[0].zona;
+                 var id=data[0].id;
                 $("#update_employee input[name=nombre]").val(nombre);
                 $("#update_employee input[name=apellidos]").val(apellidos);
                 $("#update_employee input[name=telefono]").val(telefono);
                 $("#update_employee input[name=email]").val(email);
                 var $radios = $('#update_employee input:radio[name=zona]');
                 $radios.filter('[value='+zona+']').prop('checked', true);
+                $("#update_employee input[name=id]").val(id);
 
              }
          });
