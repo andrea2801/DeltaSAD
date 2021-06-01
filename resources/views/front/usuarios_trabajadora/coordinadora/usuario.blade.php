@@ -24,31 +24,31 @@
                                         <p class="first-text">Teléfono:</p>
                                         <p class="content-text p-3">{{$u->telefono}}</p>
                                         <label class="edit-text mr-5">Modificar teléfono:</label>
-                                        <input class="edit-input" type="number" name="direccion" value={{$u->telefono}}>
+                                        <input class="edit-input" type="number" name="telf" value={{$u->telefono}}>
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Persona de contacto:</p>
                                         <p class="content-text p-3">{{$u->persona_contacto}}</p>
                                         <label class="edit-text mr-5">Modificar persona de contacto:</label>
-                                        <input class="edit-input" type="text" name="direccion" value={{$u->persona_contacto}}>
+                                        <input class="edit-input" type="text" name="contacto" value={{$u->persona_contacto}}>
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Detalle:</p>
                                         <textarea class="content-text p-3" rows="3" readonly>{{$u->detalle}}</textarea>
                                         <label class="edit-text mr-5">Modificar detalle:</label>
-                                        <textarea class="edit-input" rows="3">{{$u->detalle}}</textarea>
+                                        <textarea class="edit-input" name="detalle" rows="3">{{$u->detalle}}</textarea>
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Tareas:</p>
                                         <textarea class="content-text p-3" rows="3" readonly>{{$u->tareas}}</textarea>
                                         <label class="edit-text mr-5">Modificar tareas:</label>
-                                        <textarea class="edit-input" rows="3">{{$u->tareas}}</textarea>
+                                        <textarea class="edit-input" name="tareas" rows="3">{{$u->tareas}}</textarea>
                                     </div>
                                     <div class="col-12 col-md-6 edit-margin">
                                         <p class="first-text">Horas asignadas:</p>
                                         <p class="content-text p-3">{{$u->horas_asignadas}}</p>
                                         <label class="edit-text mr-5">Modificar horas:</label>
-                                        <input class="edit-input" type="number" name="direccion" value={{$u->horas_asignadas}}>
+                                        <input class="edit-input" type="number" name="horas" value={{$u->horas_asignadas}}>
                                     </div>
                                     <div class="col-12 col-md-6 edit-margin">
                                         <p class="first-text">TF asignada:</p>
@@ -62,7 +62,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </form>
                         @endforeach
                         <div class="row mt-5 justify-content-end edit-btn">
                             <div class="col-4">
@@ -72,6 +71,7 @@
                                 <a href=""><button class="btn btn-general bg-danger">Cancelar</button></a>
                             </div>
                         </div>
+                    </form>
                     </div>
 @endif
                     <div class="col-12 col-md-6 mt-5 mt-md-0">
@@ -188,6 +188,5 @@
                         text: 'Error al modificar usuario, inténtalo de nuevo :('
                     })
                 </script>
-            @endif
         @endif
     </section>
