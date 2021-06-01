@@ -77,15 +77,17 @@ $(document).ready(function(){
                     var zona = trabajadora[0].zona;
                     var id = trabajadora[0].id;
                     var rol = trabajadora[0].rol_id;
-                    if (rol===1 || rol===3) {
+                    if (rol===1) {
                         $("thead tr th.ver_usuarios").css("display","none");
+                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
                         $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
                         "<td><a href='#' onclick='trabajadoras("+id+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
-                    }else {
+                    }else if(rol===2){
                         $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
+                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
                          $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
@@ -99,6 +101,16 @@ $(document).ready(function(){
                                 $("td.usuarios_trabajadora").append("<p><a href='/usuario/"+id+"'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
                             }
                         }
+                    }else {
+                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
+                        $("thead tr th.ver_zona").css({"display":"none", "border":"none"});
+                        $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                       "<td>" + telefono + "</td>" +
+                       "<td>" + email + "</td>" +
+                       "<td>" + zona + "</td>" +
+                       " <td class='usuarios_trabajadora'></td>" +
+                       "<td><a href='#' onclick='trabajadoras("+id+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+
                     }
                     $("#tabla_filtrar").css("display", "block");
 
@@ -108,13 +120,13 @@ $(document).ready(function(){
     });
 
     //zona
-    $("#select_zonas").change(function () {
-        var valor = $("#select_zonas option:selected").val();
+    $("#select_roles").change(function () {
+        var valor = $("#select_roles option:selected").val();
         $("tbody.info_filtrar").html("");
         $.ajax({
-            url: "/trabajadoras/busqueda/zona",
+            url: "/trabajadoras/busqueda/rol",
             data: {
-                zonas: valor
+                id: valor
             },
             success: function (data) {
                 var trabajadora = data.trabajadora;
@@ -126,22 +138,31 @@ $(document).ready(function(){
                     var zona = trabajadora[a].zona;
                     var code = trabajadora[a].id;
                     var rol = trabajadora[a].rol_id;
-                    if (rol===1 || rol===3) {
-                        $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
+                    if (rol===1) {
+                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
+                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
-                        "<td>nada<td>" +
                         "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
-                    }else{
+                    }else if(rol===2){
                         $("thead tr th.ver_usuarios").css({"display":"block", "border":"none"});
+                        $("thead tr th.ver_zona").css({"display":"block", "border":"none"});
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                         "<td>" + telefono + "</td>" +
                         "<td>" + email + "</td>" +
                         "<td>" + zona + "</td>" +
                         "<td><a href='#' onclick='usuarios("+code+")' data-toggle='modal' data-target='#usuario' >ver</a><td>" +
+                        "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+
+                    }else{
+                        $("thead tr th.ver_usuarios").css({"display":"none", "border":"none"});
+                        $("thead tr th.ver_zona").css({"display":"none", "border":"none"});
+                        $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
+                        "<td>" + telefono + "</td>" +
+                        "<td>" + email + "</td>" +
                         "<td><a href='#' onclick='trabajadoras("+code+")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
 
                     }

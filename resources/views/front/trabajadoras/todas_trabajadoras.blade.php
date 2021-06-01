@@ -36,18 +36,18 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="form-group  row zona_trabajadoras">
+                            <div class="form-group  row roles_trabajadoras">
                                 <div class="col-12">
                                     <div class="col-md-12">
-                                        <label for="zonas"
-                                            class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
+                                        <label for="roles"
+                                            class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Departamento:') }}</label>
 
-                                            <select id="select_zonas" class=" col-md-6 form-select"
-                                                aria-label="Default select example" name="select_zonas">
+                                            <select id="select_roles" class=" col-md-6 form-select"
+                                                aria-label="Default select example" name="select_roles">
                                                 <option selected="" value="default">Selecciona</option>
-                                                @foreach ($zonas as $zona)
-                                                <option value='{{$zona->id}}'>{{$zona->zonas}}</option>
-                                                @endforeach
+                                                <option selected="" value="1">Coordinadora</option>
+                                                <option selected="" value="2">Trabajadora Familiar</option>
+                                                <option selected="" value="3">Trabajadora Social</option>
                                             </select>
 
                                     </div>
@@ -66,7 +66,7 @@
                         <th>Nombre y apellido</th>
                         <th>Teléfono</th>
                         <th>Email</th>
-                        <th>Zona</th>
+                        <th class="ver_zona" >Zona</th>
                         <th class="ver_usuarios" >Usuarios</th>
                         <th colspan="2">Opciones</th>
                     </tr>

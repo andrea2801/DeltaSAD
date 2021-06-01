@@ -62,10 +62,8 @@ class TrabajadorasController extends Controller
     //mostrar todas
 
     public function trabajadorasFiltrar(){
-        $zonasname = DB::table('zonas')
-            ->select('zonas','id')
-            ->get();
-        return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);
+
+        return view('front/trabajadoras/todas_trabajadoras');
     }
 
 
@@ -87,10 +85,10 @@ class TrabajadorasController extends Controller
     }
 
 
-    public function employeeByZone(Request $request){
+    public function employeeByRole(Request $request){
         $trabajadora = DB::table('users')
             ->select()
-            ->where('zona', $request->zonas)
+            ->where('rol_id', $request->id)
             ->get();
         $data = [ 'trabajadora' => $trabajadora];
         return $data;
