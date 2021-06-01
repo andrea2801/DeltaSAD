@@ -18,19 +18,19 @@
                                         <p class="first-text">Dirección:</p>
                                         <p class="content-text p-3">{{$u->direccion}}</p>
                                         <label class="edit-text mr-5">Modificar dirección:</label>
-                                        <input class="edit-input" type="text" name="direccion" value={{$u->direccion}}>
+                                        <input class="edit-input" type="text" name="direccion" value="{{$u->direccion}}">
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <p class="first-text">Teléfono:</p>
                                         <p class="content-text p-3">{{$u->telefono}}</p>
                                         <label class="edit-text mr-5">Modificar teléfono:</label>
-                                        <input class="edit-input" type="number" name="telf" value={{$u->telefono}}>
+                                        <input class="edit-input" type="number" name="telf" value="{{$u->telefono}}">
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Persona de contacto:</p>
                                         <p class="content-text p-3">{{$u->persona_contacto}}</p>
                                         <label class="edit-text mr-5">Modificar persona de contacto:</label>
-                                        <input class="edit-input" type="text" name="contacto" value={{$u->persona_contacto}}>
+                                        <input class="edit-input" type="text" name="contacto" value="{{$u->persona_contacto}}">
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Detalle:</p>
@@ -48,18 +48,19 @@
                                         <p class="first-text">Horas asignadas:</p>
                                         <p class="content-text p-3">{{$u->horas_asignadas}}</p>
                                         <label class="edit-text mr-5">Modificar horas:</label>
-                                        <input class="edit-input" type="number" name="horas" value={{$u->horas_asignadas}}>
+                                        <input class="edit-input" type="number" name="horas" value="{{$u->horas_asignadas}}">
                                     </div>
                                     <div class="col-12 col-md-6 edit-margin">
                                         <p class="first-text">TF asignada:</p>
                                         <p class="content-text p-3">{{$u->tfn}} {{$u->tfa}}</p>
                                         <label class="edit-text mr-5">Elegir nueva TF:</label>
                                         <select class="edit-input" name="tf">
-                                            <option>Elija un/a trabajador/a</option>
+
                                             @foreach ($tfs as $tf)
-                                                <option value={{$tf->id}}>{{$tf->nombre}} {{$tf->apellidos}}</option>
+                                                <option value="{{$tf->id}}" selected={{$tf->id}}>{{$tf->nombre}} {{$tf->apellidos}}</option>
                                             @endforeach
                                         </select>
+                                        <input type="hidden" name="id" value={{$u->id}}>
                                     </div>
                                 </div>
                         @endforeach
@@ -67,11 +68,12 @@
                             <div class="col-4">
                                 <button class="btn btn-general" type="submit">Guardar cambios</button>
                             </div>
+                        </form>
                             <div class="col-3">
-                                <a href=""><button class="btn btn-general bg-danger">Cancelar</button></a>
+                                <a class="btn btn-general bg-danger" id="cancel">Cancelar</a>
                             </div>
                         </div>
-                    </form>
+
                     </div>
 @endif
                     <div class="col-12 col-md-6 mt-5 mt-md-0">

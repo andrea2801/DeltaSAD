@@ -147,6 +147,57 @@ $(document).ready(function(){
         $(".edit-margin").css("margin-top", "20px")
         $(".edit-btn").css("display", "flex")
     });
+    $("#cancel").on("click", function(){
+        $(".edit-text").css("display", "none")
+        $(".edit-input").css("display", "none")
+        $(".first-text").css("display", "flex")
+        $(".content-text").css("display", "flex")
+        $(".edit-margin").css("margin-top", "0")
+        $(".edit-btn").css("display", "none")
+    })
+
+    //Baja de usuario
+    $("#bajaUsuario").on("click", function(){
+        var id=$(this).data("id");
+        console.log(id)
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+
+          swalWithBootstrapButtons.fire({
+            title: '¿Seguro que quieres eliminarlo?',
+            text: "Si lo haces no lo se podrá revertir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borra!',
+            cancelButtonText: 'No, cancela!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/usuario/eliminar/"+id,
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                    }
+                });
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'Tu usuari@ está a salvo :)',
+                'error'
+              )
+            }
+          })
+    })
     //ver un evolutivo
     $(".verEvol").click( function () {
         var id=$(this).data("idevol");
