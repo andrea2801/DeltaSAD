@@ -158,9 +158,10 @@ $(document).ready(function(){
     })
 
     //Baja de usuario
-    $("#bajaUsuario").on("click", function(){
-        var id=$(this).data("id");
-        console.log(id)
+    $("#bajaUsuario").on("click", function(event){
+        event.preventDefault();
+        const url = $(this).attr('href');
+
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: 'btn btn-success',
@@ -179,14 +180,7 @@ $(document).ready(function(){
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    url: "/usuario/eliminar/"+id,
-                    data: {
-                        id: id
-                    },
-                    success: function (data) {
-                    }
-                });
+                window.location.href = url;
             } else if (
               /* Read more about handling dismissals below */
               result.dismiss === Swal.DismissReason.cancel
