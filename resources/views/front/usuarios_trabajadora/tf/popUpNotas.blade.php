@@ -5,7 +5,7 @@
                 <h4>Crear nota</h4>
             </div>
             <div class="modal-body">
-                <form action="{{route('crear.nota')}}" method="GET" class="form needs-validation" novalidate>
+                <form action="{{route('crear.nota')}}" method="POST" class="form needs-validation" novalidate>
                     @foreach ($usuario as $u )
                     <div class="form-group row">
                         <label for="Nota" class="col-sm-12 col-form-label">Nota:</label>
@@ -21,6 +21,7 @@
                         <button type="submit" class="btn btn-primary">Añadir nota</button>
                     </div>
                     @endforeach
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
             </div>
         </div>

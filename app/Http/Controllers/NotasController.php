@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class NotasController extends Controller
 {
+
     protected function create(Request $request){
         $isCreated=DB::table('notas')->insert(array(
             'nota' => $request->nota,
@@ -17,10 +19,10 @@ class NotasController extends Controller
             'id_tf' => Auth::user()->id
         ));
 
-        if($isCreated == true){
-            return back()->with('message', 'Nota creada');
+        if($isCreated != true){
+            Session::flash('noteError', 'Error de creación');
         }
-        return back()->with('message', 'Error al crear la nota');
+        return redirect('usuario/'.$request->usuario);
     }
 
     protected function delete($id){

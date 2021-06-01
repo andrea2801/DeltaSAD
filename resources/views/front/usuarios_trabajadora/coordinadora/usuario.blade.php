@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-12 col-md-6">
                         @foreach ($usuario as $u )
-                            <form class="content-box p-5" method="GET" action={{route('usuario.update')}}>
+                            <form class="content-box p-5" method="POST" action={{route('usuario.update')}}>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-right dni">{{$u->dni}}</p>
@@ -171,4 +172,22 @@
                 </div>
             </div>
         </div>
+        @if(Session::has('umodificado'))
+            <script type="text/javascript">
+                Swal.fire({
+                     icon: 'success',
+                     title: 'Done :)',
+                     text: 'Usuario modificado'
+                 })
+             </script>
+            @elseif(Session::has('uerror'))
+                <script type="text/javascript">
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ups!',
+                        text: 'Error al modificar usuario, inténtalo de nuevo :('
+                    })
+                </script>
+            @endif
+        @endif
     </section>

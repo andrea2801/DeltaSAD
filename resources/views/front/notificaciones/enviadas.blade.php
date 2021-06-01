@@ -47,7 +47,7 @@
                                     </th>
                                     <th class="oculta">{{$n->fecha}}</th>
                                     <th class="d-flex justify-content-center">
-                                        <a href="#" id="leerNotificacion" data-toggle="modal" data-target="#ver">
+                                        <a href="#" class="verEnviada" data-noti={{$n->id}} data-toggle="modal" data-target="#ver">
                                             <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
                                         </a>
                                     </th>

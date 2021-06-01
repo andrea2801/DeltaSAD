@@ -28,16 +28,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
 Route::get('/usuario', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
 Route::get('/usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
-Route::get('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('usuario.update');
+Route::post('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('usuario.update');
 Route::get('/usuario/eliminar/{id}', [App\Http\Controllers\UsuariosController::class, 'delete'])->name('eliminar');
 
 //incidencias
-Route::get('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');
+Route::post('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');
 Route::get('/cerrar/{id}', [App\Http\Controllers\IncidenciasController::class, 'closeState'])->name('cerrar');
 Route::get('/eliminar/{id}', [App\Http\Controllers\IncidenciasController::class, 'delete'])->name('eliminar');
 
 //evolutivos
-Route::get('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::class, 'create'])->name('crear.evolutivo');
+Route::post('/evolutivos/nuevo', [App\Http\Controllers\EvolutivosController::class, 'create'])->name('crear.evolutivo');
 Route::get('/evolutivos/id', [App\Http\Controllers\EvolutivosController::class, 'view']);
 
 //trabajadoras
@@ -59,14 +59,17 @@ Route::get('/trabajadoras/busqueda/usuario', function (){
 })->name('busqueda_usuarios');
 
 //horarios
-Route::get('/horarios', [App\Http\Controllers\HorariosController::class, 'index'])->name('horarios');
+Route::get('/horarios',function (){
+    return view('front/horarios/horarios_cord');
+})->name('horarios');
 
 //notificaciones
 Route::get('/notificaciones/enviadas', [App\Http\Controllers\NotificacionesController::class, 'viewSent'])->name('notificaciones.enviadas');
-Route::get('/notificaciones/nueva', [App\Http\Controllers\NotificacionesController::class, 'create'])->name('notificaciones.nueva');
+Route::get('/notificaciones/enviadas/ver', [App\Http\Controllers\NotificacionesController::class, 'showSent'])->name('notificaciones.leerEnviada');
+Route::post('/notificaciones/nueva', [App\Http\Controllers\NotificacionesController::class, 'create'])->name('notificaciones.nueva');
 Route::get('/notificaciones/ver/', [App\Http\Controllers\NotificacionesController::class, 'show'])->name('notificaciones.ver');
 Route::get('/notificaciones/estado/', [App\Http\Controllers\NotificacionesController::class, 'changeState'])->name('notificaciones.ver');
 
 //notas
-Route::get('/notas/nueva', [App\Http\Controllers\NotasController::class, 'create'])->name('crear.nota');
+Route::post('/notas/nueva', [App\Http\Controllers\NotasController::class, 'create'])->name('crear.nota');
 Route::get('/notas/eliminar/{id}', [App\Http\Controllers\NotasController::class, 'delete'])->name('nota.eliminar');

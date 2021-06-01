@@ -10,18 +10,6 @@
                         <p class="title-user">Usuarios</p>
                     </div>
                     @foreach ($usuario as $u )
-                        <div class="modal fade" id="confirmacion">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <h4>¿Confirmas que quieres eliminar este usuario?</h4>
-                                        <button type="button" id="baja" value="{{$u->id}}"><a
-                                                href="/usuario/eliminar/{{$u->id}}">Si</a></button>
-                                        <button type="button" data-dismiss="modal">No</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-12 col-md-10">
                             <div class="row">
                                 <div class="col-12 col-md-6">
@@ -33,7 +21,9 @@
                                             <button type="button" class="btn btn-general" id="update">Modificar usuario</button>
                                         </div>
                                         <div class="col-6">
-                                            <a href="" id="baja" data-toggle="modal" data-target="#confirmacion"><button type="button" class="btn btn-general">Dar de baja</button></a>
+                                            <a href="/usuario/eliminar/{{$u->id}}" id="bajaUsuario">
+                                                <button type="button" class="btn btn-general">Dar de baja</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

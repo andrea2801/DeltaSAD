@@ -18,7 +18,8 @@
                                 </div>
                                 <div class="row d-flex align-items-center">
                                     <div class="col-12">
-                                        <p class="first-text">De:</p>
+                                        <p class="first-text from">De:</p>
+                                        <p class="first-text to">Para:</p>
                                     </div>
                                     <div class="col-12 mb-3">
                                         <p class="content-text p-3" id="creator"></p>

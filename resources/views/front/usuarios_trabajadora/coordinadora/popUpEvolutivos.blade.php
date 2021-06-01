@@ -5,7 +5,7 @@
                 <h4 >Nuevo evolutivo</h4>
             </div>
             <div class="modal-body">
-                <form action="{{route('crear.evolutivo')}}" method="GET" class="form needs-validation" novalidate>
+                <form action="{{route('crear.evolutivo')}}" method="POST" class="form needs-validation" novalidate>
                     @foreach ($usuario as $u )
                     <div class="form-group row">
                         <label for="evolucion" class="col-sm-12 col-form-label">Evolución de {{$u->nombre}} {{$u->apellidos}}:</label>
@@ -24,6 +24,7 @@
                         <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
                     @endforeach
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
             </div>
         </div>
