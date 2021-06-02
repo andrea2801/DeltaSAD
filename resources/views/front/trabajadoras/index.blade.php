@@ -35,17 +35,17 @@
                     @else
                     <img src="/img/icons/trabajadora.png" class="card-img-top" alt="...">
                     @endif
-                    <div class="card-body bg-primary">
+                    <div class="card-body bg-primary text-center">
                         <h5 class="card-title">{{$tf->nombre}}</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{$tf->dni}}</li>
-                        <li class="list-group-item">{{$tf->telefono}}</li>
-                        <li class="list-group-item">{{$tf->email}}</li>
-                        <li class="list-group-item">{{$tf->zona}}</li>
+                        <li class="list-group-item"><span>Dni: </span>{{$tf->dni}}</li>
+                        <li class="list-group-item"><span>Teléfono: </span>{{$tf->telefono}}</li>
+                        <li class="list-group-item"><span>Email: </span>{{$tf->email}}</span></li>
+                        <li class="list-group-item"><span>Zona: </span>{{$tf->zona}}</li>
                     </ul>
-                    <div>
-                        <a href="" class="card-link" data-toggle="modal" data-target="#horarios">Horarios</a>
+                    <div class="text-center">
+
                         <a href="#" onclick="usuarios({{$tf->id}})" class="card-link" data-toggle="modal"
                             data-target="#usuario">Usuarios</a>
                     </div>
@@ -53,25 +53,7 @@
                 @endforeach
                 @endif
 
-                <div class="modal fade" id="horarios">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4>Horarios</h4>
-                            </div>
-                            <div class="modal-body">
-                                <p>Lu - Ma 08:00-14:00 </p>
-                                <p>Lu - Ma 08:00-14:00 </p>
-                                <p>Lu - Ma 08:00-14:00 </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="close" data-dismiss="modal">
-                                    <span>×</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="modal fade" id="usuario">
                     <div class="modal-dialog">
                         <div id="usuariocontent" class="modal-content">
@@ -85,16 +67,16 @@
 </div>
 <!-- Pendiente que funcione desde app.js-->
 <script>
-    function usuarios(id) {
-        $.ajax({
-            url: "{{Route('trabajadoras.showTFusers')}}",
-            data: `id=${id}`,
-            type: "GET",
-            success: function (data) {
-                $("#usuariocontent").html(data);
-            }
-        });
-    }
+function usuarios(id) {
+    $.ajax({
+        url: "{{Route('trabajadoras.showTFusers')}}",
+        data: `id=${id}`,
+        type: "GET",
+        success: function (data) {
+            $("#usuariocontent").html(data);
+        }
+    });
+}
 
 </script>
 @include('layouts.footer')
