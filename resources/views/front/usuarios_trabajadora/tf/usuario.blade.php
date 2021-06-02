@@ -59,11 +59,15 @@
                                                     <div class="card-header modal-header">{{$nota->fecha}}</div>
                                                     <div class="card-body">
                                                         <h5 class="card-title text-center">Nota</h5>
-                                                        <p class="card-text text-secondary">{{substr($nota->nota,0, 13)}}
-                                                            <a href="" class="verNota text-decoration-none" data-toggle="modal" data-target="#verNota" data-idnota="{{$nota->id}}">
-                                                                <span class="text-info">...ver</span>
-                                                            </a>
-                                                        </p>
+                                                        @if(strlen($nota->nota)<=13)
+                                                        {{$nota->nota}}
+                                                      @else
+                                                      <p class="card-text text-secondary">{{substr($nota->nota,0, 13)}}
+                                                        <a href="" class="verNota text-decoration-none" data-toggle="modal" data-target="#verNota" data-idnota="{{$nota->id}}">
+                                                            <span class="text-info">...ver</span>
+                                                        </a>
+                                                    </p>
+                                                      @endif
                                                         <div class="card-footer text-right">
                                                             <a class="text-danger text-decoration-none" href="/notas/eliminar/{{$nota->id}}">Eliminar</a>
                                                         </div>
