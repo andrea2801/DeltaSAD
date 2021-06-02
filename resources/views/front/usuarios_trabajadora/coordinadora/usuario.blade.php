@@ -39,13 +39,7 @@
                             </div>
                             <div class="col-12 edit-margin">
                                 <p class="first-text">Tareas:</p>
-                                <textarea class="content-text p-3" rows="3" readonly>
-                                            @if($u->tareas == null)
-                                                No hay tareas asignadas, asignar cuanto antes.
-                                            @else
-                                                {{$u->tareas}}
-                                            @endif
-                                        </textarea>
+                                <textarea class="content-text p-3" rows="3" readonly>@if($u->tareas == null)No hay tareas asignadas, asignar cuanto antes.@else{{$u->tareas}}@endif</textarea>
                                 <label class="edit-text mr-5">Modificar tareas:</label>
                                 <textarea class="edit-input" name="tareas" rows="3">{{$u->tareas}}</textarea>
                             </div>
