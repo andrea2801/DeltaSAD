@@ -19,28 +19,42 @@
                     <p class="dni_search">Buscar por DNI:</p>
                 </div>
                 <div class="col-12 col-md-5 mb-5">
-                    <form action="#" method="GET">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                        <div class="row">
-                            <div class="col-8 col-md-6 pr-0">
-                                <input id="dni_search" type="text" class="form-control" name="dni" required autocomplete="dni">
-                            </div>
-                            <div class="col-4 col-md-6 pl-0">
-                                <button class="btn_search" type="submit"><img class="lupa" src="{{asset('img/icons/lupa.png')}}" alt="lupa"></button>
-                            </div>
+                    <div class="row">
+
+                        <div class="col-8 col-md-6 pr-0">
+                            <input id="dni_search" type="text" class="form-control" min="9" max="9" name="dni" required autocomplete="dni">
                         </div>
-                    </form>
+                        <div class="col-4 col-md-6 pl-0">
+                            <button class="btn_search" type="submit" id="search_user"><img class="lupa" src="{{asset('img/icons/lupa.png')}}" alt="lupa"></button>
+                        </div>
+                    </div>
                 </div>
-                <div class="row d-flex justify-content-center mt-5">
-                    <div class="col-10 container-border p-5">
+                <div class="col-12 col-md-3 offset-0 offset-md-1">
+                    <p class="dni_search">Buscar por Nombre y apellidos:</p>
+                </div>
+                <div class="col-12 col-md-5 mb-5">
+                    <div class="row">
+                        <div class="col-4 col-md-5 pr-0">
+                            <input id="name_search" type="text" class="form-control" name="name" required autocomplete="name" placeholder="Nombre">
+                        </div>
+                        <div class="col-4 col-md-5 pr-0">
+                            <input id="subname_search" type="text" class="form-control" name="subname" required autocomplete="subname" placeholder="Apellidos">
+                        </div>
+                        <div class="col-4 col-md-2 pl-0">
+                            <button class="btn_search" type="submit" id="search_user_name"><img class="lupa" src="{{asset('img/icons/lupa.png')}}" alt="lupa"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center mt-5 ">
+                    <div class="col-10 container-border p-5 user_info">
                         <div class="row p-5">
                             <div class="col-12 mb-4">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-                                        <p class="name-user">Mua Colmen</p>
+                                        <p class="name-user" id="user_name"></p>
                                     </div>
                                     <div class="col-12 col-md-6 text-left text-md-right">
-                                        <p class="text-general p-2">45126056X</p>
+                                        <p class="text-general p-2" id="user_dni"></p>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +66,7 @@
                                                 <p class="content-text">Dirección:</p>
                                             </div>
                                             <div class="col-12 col-md-8">
-                                                <p class="info-content text-general p-2">C/Iglesia 46, 2º2ª</p>
+                                                <p class="info-content text-general p-2" id="user_direction"></p>
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +76,7 @@
                                                 <p class="content-text">Telefóno:</p>
                                             </div>
                                             <div class="col-12 col-md-8">
-                                                <p class="info-content text-general p-2">666555444</p>
+                                                <p class="info-content text-general p-2" id="user_telf"></p>
                                             </div>
                                         </div>
                                     </div>
@@ -72,31 +86,31 @@
                                 <p class="content-text">Persona de contacto:</p>
                             </div>
                             <div class="col-12">
-                                <p class="info-content text-general p-2">María la maja: 687954123 sólo llamar por las mañanas</p>
+                                <p class="info-content text-general p-2" id="user_contact"></p>
                             </div>
                             <div class="col-12">
                                 <p class="content-text">Horas asignadas:</p>
                             </div>
                             <div class="col-12">
-                                <p class="info-content text-general p-2">9.00, 12.00</p>
+                                <p class="info-content text-general p-2" id="user_hours"></p>
                             </div>
                             <div class="col-12">
                                 <p class="content-text">Fecha de alta:</p>
                             </div>
                             <div class="col-12">
-                                <p class="info-content text-general p-2">2022/11/11</p>
+                                <p class="info-content text-general p-2" id="user_created_at"></p>
                             </div>
                             <div class="col-12">
                                 <p class="content-text">Detalle:</p>
                             </div>
                             <div class="col-12">
-                                <textarea class="info-content-txtarea info-content text-general p-2" rows="3" readonly>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim optio quos odit sint perferendis commodi repellat, nostrum consectetur perspiciatis! Maiores iure fuga expedita impedit nostrum consequuntur deleniti autem pariatur nihil.</textarea>
+                                <textarea class="info-content-txtarea info-content text-general p-2" rows="3" readonly id="user_detail"></textarea>
                             </div>
                             <div class="col-12">
                                 <p class="content-text">Tareas:</p>
                             </div>
                             <div class="col-12">
-                                <textarea class="info-content-txtarea info-content text-general p-2" rows="3" readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quis culpa eius quasi veniam velit, laborum soluta necessitatibus minus atque voluptate maiores odio minima voluptatibus reiciendis inventore voluptates. Sint, doloribus.</textarea>
+                                <textarea class="info-content-txtarea info-content text-general p-2" rows="3" readonly id="user_chores"></textarea>
                             </div>
                         </div>
                     </div>

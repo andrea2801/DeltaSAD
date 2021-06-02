@@ -26,10 +26,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //usuarios
 Route::get('/usuarios', [App\Http\Controllers\UsuariosController::class, 'index'])->name('usuarios');
-Route::get('/usuario', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
 Route::get('/usuario/{id}', [App\Http\Controllers\UsuariosController::class, 'show'])->name('usuario');
 Route::post('/update', [App\Http\Controllers\UsuariosController::class, 'update'])->name('usuario.update');
+Route::post('/create', [App\Http\Controllers\UsuariosController::class, 'create'])->name('usuario.crear');
 Route::get('/usuario/eliminar/{id}', [App\Http\Controllers\UsuariosController::class, 'delete'])->name('eliminar');
+Route::get('/usuarios/busqueda/dni', [App\Http\Controllers\UsuariosController::class, 'searchByDNI'])->name('usuarios.busqueda.dni');
+Route::get('/usuarios/busqueda/nombre', [App\Http\Controllers\UsuariosController::class, 'searchByName'])->name('usuarios.busqueda.nombre');
 
 //incidencias
 Route::post('/indicendias/nueva', [App\Http\Controllers\IncidenciasController::class, 'create'])->name('crear.incidencia');
@@ -44,7 +46,7 @@ Route::get('/evolutivos/id', [App\Http\Controllers\EvolutivosController::class, 
 Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class, 'index'])->name('trabajadoras.index');
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
 Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadorasFiltrar'])->name('trabajadoras.todas');
-Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dniBuscar']);
+Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dniBuscar'])->name('trabajadoras.dni');
 Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'employeeByZone'])->name('trabajadoras.zona');
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);

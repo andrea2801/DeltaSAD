@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\IncidenciasController;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class UsuariosController extends Controller
@@ -21,7 +20,6 @@ class UsuariosController extends Controller
     }
 
     protected function create(Request $request){
-
         $insert = DB::table('usuarios')->insert(
             array(
                 'nombre' => $request->name,
@@ -33,19 +31,22 @@ class UsuariosController extends Controller
                 'detalle' => $request->detail,
                 'tareas' => $request->chores,
                 'horas_asignadas'=> $request->hours,
-                'archivos_adjuntos'=> $request->file,
-                'tf_asignada'=> $request->tf1,
-                'tf_asignada2' => $request->tf2,
-                'zona' => $request->zone
+                'zona' => $request->zone,
+                'created_at' => Carbon::now(),
             )
         );
-        return redirect(); //redireccionar a la pag donde estabas estaria bien un popup conforme se ha creadp
+        if($insert == true){
+            Session::flash('created', 'creado');
+            return back()->withInput();
+        }
+        Session::flash('createdError', 'no creado');
+        return back()->withErrors; //redireccionar a la pag donde estabas estaria bien un popup conforme se ha creadp
     }
 
     protected function show(Request $request,$user_id){
         if( Auth::user()->rol_id == 1 || Auth::user()->rol_id == 3 ){
             $usuario = DB::table('usuarios')
-                            ->join('users', 'users.id', '=','usuarios.tf_asignada')
+                            ->leftjoin('users', 'users.id', '=','usuarios.tf_asignada')
                             ->select('usuarios.*', DB::raw('users.nombre AS tfn, users.apellidos AS tfa'))
                             ->where('usuarios.id', $user_id)
                             ->get();
@@ -62,7 +63,6 @@ class UsuariosController extends Controller
                             ->where('id_usuario', $user_id)
                             ->get();
             $tf=DB::table('users')->select('id', 'nombre', 'apellidos')->where('zona', Auth::user()->zona)->where('rol_id', 2)->get();
-
             $query=compact('usuario', 'incidencias', 'evolutivos', 'tf');
             if(in_array(true, $query)){
                 return view('front/usuario')->with('usuario', $usuario)->with('incidencias', $incidencias)->with('evolutivos', $evolutivos)->with('tfs', $tf);
@@ -101,7 +101,8 @@ class UsuariosController extends Controller
             'detalle' => $request->detalle,
             'tareas' => $request->tareas,
             'tf_asignada' => $request->tf,
-            'horas_asignadas' => $request->horas
+            'horas_asignadas' => $request->horas,
+            'updated_at' => Carbon::now(),
         ]);
 
         if($update == true){
@@ -110,6 +111,16 @@ class UsuariosController extends Controller
             Session::flash('uerror', 'Error al modificar usuario');
         }
         return back()->withInput();
+    }
+
+    protected function searchByDNI(Request $request){
+        $user=DB::table('usuarios')->where('dni', $request->dni)->get();
+        return $user;
+    }
+
+    protected function searchByName(Request $request){
+        $user=DB::table('usuarios')->where('nombre', $request->nombre)->where('apellidos', $request->apellidos)->get();
+        return $user;
     }
 
     protected function delete($id){

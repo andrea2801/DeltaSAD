@@ -26,7 +26,7 @@
                                         <label for="dni"
                                             class="col-4 col-md-4 col-form-label text-md-right dni_view">{{ __('Dni:') }}</label>
                                         <div class="col-md-6">
-                                            <input id="dni_search" type="text" class="form-control col-md-8" name="dni"
+                                            <input id="employee_search" type="text" class="form-control col-md-8" name="dni"
                                                 required="" autocomplete="dni">
                                             <img class="buscar_dni col-md-4" src="{{asset('img/icons/buscar.png')}}"
                                                 alt="buscar">
@@ -41,7 +41,6 @@
                                     <div class="col-md-12">
                                         <label for="zonas"
                                             class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
-
                                             <select id="select_zonas" class=" col-md-6 form-select"
                                                 aria-label="Default select example" name="select_zonas">
                                                 <option selected="" value="default">Selecciona</option>
