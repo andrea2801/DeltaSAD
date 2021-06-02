@@ -12,7 +12,7 @@
                     <p class="first-text">Work in progress</p>
                     <hr>
                 </div>
-                <div class="col-12 col-md-10 mt-3 ml-5 d-flex justify-content-center">
+                <div class="col-10 mt-3 d-flex justify-content-center">
                 <img src="{{asset('img/progress.gif')}}" alt="">
                 </div>
             </div>
