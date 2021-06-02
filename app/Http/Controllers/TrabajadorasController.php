@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Auth\Events\Validated;
 
 
 class TrabajadorasController extends Controller
@@ -20,7 +21,26 @@ class TrabajadorasController extends Controller
     }
 
     public function store(Request $request){
-        if($request->hasFile('img')){
+
+        $v = request()->validate([
+
+                'dni' => 'required|unique:users,dni',
+                'telefono' => 'numeric|digits:9',
+                'email' => 'email|unique:users,email',
+
+        ], [ 'dni.unique' => 'Dni duplicado',
+             'telefono.digits' => 'Máximo 9 digitos',
+             'telefono.numeric' => 'Solo números',
+             'email.unique' => 'Email ya existe',
+
+
+
+
+
+        ]);
+
+
+            if($request->hasFile('img')){
             $validator = Validator::make($request->all(),[
                 "img"    => "dimensions:max_width=250,max_height=250,'image','mimes:jpg,png,jpeg,gif'",
 
@@ -43,6 +63,7 @@ class TrabajadorasController extends Controller
             $inputs['password']=bcrypt($inputs['password']);
             //$inputs['img']=$name;
             User::create($inputs);
+            //return back()->with('succes','Trabajadora dada de alta correctamente.');
             return redirect(route('trabajadoras.index'));
 
     }
