@@ -1,7 +1,6 @@
 @if(isset($usuario))
     @include('front.usuarios_trabajadora.coordinadora.popUpEvolutivos', ['usuario' => $usuario, 'tfs' => $tfs])
     @include('front.usuarios_trabajadora.coordinadora.popUpIncidencias', ['usuario' => $usuario, 'tfs' => $tfs])
-    @include('front.usuarios_trabajadora.coordinadora.popUpVerEvolutiva')
     <section class="cord_user">
         <div class="row container-principal">
             <div class="col-12">
@@ -81,7 +80,7 @@
                             <div class="col-12 mt-5 mt-md-0">
                                 <div class="row justify-content-center">
                                     <div class="col-9">
-                                        <p class="first-home-txt">Incidencias</p>
+                                        <p class="first-text">Incidencias</p>
                                     </div>
                                     <div class="col-2 text-right">
                                         <a href="#" class="card-link mt-5" data-toggle="modal" data-target="#incidencias">
@@ -137,11 +136,16 @@
                     </div>
                     <div class="col-12 mt-5">
                         @if(isset($evolutivos))
+                        <div class="modal fade" id="verEvolutiva">
+                            <div class="modal-dialog">
+                                <div class="modal-content content-box" id="evolutivoContent"></div>
+                            </div>
+                        </div>
                             <div class="row mt-5">
                                 <div class="col-12">
                                     <div class="row justify-content-center">
                                         <div class="col-9">
-                                            <p class="first-home-txt">Evolutivos</p>
+                                            <p class="first-text">Evolutivos</p>
                                         </div>
                                         <div class="col-2 text-right">
                                             <a href="#" class="card-link mt-5" data-toggle="modal" data-target="#evolutivos">
@@ -155,12 +159,14 @@
                                     @else
                                         <div class="row justify-content-center">
                                             @foreach ($evolutivos as $evolutivo)
-                                                    <div class="col-5 card border-primary mb-3 p-0 mr-4 ml-5" style="max-width: 18rem;">
-                                                        <div class="card-header header_popup">{{$evolutivo->fecha_creacion}}</div>
-                                                        <div class="card-body text-primary popup_body">
-                                                            <h5 class="card-title">Evolución</h5>
-                                                            <p class="card-text">{{substr($evolutivo->descripcion,0, 13)}}
-                                                                <a href="" class="verEvol" style="color:blue !important" data-toggle="modal" data-target="#verEvolutiva" data-idevol="{{$evolutivo->id}}">...ver</a>
+                                                    <div class="col-10 col-md-3 card mb-3 p-0 mr-4 ml-5">
+                                                        <div class="card-header modal-header">{{$evolutivo->fecha_creacion}}</div>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title text-center">Evolución</h5>
+                                                            <p class="card-text text-secondary">{{substr($evolutivo->descripcion,0, 13)}}
+                                                                <a href="" class="verEvol text-decoration-none" data-toggle="modal" data-target="#verEvolutiva" data-idevol="{{$evolutivo->id}}">
+                                                                    <span class="text-info">...ver</span>
+                                                                </a>
                                                             </p>
                                                         </div>
                                                     </div>

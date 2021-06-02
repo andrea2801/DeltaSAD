@@ -32,4 +32,11 @@ class NotasController extends Controller
         }
         return back()->with('message', 'Error al eliminar la nota');
     }
+
+    protected function view(Request $request){
+        $notas=DB::table('notas')
+                ->where('id', $request->id)
+                ->get();
+        return $notas;
+    }
 }

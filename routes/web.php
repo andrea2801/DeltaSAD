@@ -74,3 +74,4 @@ Route::get('/notificaciones/estado/', [App\Http\Controllers\NotificacionesContro
 //notas
 Route::post('/notas/nueva', [App\Http\Controllers\NotasController::class, 'create'])->name('crear.nota');
 Route::get('/notas/eliminar/{id}', [App\Http\Controllers\NotasController::class, 'delete'])->name('nota.eliminar');
+Route::get('/notas/id', [App\Http\Controllers\NotasController::class, 'view']);

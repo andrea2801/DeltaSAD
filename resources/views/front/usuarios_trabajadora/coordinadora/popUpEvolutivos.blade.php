@@ -5,26 +5,36 @@
                 <h4>Nuevo evolutivo</h4>
             </div>
             <div class="modal-body">
-                <form action="{{route('crear.evolutivo')}}" method="POST" class="form needs-validation" novalidate>
+                <form action="{{route('crear.evolutivo')}}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     @foreach ($usuario as $u )
-                    <div class="form-group row">
-                        <label for="evolucion" class="col-12 col-form-label">Evolución de {{$u->nombre}} {{$u->apellidos}}:</label>
-                        <div class="col-12">
-                            <textarea name="evolucion" type="textarea" class="form-control" required rows="4"></textarea>
-                            <div class="invalid-feedback">
-                                Añadir evolutivo.
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <p>Evolución de <strong>{{$u->nombre}} {{$u->apellidos}}</strong>:</p>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="evolucion" class="form-control" maxlength=150 rows="4" required></textarea>
+                            </div>
+                            <input type="hidden" name="usuario" value="{{$u->id}}">
+                            @foreach ($tfs as $tf )
+                                <input type="hidden" name="tf" value={{$tf->id}}>
+                            @endforeach
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-10">
+                                    <div class="row all-content d-flex justify-content-end">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-general">Crear</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button data-dismiss='modal' type="button" class="btn btn-general bg-danger">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <input type="hidden" name="usuario" value="{{$u->id}}">
-                        @foreach ($tfs as $tf )
-                            <input type="hidden" name="tf" value={{$tf->id}}>
-                        @endforeach
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-general">Crear</button>
-                    </div>
                     @endforeach
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
             </div>
         </div>

@@ -1,62 +1,82 @@
-
-
 @include('front.usuarios_trabajadora.tf.popUpNotas', ['usuario' => $usuario])
-
-<div class="d-flex justify-content-md-around">
-    @if(isset($usuario))
-        <div class=" bg-light card bloque_general col-md-6">
-            @foreach ($usuario as $u )
-                <div class="modal-header ">
-                    <h3>{{$u->nombre}} {{$u->apellidos}}</h3>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Dirección:</h3>
-                    <p class="bg-white p-3">{{$u->direccion}}</p>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Detalle:</h3>
-                    <p class="bg-white p-3">{{$u->detalle}}</p>
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Tarea:</h3>
-                    <ul class="bg-white p-5">
-                        <li><p class="text-dark">{{$u->tareas}}</p></li>
-                    </ul>
-
-                </div>
-            @endforeach
+<section>
+    <div class="row container-principal">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                @if(isset($usuario))
+                    @foreach ($usuario as $u )
+                        <div class="col-12">
+                            <p class="title-user">Usuarios</p>
+                        </div>
+                        <div class="col-12 mb-5">
+                            <p class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</p>
+                            <hr>
+                        </div>
+                            <div class="col-12 col-md-10 content-box p-5 mb-5 mt-5">
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <p class="first-text">Dirección:</p>
+                                        <p class="content-text p-3">{{$u->direccion}}</p>
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <p class="first-text">Detalle:</p>
+                                        <textarea class="content-text p-3" rows="4" readonly>{{$u->detalle}}</textarea>
+                                    </div>
+                                    <div class="col-12 mt-2">
+                                        <p class="first-text">Tarea:</p>
+                                        <textarea class="content-text p-3" rows="4" readonly>{{$u->tareas}}</textarea>
+                                    </div>
+                                </div>
+                    @endforeach
+                @endif
+            </div>
+            <div class="col-12 mt-5">
+                    @if(isset($notas))
+                        <div class="modal fade" id="verNota">
+                            <div class="modal-dialog">
+                                <div class="modal-content content-box" id="notaContent"></div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-9">
+                                        <p class="first-text">Notas</p>
+                                    </div>
+                                    <div class="col-2 text-right">
+                                        <a href="#" class="card-link mt-5" data-toggle="modal" data-target="#notas">
+                                            <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                @if(count($notas) == 0)
+                                    <p>No hay notas para mostrar.</p>
+                                @else
+                                    <div class="row justify-content-center">
+                                        @foreach ($notas as $nota)
+                                                <div class="col-10 col-md-3 card mb-3 p-0 mr-4 ml-5">
+                                                    <div class="card-header modal-header">{{$nota->fecha}}</div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title text-center">Nota</h5>
+                                                        <p class="card-text text-secondary">{{substr($nota->nota,0, 13)}}
+                                                            <a href="" class="verNota text-decoration-none" data-toggle="modal" data-target="#verNota" data-idnota="{{$nota->id}}">
+                                                                <span class="text-info">...ver</span>
+                                                            </a>
+                                                        </p>
+                                                        <div class="card-footer text-right">
+                                                            <a class="text-danger text-decoration-none" href="/notas/eliminar/{{$nota->id}}">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+            </div>
         </div>
-    @endif
-
-</div>
-<div class="nota col-md-12 ml-5">
-    <div class="d-flex justify-content-between">
-        <h2 class="subtitle-user">Notas:</h2>
-        <a href="#" class="card-link" data-toggle="modal" data-target="#notas">
-            <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
-        </a>
     </div>
-    <hr class="user-underline" >
-    @if(isset($notas))
-        @if(count($notas) == 0)
-            <h3>No hay notas creadas</h3>
-        @else
-            @foreach ($notas as $nota )
-                <div class="col-md-12 card border-primary mb-3 p-0" style="max-width: 18rem;">
-                    <div class="nombre card-header header_popup">
-                        <p>{{$nota->nombre}} {{$nota->apellidos}}:</p>
-                    </div>
-                    <div class="card-body text-primary popup_body">
-                        <p class="text-dark"> {{$nota->nota}}...</p>
-                        <p class="text-dark">El: {{$nota->fecha}}</p>
-                    </div>
-                    <div class="card-body">
-                        <a href="/notas/eliminar/{{$nota->id}}">Eliminar</a>
-                    </div>
-                </div>
-            @endforeach
-        @endif
-    @endif
-</div>
-
+</section>
 

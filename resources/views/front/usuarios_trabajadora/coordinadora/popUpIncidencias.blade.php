@@ -1,37 +1,43 @@
 <div class="modal fade" id="incidencias">
     <div class="modal-dialog">
         <div class="modal-content">
-            @foreach ($usuario as $u )
             <div class="modal-header">
                 <h4 >Nueva incidencia</h4>
             </div>
-            <div class="modal-body">
-                 <p>Usuario: {{$u->nombre}} {{$u->apellidos}}</p>
-            </div>
+            @foreach ($usuario as $u )
+                <div class="modal-body">
+                    <form action="{{route('crear.incidencia')}}" method="POST">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <strong>Descripción:</strong>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="descripcion" type="textarea" class="form-control" rows="5" required></textarea>
+                            </div>
 
-            <div class="modal-body">
-                <form action="{{route('crear.incidencia')}}" method="POST" class="form needs-validation" novalidate>
-                    <div class="form-group row">
-                        <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
-                        <div class="col-sm-12">
-                            <textarea name="descripcion" type="textarea" class="form-control" required rows="4"></textarea>
-                            <div class="invalid-feedback">
-                                Añadir descripción.
+                            <input type="hidden" name="usuario" value="{{$u->id}}">
+            @endforeach
+                            @foreach ($tfs as $tf )
+                                <input type="hidden" name="tf" value={{$tf->id}}>
+                            @endforeach
+                        </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-10">
+                                    <div class="row all-content d-flex justify-content-end">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-general">Crear</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button data-dismiss='modal' type="button" class="btn btn-general bg-danger">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <input type="hidden" name="usuario" value="{{$u->id}}">
-                        @endforeach
-                        @foreach ($tfs as $tf )
-                            <input type="hidden" name="tf" value={{$tf->id}}>
-                        @endforeach
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Crear</button>
-                    </div>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                </form>
-            </div>
+                    </form>
+                </div>
         </div>
     </div>
 </div>

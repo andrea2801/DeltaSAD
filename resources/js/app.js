@@ -184,7 +184,6 @@ $(document).ready(function(){
         $(".edit-margin").css("margin-top", "0")
         $(".edit-btn").css("display", "none")
     })
-
     //Baja de usuario
     $("#bajaUsuario").on("click", function(event){
         event.preventDefault();
@@ -232,22 +231,61 @@ $(document).ready(function(){
             },
             success: function (data) {
                 console.log(data);
-                $("#evolutivoContent").html("<div class='modal-header header_popup'>" +
-                    " <h4>Evolutiva del " + data[0].fecha_creacion + "</h4>" +
+                $("#evolutivoContent").html(
+                    "<div class='modal-header'>" +
+                        "<div class='row all-content'>" +
+                             "<div class='col-12 justify-content-end d-flex'>"+
+                                "<button type='button' class='close' data-dismiss='modal'><img class='close-cross' src='/img/icons/X.png'></button>"+
+                            "</div>" +
+                            "<div class='col-12 text-center'>"+
+                                "<h4>Evolutiva del " + data[0].fecha_creacion + "</h4>" +
+                            "</div>"+
+                        "</div>"+
                     "</div>" +
-                    "<div class='modal-body '>" +
-                    "<div class='card-body text-primary popup_body'>" +
-                    " <h5 class='card-title'>Evolución</h5>" +
-                    " <p class='card-text'>" + data[0].descripcion + "</p>" +
-                    "</div>" +
-                    "<div class='modal-footer'>" +
-                    "<button type='button' class='close' data-dismiss='modal'>" +
-                    "  <span class='span'>×</span>  </button>" +
+                    "<div class='row modal-body'>" +
+                        "<div class='col-12'>"+
+                            "<h4 class='text-center'>Nota</h4>" +
+                        "</div>" +
+                        "<div class='col-12'>"+
+                            "<textarea class='text-secondary bg-transparent border-0' rows='4' readonly>" + data[0].descripcion + "</textarea>" +
+                        "</div>" +
                     "</div>");
             }
         })
     });
-
+    //ver un nota
+    $(".verNota").click(function () {
+        var id = $(this).data("idnota");
+        console.log(id);
+        $.ajax({
+            url: "/notas/id",
+            data: {
+                id: id
+            },
+            success: function (data) {
+                console.log(data);
+                $("#notaContent").html(
+                    "<div class='modal-header'>" +
+                        "<div class='row all-content'>" +
+                             "<div class='col-12 justify-content-end d-flex'>"+
+                                "<button type='button' class='close' data-dismiss='modal'><img class='close-cross' src='/img/icons/X.png'></button>"+
+                            "</div>" +
+                            "<div class='col-12 text-center'>"+
+                                "<h4>" + data[0].fecha + "</h4>" +
+                            "</div>"+
+                        "</div>"+
+                    "</div>" +
+                    "<div class='row modal-body'>" +
+                        "<div class='col-12'>"+
+                            "<h4 class='text-center'>Nota</h4>" +
+                        "</div>" +
+                        "<div class='col-12'>"+
+                            "<textarea class='text-secondary bg-transparent border-0' rows='4' readonly>" + data[0].nota + "</textarea>" +
+                        "</div>" +
+                    "</div>");
+            }
+        })
+    });
 
 
 
