@@ -493,5 +493,8 @@ function showUser(data){
         $("#user_chores").text(data[0].tareas)
     }
 }
+$("#cross").on("click", function () {
+    $(".user_info").css("display", "none")
+});
 
 
