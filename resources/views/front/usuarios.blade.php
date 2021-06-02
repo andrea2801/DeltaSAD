@@ -12,9 +12,11 @@
                     <div class="col-6 col-md-10">
                        <p class="subtitle-user">Tus usuarios:</p>
                     </div>
-                    <div class="col-6 col-md-10">
-                        <a class="nav-link text-center" href="{{route ('busqueda_usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/buscar.png')}}" alt="horarios"> Búsqueda de usuarios</a>
-                     </div>
+                    @if (Auth::user()->rol_id == 1)
+                        <div class="col-6 col-md-10">
+                            <a class="nav-link text-center" href="{{route ('busqueda_usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/buscar.png')}}" alt="horarios"> Búsqueda de usuarios</a>
+                        </div>
+                    @endif
                 </div>
                 <hr>
                 <div class="col-12 col-md-10 mt-3 ml-5">

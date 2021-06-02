@@ -160,8 +160,8 @@ $(document).ready(function () {
     });
 
     //zona
-    $("#select_zonas").on("change",function () {
-        var valor = $("#select_zonas option:selected").val();
+    $("#select_roles").change(function () {
+        var valor = $("#select_roles option:selected").val();
         $("tbody.info_filtrar").html("");
         $.ajax({
             url: "/trabajadoras/busqueda/rol",
@@ -178,6 +178,7 @@ $(document).ready(function () {
                     var zona = trabajadora[a].zona;
                     var code = trabajadora[a].id;
                     var rol = trabajadora[a].rol_id;
+
                     if (rol === 1) {
                         $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
                             "<th>Teléfono</th>" +
@@ -214,7 +215,9 @@ $(document).ready(function () {
                             "<td>" + email + "</td>" +
                             "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
                     }
+
                     $("#tabla_filtrar").css("display", "block");
+
                 }
             }
         });
