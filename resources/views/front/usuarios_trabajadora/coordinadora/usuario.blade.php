@@ -39,7 +39,13 @@
                                     </div>
                                     <div class="col-12 edit-margin">
                                         <p class="first-text">Tareas:</p>
-                                        <textarea class="content-text p-3" rows="3" readonly>{{$u->tareas}}</textarea>
+                                        <textarea class="content-text p-3" rows="3" readonly>
+                                            @if($u->tareas == null)
+                                                No hay tareas asignadas, asignar cuanto antes.
+                                            @else
+                                                {{$u->tareas}}
+                                            @endif
+                                        </textarea>
                                         <label class="edit-text mr-5">Modificar tareas:</label>
                                         <textarea class="edit-input" name="tareas" rows="3">{{$u->tareas}}</textarea>
                                     </div>
@@ -51,7 +57,13 @@
                                     </div>
                                     <div class="col-12 col-md-6 edit-margin">
                                         <p class="first-text">TF asignada:</p>
-                                        <p class="content-text p-3">{{$u->tfn}} {{$u->tfa}}</p>
+                                        <p class="content-text p-3">
+                                            @if($u->tfn == null)
+                                                No tiene tf asignada
+                                            @else
+                                                {{$u->tfn}} {{$u->tfa}}
+                                            @endif
+                                        </p>
                                         <label class="edit-text mr-5">Elegir nueva TF:</label>
                                         <select class="edit-input" name="tf">
 
@@ -67,12 +79,27 @@
                             <div class="col-4">
                                 <button class="btn btn-general" type="submit">Guardar cambios</button>
                             </div>
-                        </form>
-                            <div class="col-3">
-                                <a class="btn btn-general bg-danger" id="cancel">Cancelar</a>
+                    </form>
+                    <div class="col-3">
+                        <a class="btn btn-general bg-danger" id="cancel">Cancelar</a>
+                    </div>
+                </div>
+
+            </div>
+            @endif
+            <div class="col-12 col-md-6 mt-5 mt-md-0">
+                <div class="row">
+                    <div class="col-12 mt-5 mt-md-0">
+                        <div class="row justify-content-center">
+                            <div class="col-9">
+                                <p class="first-home-txt">Incidencias</p>
+                            </div>
+                            <div class="col-2 text-right">
+                                <a href="#" class="card-link mt-5" data-toggle="modal" data-target="#incidencias">
+                                    <img class="mas" src="{{asset('img/icons/mas.png')}}" alt="mas">
+                                </a>
                             </div>
                         </div>
-
                     </div>
 @endif
                     <div class="col-12 col-md-6 mt-5 mt-md-0">
@@ -175,26 +202,33 @@
                                     @endif
                                 </div>
                             </div>
+                            @endforeach
+                        </div>
                         @endif
                     </div>
                 </div>
+                @endif
             </div>
         </div>
-        @if(Session::has('umodificado'))
-            <script type="text/javascript">
-                Swal.fire({
-                     icon: 'success',
-                     title: 'Done :)',
-                     text: 'Usuario modificado'
-                 })
-             </script>
-            @elseif(Session::has('uerror'))
-                <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ups!',
-                        text: 'Error al modificar usuario, inténtalo de nuevo :('
-                    })
-                </script>
-        @endif
-    </section>
+    </div>
+    </div>
+    @if(Session::has('umodificado'))
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'success',
+            title: 'Done :)',
+            text: 'Usuario modificado'
+        })
+
+    </script>
+    @elseif(Session::has('uerror'))
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Ups!',
+            text: 'Error al modificar usuario, inténtalo de nuevo :('
+        })
+
+    </script>
+    @endif
+</section>

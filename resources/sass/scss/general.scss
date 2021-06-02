@@ -63,6 +63,9 @@ h4{
     box-shadow: 0px 0px 19px 3px rgba(29,78,142,0.8) !important;
     background-color: #F3F3F3 !important;
 }
+.content-box-red {
+    box-shadow: 1px 1px 1px 1px rgba(221, 59, 38, 0.8);
+}
 .swal2-styled.swal2-confirm{
     background-color: #2679B9 !important;
 }
@@ -88,6 +91,10 @@ section{
         max-width: 1440px !important;
         margin: 0 auto;
         margin: 5% auto 5%;
+    }
+    .text-general{
+        font-size: 18px;
+        color: #1F1F1F;
     }
     .content-text{
         font-size: 18px;
@@ -129,6 +136,9 @@ section{
             font-size: 14px !important;
         }
         .content-text{
+            font-size: 14px;
+        }
+        .text-general{
             font-size: 14px;
         }
         .first-text{

@@ -8,10 +8,15 @@
                 <div class="col-12 col-md-10">
                     <p class="title-user">Usuarios</p>
                 </div>
-                <div class="col-12 col-md-10">
-                    <p class="subtitle-user">Tus usuarios:</p>
-                    <hr>
+                <div class="col-12 col-md-10 d-flex justify-content-between">
+                    <div class="col-6 col-md-10">
+                       <p class="subtitle-user">Tus usuarios:</p>
+                    </div>
+                    <div class="col-6 col-md-10">
+                        <a class="nav-link text-center" href="{{route ('busqueda_usuarios')}}"><img class="nav-icon-img" src="{{asset('img/icons/buscar.png')}}" alt="horarios"> Búsqueda de usuarios</a>
+                     </div>
                 </div>
+                <hr>
                 <div class="col-12 col-md-10 mt-3 ml-5">
                     @foreach ($usuarios as $usuario)
                       <ul class="col-12 col-md-3 mt-2 ml-5">

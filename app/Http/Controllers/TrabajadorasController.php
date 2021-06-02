@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Flash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
@@ -47,16 +47,17 @@ class TrabajadorasController extends Controller
 
     }
 
-
     protected function showTFS(){
        $tfs = DB::table('users')->where('rol_id', 2)->where('zona', Auth::user()->zona)->get();
        return $tfs;
     }
-    protected function showTFusers(Request $request){
-        //dd($_GET['id']);
-        $users=DB::table('usuarios')->where('tf_asignada', $_GET['id'])->orWhere('tf_asignada2', $_GET['id'])->get();
-        return view('front/trabajadoras/show')->with('users', $users);
 
+    protected function showTFusers(Request $request){
+        $users=DB::table('usuarios')->select('id', 'nombre', 'apellidos', 'direccion', 'telefono', 'detalle', 'tareas')->where('tf_asignada', $_GET['id'])->orWhere('tf_asignada2', $_GET['id'])->get();
+        if($users == false){
+            Session::flash('error', 'error al obtener datos');
+        }
+        return view('front/trabajadoras/show')->with('users', $users);
     }
 
     //mostrar todas
@@ -68,20 +69,23 @@ class TrabajadorasController extends Controller
 
 
     public function dniBuscar(Request $request){
-
-            $trabajadora = DB::table('users')
-            ->select()
+        $trabajadora = DB::table('users')
             ->where('dni', $request->dni)
             ->get();
+
+        if(count($trabajadora) == 0){
+            $data = [ 'trabajadora' => null];
+        } else {
             $id=$trabajadora[0]->id;
             $users=DB::table('usuarios')
                 ->select('nombre','apellidos')
                 ->where('tf_asignada', $id)
                 ->orWhere('tf_asignada2',  $id)
                 ->get();
-         $data = [ 'trabajadora' => $trabajadora, 'users' => $users];
-        return $data;
+            $data = [ 'trabajadora' => $trabajadora, 'users' => $users];
+        }
 
+        return $data;
     }
 
 

@@ -61,76 +61,107 @@ $(document).ready(function () {
     });
     //FILTRAR TRABAJADORAS
     //dni
-    $("img.buscar_dni").click(function () {
-        var valor = $(this).prev().val();
-        $("tbody.info_filtrar").html("");
-        $.ajax({
-            url: "/trabajadoras/busqueda/dni",
-            data: {
-                dni: valor
-            },
-            success: function (data) {
-                var trabajadora = data.trabajadora;
-                var usuarios = data.users;
-                var nombre = trabajadora[0].nombre;
-                var apellido = trabajadora[0].apellidos;
-                var email = trabajadora[0].email;
-                var telefono = trabajadora[0].telefono;
-                var zona = trabajadora[0].zona;
-                var id = trabajadora[0].id;
-                var rol = trabajadora[0].rol_id;
-                if (rol === 1) {
-                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
-                        "<th>Teléfono</th>" +
-                        "<th>Email</th>" +
-                        "<th>Zona</th>" +
-                        "<th colspan='2'>Opciones</th>");
-                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td>" + zona + "</td>" +
-                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
-                } else if (rol === 2) {
-                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
-                        "<th>Teléfono</th>" +
-                        "<th>Email</th>" +
-                        "<th>Zona</th>" +
-                        "<th>Usuarios</th>" +
-                        "<th colspan='2'>Opciones</th>");
-                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td>" + zona + "</td>" +
-                        " <td class='usuarios_trabajadora'></td>" +
-                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
-                    if (usuarios.length === 0 && rol === 2) {
-                        $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+    $(".buscar_dni").on("click", function () {
+        var valor = $("#employee_search").val();
+        if(valor.match(/^[XxTtYyZz]{1}[0-9]{7}[a-zA-Z]{1}$/) || valor.match(/^\d{8}[a-zA-Z]{1}$/)){
+            $("tbody.info_filtrar").html("");
+            $.ajax({
+                url: "/trabajadoras/busqueda/dni",
+                data: {
+                    dni: valor
+                },
+                success: function (data) {
+                    if(data.trabajadora == null){
+                        $("#tabla_filtrar").css("display", "none");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Este usuario no existe!',
+                            footer: 'Asegúrate de tener el DNI correcto',
+                            showClass: {
+                              popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                              popup: 'animate__animated animate__fadeOutUp'
+                            }
+                          })
                     } else {
-                        for (var i = 0; i < usuarios.length; i++) {
-                            $("td.usuarios_trabajadora").append("<p><a href='/usuario/" + id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
+                        var trabajadora = data.trabajadora;
+                        var usuarios = data.users;
+                        var nombre = trabajadora[0].nombre;
+                        var apellido = trabajadora[0].apellidos;
+                        var email = trabajadora[0].email;
+                        var telefono = trabajadora[0].telefono;
+                        var zona = trabajadora[0].zona;
+                        var id = trabajadora[0].id;
+                        var rol = trabajadora[0].rol_id;
+                        if (rol === 1) {
+                            $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                                "<th>Teléfono</th>" +
+                                "<th>Email</th>" +
+                                "<th>Zona</th>" +
+                                "<th colspan='2'>Opciones</th>");
+                            $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                                "<td>" + telefono + "</td>" +
+                                "<td>" + email + "</td>" +
+                                "<td>" + zona + "</td>" +
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                        } else if (rol === 2) {
+                            $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                                "<th>Teléfono</th>" +
+                                "<th>Email</th>" +
+                                "<th>Zona</th>" +
+                                "<th>Usuarios</th>" +
+                                "<th colspan='2'>Opciones</th>");
+                            $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                                "<td>" + telefono + "</td>" +
+                                "<td>" + email + "</td>" +
+                                "<td>" + zona + "</td>" +
+                                " <td class='usuarios_trabajadora'></td>" +
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                            if (usuarios.length === 0 && rol === 2) {
+                                $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
+                            } else {
+                                for (var i = 0; i < usuarios.length; i++) {
+                                    $("td.usuarios_trabajadora").append("<p><a href='/usuario/" + id + "'>" + usuarios[i].nombre + " " + usuarios[i].apellidos + "</a></p>");
+                                }
+                            }
+                        } else {
+                            $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
+                                "<th>Teléfono</th>" +
+                                "<th>Email</th>" +
+                                "<th colspan='2'>Opciones</th>");
+                            $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
+                                "<td>" + telefono + "</td>" +
+                                "<td>" + email + "</td>" +
+                                "<td>" + zona + "</td>" +
+                                " <td class='usuarios_trabajadora'></td>" +
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
                         }
+                            $("#tabla_filtrar").css("display", "block");
                     }
-                } else {
-                    $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
-                        "<th>Teléfono</th>" +
-                        "<th>Email</th>" +
-                        "<th colspan='2'>Opciones</th>");
-                    $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
-                        "<td>" + telefono + "</td>" +
-                        "<td>" + email + "</td>" +
-                        "<td>" + zona + "</td>" +
-                        " <td class='usuarios_trabajadora'></td>" +
-                        "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
-
                 }
-                $("#tabla_filtrar").css("display", "block");
-            }
-        });
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'DNI o NIE incorrecto!',
+                footer: 'Asegúrate de introducir un formato correcto',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+        }
+
     });
 
     //zona
-    $("#select_roles").change(function () {
-        var valor = $("#select_roles option:selected").val();
+    $("#select_zonas").on("change",function () {
+        var valor = $("#select_zonas option:selected").val();
         $("tbody.info_filtrar").html("");
         $.ajax({
             url: "/trabajadoras/busqueda/rol",
@@ -147,7 +178,6 @@ $(document).ready(function () {
                     var zona = trabajadora[a].zona;
                     var code = trabajadora[a].id;
                     var rol = trabajadora[a].rol_id;
-
                     if (rol === 1) {
                         $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
                             "<th>Teléfono</th>" +
@@ -184,16 +214,22 @@ $(document).ready(function () {
                             "<td>" + email + "</td>" +
                             "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
                     }
-
                     $("#tabla_filtrar").css("display", "block");
-
                 }
             }
         });
     });
 
-
-
+    //validar dni
+    $(".validarDniNie").on("change", function(){
+        var code = $(this).val();
+        console.log("holaaa")
+        if(code.match(/^[XxTtYyZz]{1}[0-9]{7}[a-zA-Z]{1}$/) || code.match(/^\d{8}[a-zA-Z]{1}$/)){
+            $(".errorDniNie").css("display", "none")
+        }else {
+            $(".errorDniNie").css("display", "block")
+        }
+    })
 
 
 
@@ -252,10 +288,55 @@ $(document).ready(function () {
             }
         })
     })
+    //busqueda de usuario por dni
+    $("#search_user").on("click", function(){
+        var code = $("#dni_search").val();
+        if(code.match(/^\d{8}[a-zA-Z]{1}$/) || code.match(/^[XxTtYyZz]{1}[0-9]{7}[a-zA-Z]{1}$/)){
+            $.ajax({
+                url: "/usuarios/busqueda/dni",
+                data: {
+                    dni: code
+                },
+                success: function (data) {
+                    showUser(data);
+                }
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'DNI o NIE incorrecto!',
+                footer: 'Asegúrate de introducir un formato correcto',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+        }
+
+    })
+
+    $("#search_user_name").on("click", function(){
+        var nombre = $("#name_search").val();
+        var apellidos = $("#subname_search").val();
+        $.ajax({
+            url: "/usuarios/busqueda/nombre",
+            data: {
+                nombre: nombre,
+                apellidos: apellidos
+            },
+            success: function (data) {
+                   showUser(data);
+            }
+        })
+    })
+
+
     //ver un evolutivo
-    $(".verEvol").click(function () {
+    $(".verEvol").on("click",function () {
         var id = $(this).data("idevol");
-        console.log(id);
         $.ajax({
             url: "/evolutivos/id",
             data: {
@@ -318,10 +399,7 @@ $(document).ready(function () {
             }
         })
     });
-
-
-
-
+    //leer notificacion
     $(".leerNotificacion").on("click", function () {
         var id = $(this).data("noti");
         var prioridad;
@@ -339,7 +417,7 @@ $(document).ready(function () {
                                 notification: id
                             },
                             success: function (data) {
-                                console.log("hola")
+
                             }
                         });
                     }
@@ -384,3 +462,33 @@ function datetime() {
 
 }
 setInterval(datetime, 1000);
+
+function showUser(data){
+    if(data.length == 0){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Este usuario no existe!',
+            footer: 'Asegúrate de tener el DNI correcto',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+    } else {
+        $(".user_info").css("display", "block")
+        $("#user_name").text(data[0].nombre+" "+data[0].apellidos)
+        $("#user_dni").text(data[0].dni)
+        $("#user_direction").text(data[0].direccion)
+        $("#user_telf").text(data[0].telefono)
+        $("#user_contact").text(data[0].persona_contacto)
+        $("#user_hours").text(data[0].horas_asignadas)
+        $("#user_created_at").text(data[0].created_at)
+        $("#user_detail").text(data[0].detalle)
+        $("#user_chores").text(data[0].tareas)
+    }
+}
+
+
