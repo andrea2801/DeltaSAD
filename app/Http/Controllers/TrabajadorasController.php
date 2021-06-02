@@ -68,49 +68,31 @@ class TrabajadorasController extends Controller
         return view('front/trabajadoras/todas_trabajadoras')->with('zonas', $zonasname);
     }
 
-    protected function viewUsers($id){
-        $users=DB::table('usuarios')
-        ->select()
-        ->where('tf_asignada', $id)
-        ->orWhere('tf_asignada2', $id)
-        ->get();
-        return $users;
-    }
+
     public function dniBuscar(Request $request){
-        $buscardni = DB::table('users')
+        $trabajadora = DB::table('users')
         ->select()
         ->where('dni', $request->dni)
         ->get();
-        $id=$buscardni[0]->id;
-        $users=DB::table('usuarios')
+        $id=$trabajadora[0]->id;
+            $users=DB::table('usuarios')
         ->select('nombre','apellidos')
         ->where('tf_asignada', $id)
         ->orWhere('tf_asignada2',  $id)
         ->get();
-        $data = [ 'buscardni' => $buscardni, 'users' => $users];
+         $data = [ 'trabajadora' => $trabajadora, 'users' => $users];
         return $data;
-
 
     }
 
 
-    public function zonaBuscar(Request $request){
-
-        $zonas = DB::table('users')
+    public function employeeByZone(Request $request){
+        $trabajadora = DB::table('users')
             ->select()
             ->where('zona', $request->zonas)
             ->get();
-        /*for($i=0;$i<count( $zonas);$i++){
-        $users=DB::table('usuarios')
-            ->select('nombre','apellidos')
-             ->where('tf_asignada', $zonas[$i]->id)
-             ->orWhere('tf_asignada2',  $zonas[$i]->id)
-            ->get();
-        }*/
-
-    return  $zonas;
-
-
+        $data = [ 'trabajadora' => $trabajadora];
+        return $data;
     }
 
      protected function delete($id){
@@ -125,14 +107,29 @@ class TrabajadorasController extends Controller
                 'tf_asignada2' => null
             ]);
         }
-        if($update == true){
-             DB::table('users')
+        DB::table('users')
                 ->where('id', $id)
                 ->delete();
             return back()->with('message', 'Eliminado');
-        }
-        return back()->withError('Error', 'Error');
-    }
 
+    }
+    protected function edit(){
+        $trabajadora = DB::table('users')
+        ->select()
+        ->where('id', $_GET['id'])
+        ->get();
+        return  $trabajadora;
+
+    }
+    protected function update(Request $request){
+        $update=DB::table('users')->where('id', $request->id)->update([
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            'zona' => $request->zona
+        ]);
+        return redirect(route('trabajadoras.todas'));
+    }
 
 }
