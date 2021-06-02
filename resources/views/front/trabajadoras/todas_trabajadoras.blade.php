@@ -36,25 +36,25 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="form-group  row zona_trabajadoras">
+                            <div class="form-group  row roles_trabajadoras">
                                 <div class="col-12">
                                     <div class="col-md-12">
-                                        <label for="zonas"
-                                            class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Zonas:') }}</label>
+                                        <label for="roles"
+                                            class="col-12 col-md-4 col-form-label text-md-right select_view">{{ __('Departamento:') }}</label>
 
-                                            <select id="select_zonas" class=" col-md-6 form-select"
-                                                aria-label="Default select example" name="select_zonas">
-                                                <option selected="" value="default">Selecciona</option>
-                                                @foreach ($zonas as $zona)
-                                                <option value='{{$zona->id}}'>{{$zona->zonas}}</option>
-                                                @endforeach
+                                            <select id="select_roles" class=" col-md-6 form-select"
+                                                aria-label="Default select example" name="select_roles">
+                                                <option selected="" value="default" active>Selecciona</option>
+                                                <option  value="1">Coordinadora</option>
+                                                <option  value="2">Trabajadora Familiar</option>
+                                                <option  value="3">Trabajadora Social</option>
                                             </select>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class=" col-md-2 limpiar_filtro">Limpiar</a>
+
                     </div>
                 </div>
             </div>
@@ -63,12 +63,7 @@
             <table class="table col-md-3">
                 <thead class="tabla_trabajadoras">
                     <tr>
-                        <th>Nombre y apellido</th>
-                        <th>Teléfono</th>
-                        <th>Email</th>
-                        <th>Zona</th>
-                        <th class="ver_usuarios" >Usuarios</th>
-                        <th colspan="2">Opciones</th>
+
                     </tr>
                 </thead>
                 <tbody class="info_filtrar">
@@ -94,8 +89,8 @@
 
 
 </div>
-<!-- Pendiente que funcione desde app.js-->
-<script>
+<!--funcion para mostrar los usuarios y otra de trabajadores-->
+<script type=" text/javascript">
     function usuarios(id) {
          $.ajax({
              url: "{{Route('trabajadoras.showTFusers')}}",
@@ -106,6 +101,8 @@
              }
          });
      }
+
+
      function trabajadoras(id) {
          $.ajax({
             url: "{{Route('trabajadoras.edit')}}",
@@ -118,12 +115,14 @@
                  var email=data[0].email;
                  var telefono=data[0].telefono;
                  var zona=data[0].zona;
+                 var id=data[0].id;
                 $("#update_employee input[name=nombre]").val(nombre);
                 $("#update_employee input[name=apellidos]").val(apellidos);
                 $("#update_employee input[name=telefono]").val(telefono);
                 $("#update_employee input[name=email]").val(email);
                 var $radios = $('#update_employee input:radio[name=zona]');
                 $radios.filter('[value='+zona+']').prop('checked', true);
+                $("#update_employee input[name=id]").val(id);
 
              }
          });

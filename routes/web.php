@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 
-Auth::routes();
+Auth::routes(["register" => false]);
 
 //home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -45,7 +45,7 @@ Route::get('/trabajadoras', [App\Http\Controllers\TrabajadorasController::class,
 Route::post('/trabajadoras/store', [App\Http\Controllers\TrabajadorasController::class, 'store'])->name('trabajadoras.store');
 Route::get('/trabajadoras/busqueda', [App\Http\Controllers\TrabajadorasController::class, 'trabajadorasFiltrar'])->name('trabajadoras.todas');
 Route::get('/trabajadoras/busqueda/dni', [App\Http\Controllers\TrabajadorasController::class, 'dniBuscar']);
-Route::get('/trabajadoras/busqueda/zona', [App\Http\Controllers\TrabajadorasController::class, 'employeeByZone'])->name('trabajadoras.zona');
+Route::get('/trabajadoras/busqueda/rol', [App\Http\Controllers\TrabajadorasController::class, 'employeeByRole'])->name('trabajadoras.role');
 Route::get('/trabajadoras/users{id}', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.users');
 Route::get('/trabajadoras/eliminar/{id}', [App\Http\Controllers\TrabajadorasController::class, 'delete']);
 Route::get('/trabajadoras/users', [App\Http\Controllers\TrabajadorasController::class, 'showTFusers'])->name('trabajadoras.showTFusers');
