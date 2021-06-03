@@ -92,7 +92,7 @@
                                 <p class="first-text">Zona:</p>
                             </div>
                             <div class="col-12 mb-2">
-                                <select class="content-text" name="zone" required>
+                                <select class="content-text" title="Porfavor, selecciona una zona" name="zone" required>
                                     <option value="1">Zona I (Clot)</option>
                                     <option value="2">Zona II (Sant Martí)</option>
                                     <option value="3">Zona III (Sagrada Familia)</option>

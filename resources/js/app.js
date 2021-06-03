@@ -105,7 +105,7 @@ $(document).ready(function () {
                                 "<td>" + telefono + "</td>" +
                                 "<td>" + email + "</td>" +
                                 "<td>" + zona + "</td>" +
-                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td></tr>");
                         } else if (rol === 2) {
                             $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
                                 "<th>Teléfono</th>" +
@@ -118,7 +118,7 @@ $(document).ready(function () {
                                 "<td>" + email + "</td>" +
                                 "<td>" + zona + "</td>" +
                                 " <td class='usuarios_trabajadora'></td>" +
-                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td></tr>");
                             if (usuarios.length === 0 && rol === 2) {
                                 $("td.usuarios_trabajadora").append("<p>No tiene usuarios asignados</p>");
                             } else {
@@ -136,7 +136,7 @@ $(document).ready(function () {
                                 "<td>" + email + "</td>" +
                                 "<td>" + zona + "</td>" +
                                 " <td class='usuarios_trabajadora'></td>" +
-                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + id + "'>eliminar</a></td></tr>");
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td></tr>");
                         }
                             $("#tabla_filtrar").css("display", "block");
                     }
@@ -189,7 +189,7 @@ $(document).ready(function () {
                             "<td>" + telefono + "</td>" +
                             "<td>" + email + "</td>" +
                             "<td>" + zona + "</td>" +
-                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + code + "'>Eliminar</a></td></tr>");
 
                     } else if (rol === 2) {
                         $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
@@ -203,7 +203,7 @@ $(document).ready(function () {
                             "<td>" + email + "</td>" +
                             "<td>" + zona + "</td>" +
                             "<td><a href='#' onclick='usuarios(" + code + ")' data-toggle='modal' data-target='#usuario' >ver</a><td>" +
-                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + code + "'>Eliminar</a></td></tr>");
 
                     } else {
                         $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
@@ -213,7 +213,7 @@ $(document).ready(function () {
                         $("tbody.info_filtrar").append("<tr><td>" + nombre + " " + apellido + "</td>" +
                             "<td>" + telefono + "</td>" +
                             "<td>" + email + "</td>" +
-                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >editar</a><span> </span><a href='/trabajadoras/eliminar/" + code + "'>eliminar</a></td></tr>");
+                            "<td><a href='#' onclick='trabajadoras(" + code + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + code + "'>Eliminar</a></td></tr>");
                     }
 
                     $("#tabla_filtrar").css("display", "block");
