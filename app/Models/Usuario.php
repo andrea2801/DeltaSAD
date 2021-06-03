@@ -24,7 +24,6 @@ class Usuario extends Model
         'detalle',
         'tareas',
         'horas_asignadas',
-        'archivos_adjuntos',
         'tf_asignada',
         'tf_asignada2',
         'zona',
