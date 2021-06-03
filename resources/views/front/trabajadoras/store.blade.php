@@ -9,22 +9,29 @@
                 <div class="modal-body">
                     <div class="form-group row">
                         <div class="col-12 col-md-6">
-                            <p class="first-text">Nombre: <span><input name="nombre" type="text" value="{{old('nombre')}}" class="content-text" pattern="[a-zA-Z]{1,15}" required></span></p>
+                            <p class="first-text">Nombre: <span><input name="nombre" type="text" value="{{old('nombre')}}" class="content-text" required></span></p>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="first-text">Apellidos: <span><input name="apellidos" type="text" value="{{old('apellidos')}}" class="content-text" pattern="[a-zA-Z]{1,15}" required></span></p>
+                            <p class="first-text">Apellidos: <span><input name="apellidos" type="text" value="{{old('apellidos')}}" class="content-text" required></span></p>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="first-text">DNI/NIF: <span><input name="dni" type="text" value="{{old('dni')}}" class="content-text" pattern="{8}[a-zA-Z]" required></span></p>
+                            <p class="first-text">DNI/NIF: <span><input name="dni" type="text" value="{{old('dni')}}" class="content-text validarDniNie" required></span></p>
+                            <span class="normal-text">{{ $errors->first('dni') }}</span>
+                        </div>
+                        <div class="col-12 col-md-8 errorDniNie">
+                            <p class="normal-text">Porfavor, asegúrate que el formato es correcto</p>
                         </div>
                         <div class="col-12 col-md-6">
                             <p class="first-text">Teléfono: <span><input name="telefono" type="number" value="{{old('telefono')}}" class="content-text"  minlength="9" required></span></p>
+                            <span class="normal-text">{{ $errors->first('telefono') }}</span>
                         </div>
                         <div class="col-12 col-md-6">
                             <p class="first-text">Email: <span><input name="email" type="email" value="{{old('email')}}" class="content-text" required></span></p>
+                            <span class="normal-text">{{ $errors->first('email') }}</span>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="first-text">Password: <span><input name="password" type="text" value="{{old('password')}}" class="content-text"  minlength="8" required></span></p>
+                            <p class="first-text">Password: <span><input name="password" type="password" value="{{old('password')}}" class="content-text" minlength="8" required></span></p>
+                            <span class="normal-text">{{ $errors->first('password') }}</span>
                         </div>
                         <div class="col-12">
                             <p class="first-text">Zona:
@@ -36,6 +43,7 @@
                                     </select>
                                 </span>
                             </p>
+                            <span class="normal-text">{{ $errors->first('zona') }}</span>
                         </div>
                         <div class="col-12">
                             <p class="first-text">Rol:
@@ -54,6 +62,7 @@
                                     <input type="file" name="img" accept="image/*" class="content-text" lang="es">
                                 </span>
                             </p>
+                            <span class="normal-text">{{ $errors->first('img') }}</span>
                         </div>
                         <div class="col-12">
                             <div class="modal-footer">
@@ -77,3 +86,28 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+
+        @if (count($errors->all())>0)
+        document.getElementById("btn-nueva").click();
+        @endif
+    });
+</script>
+@if(Session::has('done'))
+        <script type="text/javascript">
+            Swal.fire({
+                    icon: 'success',
+                    title: 'Done :)',
+                    text: 'Trabajadora creada'
+                })
+            </script>
+        @elseif(Session::has('error'))
+            <script type="text/javascript">
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ups!',
+                    text: 'Error al crear trabajadora, inténtalo de nuevo :('
+                })
+            </script>
+    @endif

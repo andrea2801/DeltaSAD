@@ -6,12 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Auth\Events\Validated;
-
 
 class TrabajadorasController extends Controller
 {
@@ -19,53 +15,43 @@ class TrabajadorasController extends Controller
         $tfs = $this->showTFS();
         return view('front/trabajadoras/index')->with('tfs', $tfs);
     }
+    public function store(Request $request) {
+        $inputs=$request->all();
 
-    public function store(Request $request){
+        $textError = [
+            'password.min'=> 'Mínimo 8 letras',
+            'dni.unique' => 'DNI duplicado',
+            'email.unique' => 'Este email ya existe'
+        ];
 
-        $v = request()->validate([
+        $rules = [
+            'password' => 'required|min:8',
+            'dni' => 'required|unique:users,dni',
+            'email' => 'email|unique:users,email'
+        ];
 
-                'dni' => 'required|unique:users,dni',
-                'telefono' => 'numeric|digits:9',
-                'email' => 'email|unique:users,email',
-
-        ], [ 'dni.unique' => 'Dni duplicado',
-             'telefono.digits' => 'Máximo 9 digitos',
-             'telefono.numeric' => 'Solo números',
-             'email.unique' => 'Email ya existe',
-
-
-
+        if($request->hasFile('img')){
+            $textError['img.dimensions'] = 'Imagen muy grande(250px)';
+            $rules['img'] = "dimensions:max_width=250,max_height=250,'image','mimes:jpg,png,jpeg,gif'";
+        }
+        request()->validate($rules, $textError);
 
 
-        ]);
+        if($request->hasFile('img')){
 
-
-            if($request->hasFile('img')){
-            $validator = Validator::make($request->all(),[
-                "img"    => "dimensions:max_width=250,max_height=250,'image','mimes:jpg,png,jpeg,gif'",
-
-            ]);
-            if($validator->fails()){
-                return Redirect::back()->withInput()->withErrors($validator);
-            }else{
-                    $file=$request->file('img');
-                    $name = time().$file->getClientOriginalName();
-                    $file->move(public_path().'/imagenUser/',$name);
-
-                    $inputs=$request->all();
-                    $inputs['password']=bcrypt($inputs['password']);
-                    $inputs['img']=$name;
-                    User::create($inputs);
-                    return redirect(route('trabajadoras.index'));
-                }
-            }
-            $inputs=$request->all();
-            $inputs['password']=bcrypt($inputs['password']);
-            //$inputs['img']=$name;
-            User::create($inputs);
-            //return back()->with('succes','Trabajadora dada de alta correctamente.');
-            return redirect(route('trabajadoras.index'));
-
+            $file=$request->file('img');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/imagenUser/',$name);
+            $inputs['img']=$name;
+        }
+        $inputs['password']=bcrypt($inputs['password']);
+        $create=User::create($inputs);
+        if($create == true){
+            Session::flash('done', 'creado');
+        }else{
+            Session::flash('error', 'error');
+        }
+        return redirect(route('trabajadoras.index'));
     }
 
     protected function showTFS(){
@@ -84,10 +70,8 @@ class TrabajadorasController extends Controller
     //mostrar todas
 
     public function trabajadorasFiltrar(){
-
         return view('front/trabajadoras/todas_trabajadoras');
     }
-
 
     public function dniBuscar(Request $request){
         $trabajadora = DB::table('users')
@@ -108,7 +92,6 @@ class TrabajadorasController extends Controller
 
         return $data;
     }
-
 
     public function employeeByRole(Request $request){
         $trabajadora = DB::table('users')
@@ -146,13 +129,25 @@ class TrabajadorasController extends Controller
 
     }
     protected function update(Request $request){
-        DB::table('users')->where('id', $request->id)->update([
+        if($request->password == null){
+            $password = DB::table('users')->select('password')->where('id', $request->id)->get();
+        } else {
+            $password = bcrypt($request->password);
+        }
+        $update=DB::table('users')->where('id', $request->id)->update([
             'nombre' => $request->nombre,
             'apellidos' => $request->apellidos,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'zona' => $request->zona
+            'zona' => $request->zona,
+            'password' => $password,
+            'updated_at' => Carbon::now()
         ]);
+        if($update == true){
+            Session::flash('updated', 'ok');
+        } else {
+            Session::flash('error', 'error');
+        }
         return redirect(route('trabajadoras.todas'));
     }
 

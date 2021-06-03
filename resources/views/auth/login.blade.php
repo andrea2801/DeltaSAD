@@ -29,14 +29,7 @@
                             </span>
                             @enderror
                     </div>
-                    <div class="form-group row remerberme d-flex justify-content-center">
-                        <div class="col-8 form-check ml-5 text-right">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                {{ __('Recuerdame') }}
-                            </label>
-                        </div>
-                    </div>
+
                     <div class="row row d-flex justify-content-center">
                         <div class="col-9 justify-content-center d-flex">
                             <button type="submit" class="btn btn-general botton_login">

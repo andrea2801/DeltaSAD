@@ -15,7 +15,7 @@
                             <div class="col-12 col-md-6 mb-4 mb-md-0 d-flex justify-content-start justify-content-md-end">
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-general" data-toggle="modal" data-target="#nueva">Nueva</button>
+                                        <button type="button" id="btn-nueva" class="btn btn-general" data-toggle="modal" data-target="#nueva">Nueva</button>
                                     </div>
                                     <div class="col-6">
                                         <a href="{{route('trabajadoras.todas')}}">

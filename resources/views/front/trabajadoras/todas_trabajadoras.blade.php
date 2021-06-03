@@ -82,7 +82,6 @@
             data: `id=${id}`,
             type: "GET",
             success: function (data) {
-                console.log(data);
                 var nombre = data[0].nombre;
                 var apellidos = data[0].apellidos;
                 var email = data[0].email;

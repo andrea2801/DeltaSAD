@@ -19,12 +19,11 @@ class CreateUsuariosTable extends Migration
             $table->string('apellidos');
             $table->string('direccion');
             $table->integer('telefono');
-            $table->string('dni', 9);
+            $table->string('dni', 9)->unique();
             $table->string('persona_contacto');
             $table->string('detalle');
             $table->string('tareas')->nullable();
             $table->decimal('horas_asignadas');
-            $table->string('archivos_adjuntos')->nullable();
             $table->unsignedBigInteger('tf_asignada')->nullable();
             $table->unsignedBigInteger('tf_asignada2')->nullable();
             $table->unsignedBigInteger('zona');

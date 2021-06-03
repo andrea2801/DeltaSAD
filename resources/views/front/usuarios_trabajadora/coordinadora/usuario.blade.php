@@ -209,4 +209,14 @@
 
     </script>
     @endif
+    @if(Session::has('Eerror'))
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'error',
+            title: 'Ups!',
+            text: 'Error al crear evolutivo:('
+        })
+
+    </script>
+    @endif
 </section>

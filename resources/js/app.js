@@ -127,6 +127,7 @@ $(document).ready(function () {
                                 }
                             }
                         } else {
+
                             $("thead.tabla_trabajadoras tr").html(" <th>Nombre y apellido</th>" +
                                 "<th>Teléfono</th>" +
                                 "<th>Email</th>" +
@@ -134,11 +135,10 @@ $(document).ready(function () {
                             $("tbody.info_filtrar").html("<td>" + nombre + " " + apellido + "</td>" +
                                 "<td>" + telefono + "</td>" +
                                 "<td>" + email + "</td>" +
-                                "<td>" + zona + "</td>" +
                                 " <td class='usuarios_trabajadora'></td>" +
-                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora' >Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td></tr>");
+                                "<td><a href='#' onclick='trabajadoras(" + id + ")' data-toggle='modal' data-target='#trabajadora'>Editar </a>|<span> </span><a href='/trabajadoras/eliminar/" + id + "'>Eliminar</a></td></tr>");
                         }
-                            $("#tabla_filtrar").css("display", "block");
+                        $("#tabla_filtrar").css("display", "block");
                     }
                 }
             });
@@ -226,7 +226,6 @@ $(document).ready(function () {
     //validar dni
     $(".validarDniNie").on("change", function(){
         var code = $(this).val();
-        console.log("holaaa")
         if(code.match(/^[XxTtYyZz]{1}[0-9]{7}[a-zA-Z]{1}$/) || code.match(/^\d{8}[a-zA-Z]{1}$/)){
             $(".errorDniNie").css("display", "none")
         }else {
@@ -234,6 +233,14 @@ $(document).ready(function () {
         }
     })
 
+    $(".changePassword").on("click", function () {
+        $(".changePassword").css("display", "none")
+        $(".password").css("display", "flex")
+    })
+    $(".cancelPwd").on("click", function () {
+        $(".changePassword").css("display", "flex")
+        $(".password").css("display", "none")
+    })
 
 
     //USUARIOS
@@ -346,7 +353,6 @@ $(document).ready(function () {
                 id: id
             },
             success: function (data) {
-                console.log(data);
                 $("#evolutivoContent").html(
                     "<div class='modal-header'>" +
                         "<div class='row all-content'>" +
@@ -372,14 +378,12 @@ $(document).ready(function () {
     //ver un nota
     $(".verNota").click(function () {
         var id = $(this).data("idnota");
-        console.log(id);
         $.ajax({
             url: "/notas/id",
             data: {
                 id: id
             },
             success: function (data) {
-                console.log(data);
                 $("#notaContent").html(
                     "<div class='modal-header'>" +
                         "<div class='row all-content'>" +
@@ -440,7 +444,7 @@ $(document).ready(function () {
     })
 
     $("#modify").on("click", function(){
-        $("##user_name").prop("disabled", false)
+        $("#user_name").prop("disabled", false)
         $("#user_name").prop("disabled", false)
         $("#user_dni").prop("disabled", false)
         $("#user_direction").prop("disabled", false)
@@ -495,15 +499,15 @@ function showUser(data){
           })
     } else {
         $(".user_info").css("display", "block")
-        $("#user_name").val(data[0].nombre+" "+data[0].apellidos)
-        $("#user_dni").val(data[0].dni)
-        $("#user_direction").val(data[0].direccion)
-        $("#user_telf").val(data[0].telefono)
-        $("#user_contact").val(data[0].persona_contacto)
-        $("#user_hours").val(data[0].horas_asignadas)
+        $("#user_name").text(data[0].nombre+" "+data[0].apellidos)
+        $("#user_dni").text(data[0].dni)
+        $("#user_direction").text(data[0].direccion)
+        $("#user_telf").text(data[0].telefono)
+        $("#user_contact").text(data[0].persona_contacto)
+        $("#user_hours").text(data[0].horas_asignadas)
         $("#user_created_at").text(data[0].created_at)
-        $("#user_detail").val(data[0].detalle)
-        $("#user_chores").val(data[0].tareas)
+        $("#user_detail").text(data[0].detalle)
+        $("#user_chores").text(data[0].tareas)
     }
 }
 $("#cross").on("click", function () {

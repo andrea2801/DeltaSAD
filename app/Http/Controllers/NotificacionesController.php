@@ -49,6 +49,7 @@ class NotificacionesController extends Controller
         return $notification;
 
     }
+
     protected function showSent (Request $request){
         $notification=DB::table('notificaciones')->join('users', 'users.id', '=', 'destinatario')
                             ->where('notificaciones.id', $request->notification)
@@ -58,16 +59,11 @@ class NotificacionesController extends Controller
         return $notification;
     }
 
-
     protected function changeState (Request $request){
         $notification=DB::table('notificaciones')
                         ->where('id', $request->notification)
                         ->update(['estado'=> 1 ]);
 
         return $notification;
-
     }
-
-
-
 }

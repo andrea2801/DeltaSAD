@@ -23,7 +23,7 @@
                                         <textarea class="content-text p-3" rows="4" readonly>{{$u->detalle}}</textarea>
                                     </div>
                                     <div class="col-12 mt-2">
-                                        <p class="first-text">Tarea:</p>
+                                        <p class="first-text">Tareas:</p>
                                         <textarea class="content-text p-3" rows="4" readonly>{{$u->tareas}}</textarea>
                                     </div>
                                 </div>

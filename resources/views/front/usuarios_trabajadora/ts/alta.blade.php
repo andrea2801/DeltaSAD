@@ -48,7 +48,7 @@
                                                 <input class="info-content text-general p-2 validarDniNie" title="Porfavor, introduce DNI o NIE" name="dni" required type="text">
                                             </div>
                                             <div class="col-12 col-md-8 errorDniNie">
-                                                <p>Porfavor, asegúrate que el formato es correcto</p>
+                                                <p class="normal-text">Porfavor, asegúrate que el formato es correcto</p>
                                             </div>
                                         </div>
                                     </div>
@@ -116,22 +116,22 @@
         </div>
     </div>
     @if(Session::has('created'))
+        <script type="text/javascript">
+            Swal.fire({
+                    icon: 'success',
+                    title: 'Done :)',
+                    text: 'Usuario dado de alta'
+                })
+            </script>
+        @elseif(Session::has('createdError'))
             <script type="text/javascript">
                 Swal.fire({
-                     icon: 'success',
-                     title: 'Done :)',
-                     text: 'Usuario dado de alta'
-                 })
-             </script>
-            @elseif(Session::has('createdError'))
-                <script type="text/javascript">
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ups!',
-                        text: 'Error al crear alta, inténtalo de nuevo :('
-                    })
-                </script>
-        @endif
+                    icon: 'error',
+                    title: 'Ups!',
+                    text: 'Error al crear alta, inténtalo de nuevo :('
+                })
+            </script>
+    @endif
     @include('layouts.footer')
 </section>
 @endsection
