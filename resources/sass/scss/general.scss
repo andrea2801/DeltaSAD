@@ -1,36 +1,14 @@
 html,body{
     height: 100%;
-    font-family: 'Montserrat';
+    font-family: 'Nunito';
 }
 //Paleta de colores DeltaSAD
 $rect_mobil: #2679B9;
 $letras_negras: #1F1F1F;
 $links_click:#50B2CE;
 //FUENTES
-@font-face{
-    font-family:"Montserrat";
-    src:url('/public/fonts/Monserrat/Montserrat-Regular.ttf');
-    src:url('/public/fonts/Monserrat/Montserrat-Regular.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-    font-display:swap;
-}
-@font-face{
-    font-family:"Nobile";
-    src:url('/public/fonts/Nobile/nobile.ttf');
-    src:url('/public/fonts/Nobile/nobile.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-    font-display:swap;
-}
-@font-face{
-    font-family:"Hind Guntur";
-    src:url('/public/fonts/Hind_Guntur/hind-guntur.ttf');
-    src:url('/public/fonts/Hind_Guntur/hind-guntur.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-    font-display:swap;
-}
+
+
 //css
 .bg-color{
     background-color: #1d4e8e !important;
