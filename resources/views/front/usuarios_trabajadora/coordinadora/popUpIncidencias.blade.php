@@ -15,7 +15,6 @@
                             <div class="col-12">
                                 <textarea name="descripcion" type="textarea" class="form-control" rows="5" required></textarea>
                             </div>
-
                             <input type="hidden" name="usuario" value="{{$u->id}}">
             @endforeach
                             @foreach ($tfs as $tf )

@@ -11,7 +11,7 @@
                     </div>
                     @foreach ($usuario as $u )
                         <div class="col-12 col-md-10">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-12 col-md-6">
                                     <p class="subtitle-user">Usuario: {{$u->apellidos}}, {{$u->nombre}}</p>
                                 </div>
