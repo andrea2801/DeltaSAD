@@ -169,11 +169,15 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Evolución</h5>
                                     <p class="card-text text-secondary">
-                                        {{substr($evolutivo->descripcion,0, 13)}}
+                                        @if(strlen($evolutivo->descripcion)<=13)
+                                          {{$evolutivo->descripcion}}
+                                        @else
+                                      {{substr($evolutivo->descripcion,0, 13)}}
                                         <a href="" class="verEvol text-decoration-none" data-toggle="modal"
                                             data-target="#verEvolutiva" data-idevol="{{$evolutivo->id}}">
                                             <span class="text-info">...ver</span>
                                         </a>
+                                        @endif
                                     </p>
                                 </div>
                             </div>

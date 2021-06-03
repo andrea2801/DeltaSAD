@@ -17,7 +17,7 @@ class UserController extends BaseController
         if(Auth::attempt(['dni' => $request->dni, 'password' => $request->password])){
 
             $user = Auth::user();
-            $success['token'] =  $user->createToken('AppName')->accessToken;
+            $success['token'] =  $user->createToken('DeltaSAD')->accessToken;
             $success['user'] =  $user->dni;
 
             return $this->sendResponse($success, 'User login successfully.');
