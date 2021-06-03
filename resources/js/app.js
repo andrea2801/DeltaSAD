@@ -439,6 +439,19 @@ $(document).ready(function () {
         });
     })
 
+    $("#modify").on("click", function(){
+        $("##user_name").prop("disabled", false)
+        $("#user_name").prop("disabled", false)
+        $("#user_dni").prop("disabled", false)
+        $("#user_direction").prop("disabled", false)
+        $("#user_telf").prop("disabled", false)
+        $("#user_contact").prop("disabled", false)
+        $("#user_hours").prop("disabled", false)
+        $("#user_detail").prop("disabled", false)
+        $("#user_chores").prop("disabled", false)
+        $(".changes").css("display", "block")
+    })
+
 });
 //HEADERs
 //datetime
@@ -482,15 +495,15 @@ function showUser(data){
           })
     } else {
         $(".user_info").css("display", "block")
-        $("#user_name").text(data[0].nombre+" "+data[0].apellidos)
-        $("#user_dni").text(data[0].dni)
-        $("#user_direction").text(data[0].direccion)
-        $("#user_telf").text(data[0].telefono)
-        $("#user_contact").text(data[0].persona_contacto)
-        $("#user_hours").text(data[0].horas_asignadas)
+        $("#user_name").val(data[0].nombre+" "+data[0].apellidos)
+        $("#user_dni").val(data[0].dni)
+        $("#user_direction").val(data[0].direccion)
+        $("#user_telf").val(data[0].telefono)
+        $("#user_contact").val(data[0].persona_contacto)
+        $("#user_hours").val(data[0].horas_asignadas)
         $("#user_created_at").text(data[0].created_at)
-        $("#user_detail").text(data[0].detalle)
-        $("#user_chores").text(data[0].tareas)
+        $("#user_detail").val(data[0].detalle)
+        $("#user_chores").val(data[0].tareas)
     }
 }
 
