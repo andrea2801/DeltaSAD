@@ -1,3 +1,4 @@
+@if (Auth::user()->id == 1)
 @extends('layouts.master')
 
 @section('content')
@@ -26,7 +27,7 @@
                         <div class="col-12 col-md-6">
                             <p class="normal-text">Por DNI: </p>
                             <span>
-                                <input id="employee_search" type="text" class="content-text" name="dni" required autocomplete="dni">
+                                <input id="employee_search" type="text" class="content-text" name="dni" required>
                                 <img class="buscar_dni" src="{{asset('img/icons/buscar.png')}}" alt="buscar">
                             </span>
                         </div>
@@ -59,11 +60,10 @@
         </div>
     </div>
     @include('front.trabajadoras.trabajadora_editar')
-    @include('layouts.footer')
 </section>
 
 <!--funcion para mostrar los usuarios y otra de trabajadores-->
-<script type=" text/javascript">
+<script type="text/javascript">
     function usuarios(id) {
         $.ajax({
             url: "{{Route('trabajadoras.showTFusers')}}",
@@ -74,8 +74,6 @@
             }
         });
     }
-
-
     function trabajadoras(id) {
         $.ajax({
             url: "{{Route('trabajadoras.edit')}}",
@@ -88,17 +86,21 @@
                 var telefono = data[0].telefono;
                 var zona = data[0].zona;
                 var id = data[0].id;
-                $("#update_employee input[name=nombre]").val(nombre);
-                $("#update_employee input[name=apellidos]").val(apellidos);
-                $("#update_employee input[name=telefono]").val(telefono);
-                $("#update_employee input[name=email]").val(email);
-                var $radios = $('#update_employee input:radio[name=zona]');
+                $("#trabajadora input[name=nombre]").val(nombre);
+                $("#trabajadora input[name=apellidos]").val(apellidos);
+                $("#trabajadora input[name=telefono]").val(telefono);
+                $("#trabajadora input[name=email]").val(email);
+                var $radios = $('#trabajadora input:radio[name=zona]');
                 $radios.filter('[value=' + zona + ']').prop('checked', true);
-                $("#update_employee input[name=id]").val(id);
-
+                $("#trabajadora input[name=id]").val(id);
             }
         });
     }
 
 </script>
 @endsection
+@else
+    <script>
+        window.location ='/home';
+    </script>
+@endif

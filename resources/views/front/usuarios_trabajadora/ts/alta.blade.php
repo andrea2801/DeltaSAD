@@ -1,3 +1,4 @@
+@if (Auth::user()->id == 3)
 @extends('layouts.master')
 @section('content')
 <section class="usuarios_ts">
@@ -132,6 +133,10 @@
                 })
             </script>
     @endif
-    @include('layouts.footer')
 </section>
 @endsection
+@else
+    <script>
+        window.location ='/home';
+    </script>
+@endif

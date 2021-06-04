@@ -18,6 +18,5 @@
             </div>
         </div>
     </div>
-    @include('layouts.footer')
 </section>
 @endsection

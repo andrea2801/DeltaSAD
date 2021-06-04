@@ -59,6 +59,5 @@
          </script>
          @endif
     </div>
-    @include('layouts.footer')
 </section>
 @endsection

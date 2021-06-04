@@ -9,6 +9,10 @@ use Illuminate\Support\Carbon;
 
 class NotificacionesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     protected function viewSent(){
         $notification=DB::table('notificaciones')->join('users', 'users.id', '=', 'destinatario')->where('creador', Auth::user()->id)
                             ->select('notificaciones.*', DB::raw('users.nombre AS nombre, users.apellidos AS apellidos'))->paginate(10);

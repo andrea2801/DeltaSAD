@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class TrabajadorasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
         $tfs = $this->showTFS();
         return view('front/trabajadoras/index')->with('tfs', $tfs);
