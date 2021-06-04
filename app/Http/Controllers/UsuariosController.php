@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Session;
 
 class UsuariosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         if(Auth::user()->rol_id == 1){
             $usuarios = $this->showByZone(Auth::user()->zona);

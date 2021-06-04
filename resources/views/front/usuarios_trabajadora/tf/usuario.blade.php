@@ -1,3 +1,4 @@
+@if (Auth::user()->id == 2)
 @include('front.usuarios_trabajadora.tf.popUpNotas', ['usuario' => $usuario])
 <section>
     <div class="row container-principal">
@@ -83,4 +84,9 @@
         </div>
     </div>
 </section>
+@else
+    <script>
+        window.location ='/home';
+    </script>
+@endif
 

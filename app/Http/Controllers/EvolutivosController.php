@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Session;
 
 class EvolutivosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     protected function create(Request $request){
         $create = DB::table('evolutivos')->insert([

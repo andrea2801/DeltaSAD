@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Session;
 class NotasController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     protected function create(Request $request){
         $isCreated=DB::table('notas')->insert(array(
             'nota' => $request->nota,

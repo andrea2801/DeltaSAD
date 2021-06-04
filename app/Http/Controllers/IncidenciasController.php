@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Session;
 
 class IncidenciasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     protected function create(Request $request){
         $insert=DB::table('incidencias')->insert([
             'created_at' => Carbon::now(),

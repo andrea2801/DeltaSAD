@@ -10,10 +10,10 @@
                 <div class="modal-body">
                     <div class="form-group row">
                         <div class="col-12 col-md-6">
-                            <p class="first-text">Nombre: <span><input name="nombre" type="text" value="" class="content-text"></span></p>
+                            <p class="first-text">Nombre: <span><input name="nombre" type="text" value="" class="content-text" required></span></p>
                         </div>
                         <div class="col-12 col-md-6">
-                            <p class="first-text">Apellidos: <span><input name="apellidos" type="text" value="" class="content-text"  ></span></p>
+                            <p class="first-text">Apellidos: <span><input name="apellidos" type="text" value="" class="content-text" required></span></p>
                         </div>
                         <div class="col-12 col-md-6">
                             <p class="first-text">Teléfono: <span><input name="telefono" type="number" value="" class="content-text"  minlength="9" ></span></p>
@@ -21,8 +21,24 @@
                         <div class="col-12 col-md-6">
                             <p class="first-text">Email: <span><input name="email" type="email" value="" class="content-text" ></span></p>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <p class="first-text">Password: <span><input name="password" type="text" value="" class="content-text"  minlength="8" ></span></p>
+                        <div class="col-12">
+                            <div class="changePassword mt-3 mb-4">
+                                <button type="button" class="btn btn-general">Cambiar password</button>
+                            </div>
+                            <div class="row password">
+                                <div class="col-12">
+                                    <p class="first-text">Password:
+                                </div>
+                                <div class="col-8">
+                                        <span>
+                                            <input name="password" type="text" value="" class="content-text"  minlength="8">
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="normal-text">Cancelar <img class="close-cross cancelPwd" src="{{asset('/img/icons/X.png')}}" alt="salir"></p>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <p class="first-text">Zona:
@@ -35,7 +51,6 @@
                                 </span>
                             </p>
                         </div>
-                        <!--
                         <div class="col-12">
                             <p class="first-text">Foto de perfil:
                                 <span>
@@ -43,7 +58,6 @@
                                 </span>
                             </p>
                         </div>
-                        -->
                         <div class="col-12">
                             <div class="modal-footer">
                                 <div class="row">
