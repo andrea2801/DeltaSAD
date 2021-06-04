@@ -24,7 +24,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con discapacidad del 33% que vive sola, necesita ayuda en las AVD, PRINCIPIOS de alzheimer";
         $usuario->tareas="Acompañamiento en la compra; Hacer la comida;";
         $usuario->horas_asignadas=9;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=5;
         $usuario->tf_asignada2=4;
         $usuario->zona=1;
@@ -40,7 +39,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con discapacidad del 33% que vive sola, necesita ayuda en las AVD, PRINCIPIOS de alzheimer";
         $usuario->tareas="Acompañamiento en la compra; Hacer la comida;";
         $usuario->horas_asignadas=6;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=5;
         $usuario->tf_asignada2=null;
         $usuario->zona=1;
@@ -56,7 +54,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con discapacidad del 33% que vive sola, necesita ayuda en las AVD, PRINCIPIOS de alzheimer";
         $usuario->tareas="Acompañamiento en la compra; Hacer la comida;";
         $usuario->horas_asignadas=9;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=4;
         $usuario->tf_asignada2=null;
         $usuario->zona=1;
@@ -72,7 +69,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con discapacidad del 33% que vive sola, necesita ayuda en las AVD, PRINCIPIOS de alzheimer";
         $usuario->tareas="Acompañamiento en la compra; Hacer la comida;";
         $usuario->horas_asignadas=4;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=6;
         $usuario->tf_asignada2=null;
         $usuario->zona=2;
@@ -88,7 +84,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con alzheimer avanzado. vive con el marido, necesita acompañamiento para salir e higiene diaria";
         $usuario->tareas="Acompañamiento paseo; Higiene; Hacer la comida;";
         $usuario->horas_asignadas=9;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=7;
         $usuario->tf_asignada2=6;
         $usuario->zona=2;
@@ -104,7 +99,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona con discapacidad del 20%, problemas de mobilidad. vive con el marido, necesita acompañamiento para salir e higiene diaria";
         $usuario->tareas="Acompañamiento paseo; Acompañamiento compras; Hacer la comida;";
         $usuario->horas_asignadas=9;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=8;
         $usuario->tf_asignada2=9;
         $usuario->zona=3;
@@ -120,7 +114,6 @@ class UsuariosTableSeeder extends Seeder
         $usuario->detalle="Persona 99 años que vive sola, tiene dos hijas que viven cerca, necesita ayuda con algunas de las AVD";
         $usuario->tareas="Acompañamiento paseo; Acompañamiento compras; Hacer la comida;";
         $usuario->horas_asignadas=9;
-        $usuario->archivos_adjuntos=null;
         $usuario->tf_asignada=8;
         $usuario->tf_asignada2=null;
         $usuario->zona=3;

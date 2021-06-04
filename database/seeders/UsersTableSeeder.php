@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
 
         $employee = new User();
         $employee->nombre= 'Sonia';
-        $employee->apellidos= 'Perea Pelea';
+        $employee->apellidos= 'Perea Martin';
         $employee->telefono= 666777888;
         $employee->dni= '45129863Y';
         $employee->password= Hash::make('sonia123');
@@ -71,7 +71,7 @@ class UsersTableSeeder extends Seeder
         $employee->telefono= 666333999;
         $employee->dni= '45318798A';
         $employee->password= Hash::make('andrea123');
-        $employee->email= 'otaku@gmail.com';
+        $employee->email= 'andrea@gmail.com';
         $employee->img= null;
         $employee->zona= 1;
         $employee->rol_id= 2;
@@ -91,12 +91,12 @@ class UsersTableSeeder extends Seeder
         $employee->save();
 
         $employee = new User();
-        $employee->nombre= 'Aitor';
-        $employee->apellidos= 'Tilla Ruiz';
+        $employee->nombre= 'Marc';
+        $employee->apellidos= 'Perez Ruiz';
         $employee->telefono= 666111198;
         $employee->dni= '45386633A';
-        $employee->password= Hash::make('aitor123');
-        $employee->email= 'torti@gmail.com';
+        $employee->password= Hash::make('marc123');
+        $employee->email= 'marc@gmail.com';
         $employee->img= null;
         $employee->zona= 2;
         $employee->rol_id= 2;
@@ -104,12 +104,12 @@ class UsersTableSeeder extends Seeder
 
         //tf zona 3
         $employee = new User();
-        $employee->nombre= 'Fran';
-        $employee->apellidos= 'Chesko Virgolini';
+        $employee->nombre= 'Francisco';
+        $employee->apellidos= 'Garcia Virgolini';
         $employee->telefono= 612345987;
         $employee->dni= '45786534F';
         $employee->password= Hash::make('fran123');
-        $employee->email= 'fans@gmail.com';
+        $employee->email= 'fran@gmail.com';
         $employee->img= null;
         $employee->zona= 3;
         $employee->rol_id= 2;
@@ -117,7 +117,7 @@ class UsersTableSeeder extends Seeder
 
         $employee = new User();
         $employee->nombre= 'Elena';
-        $employee->apellidos= 'Nillo Del Bosque';
+        $employee->apellidos= 'Malova Del Bosque';
         $employee->telefono= 654123987;
         $employee->dni= '45123498E';
         $employee->password= Hash::make('elena123');
@@ -129,12 +129,24 @@ class UsersTableSeeder extends Seeder
 
         //ts
         $employee = new User();
-        $employee->nombre= 'Pepa';
-        $employee->apellidos= 'Pig Cerdo';
+        $employee->nombre= 'Antonia';
+        $employee->apellidos= 'Perez Martinez';
         $employee->telefono= 661331999;
         $employee->dni= '45987654P';
-        $employee->password= Hash::make('pepa123');
-        $employee->email= 'pepapig@gmail.com';
+        $employee->password= Hash::make('antonia123');
+        $employee->email= 'antonia@gmail.com';
+        $employee->img= null;
+        $employee->zona= null;
+        $employee->rol_id= 3;
+        $employee->save();
+
+        $employee = new User();
+        $employee->nombre= 'Mireia';
+        $employee->apellidos= 'Corbacho Marron';
+        $employee->telefono= 661851999;
+        $employee->dni= '12358749P';
+        $employee->password= Hash::make('mireia123');
+        $employee->email= 'mireia@gmail.com';
         $employee->img= null;
         $employee->zona= null;
         $employee->rol_id= 3;
