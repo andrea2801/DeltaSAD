@@ -12,7 +12,7 @@
                     <div class="form-group dni_login">
                         <div class="row d-flex justify-content-center">
                             <label class="col-8 rect_mobil dni_mov align-items-center d-flex" for="dni">{{ __('DNI') }}</label>
-                            <input id="dni_input_login" type="text" class="col-8 form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="dni" autofocus>
+                            <input id="dni_input_login" type="text" class="col-8 form-control @error('dni') is-invalid @enderror" name="dni" required autocomplete="off" autofocus>
                                 @error('dni')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -40,8 +40,8 @@
                             {{ __('¿Has olvidado tu contraseña?') }}
                         </a>
                     </div>
-                </div>
-            </form>
+               </form>
+            </div>
         </div>
     </div>
 </section>
